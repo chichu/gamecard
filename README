@@ -1,0 +1,13 @@
+django:
+apt-get install python-dateutil python-setuptools
+easy_install -U django
+
+PIL:
+http://effbot.org/downloads/Imaging-1.1.7.tar.gz
+sudo apt-get install python-imaging
+
+RichTextEditorWidget:
+http://pypi.python.org/packages/source/d/django-tinymce/django-tinymce-1.5.tar.gz
+
+install mongodb,pymongo
+start mongodb:bin/mongod --dbpath /path/to/my/data/dir
