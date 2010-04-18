@@ -1,13 +1,51 @@
 django:
-apt-get install python-dateutil python-setuptools
+yum install python-dateutil python-setuptools
 easy_install -U django
 
 PIL:
-http://effbot.org/downloads/Imaging-1.1.7.tar.gz
-sudo apt-get install python-imaging
+yum install freetype freetype-devel jpeg jpeg-devel libpng libpng-devel
+wget http://effbot.org/downloads/Imaging-1.1.7.tar.gz
+cd Imaging-1.1.6
+python setup.py build_ext -i
+python selftest.py
+python setup.py install
 
-RichTextEditorWidget:
-http://pypi.python.org/packages/source/d/django-tinymce/django-tinymce-1.5.tar.gz
+install RichTextEditorWidget:
+wget http://pypi.python.org/packages/source/d/django-tinymce/django-tinymce-1.5.tar.gz
 
-install mongodb,pymongo
+install mongodb:
+wget http://downloads.mongodb.org/linux/mongodb-linux-x86_64-static-legacy-1.4.1.tgz
 start mongodb:bin/mongod --dbpath /path/to/my/data/dir
+
+install pymongo:
+easy_install -U pymongo
+
+install git:
+首先安装Git依赖的一些包
+yum install zlib-devel
+yum install openssl-devel
+yum install perl
+yum install cpio
+yum install expat-devel
+yum install gettext-devel
+接下来,如果你已经安装过Curl了,那么跳过这一步,没有的话,就装一下.
+wget http://curl.haxx.se/download/curl-7.18.0.tar.gz
+tar xzvf curl-7.18.0.tar.gz
+cd curl-7.18.0
+./configure
+make
+make install
+确定一下ld.so.conf文件里有/usr/local/lib,这个是为git-http-push准备的.
+vi /etc/ld.so.conf
+#插入下面的代码
+/usr/local/lib
+保存文件,接着运行:
+/sbin/ldconfig
+最好,我们下载Git并安装它
+wget http://www.codemonkey.org.uk/projects/git-snapshots/git/git-latest.tar.gz
+tar xzvf git-latest.tar.gz
+cd git-{date}
+autoconf
+./configure --with-curl=/usr/local
+make
+make install
