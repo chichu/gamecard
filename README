@@ -50,5 +50,15 @@ autoconf
 make
 make install
 
+download source code:
+git clone git@github.com:chichu/gamecard.git
+
+setup mysql:
+mysqladmin -uroot -hlocalhost password '***'
+create database gamecard;
+grant all privileges on *.* to localhost identified by '***';
+ldconfig
+python manage.py syncdb
+
 nginx,mysql,settings:
 http://hi.baidu.com/lvmajia/blog/item/961bb10212313e054afb51f0.html
