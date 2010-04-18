@@ -49,3 +49,6 @@ autoconf
 ./configure --with-curl=/usr/local
 make
 make install
+
+nginx,mysql,settings:
+http://hi.baidu.com/lvmajia/blog/item/961bb10212313e054afb51f0.html
