@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{ font-size:12px; margin:0; padding:0;}
+h1,p,ul{ margin:0; padding:0;}
+ul{ list-style:none;}
+.pop-up-win{ width:500px; position:absolute; top:50%; left:50%; margin-left:-250px; margin-top:-250px; display:none }
+/*头*/
+.win-title{ height:34px; overflow:hidden;}
+.win-title-l,.win-title-r,.win-title-m,.win-footer-l,.win-footer-r,.win-footer-m{ background:url(../images/rounded.png) no-repeat;}
+.win-title-r{ background-position:right -34px;}
+.win-title-m{height:34px; margin:0 15px; padding:0 7px; background-repeat:repeat-x; background-position:0 -68px;}
+.win-title-m a:link,.win-title-m a:visited{ float:right; display:block; width:27px; height:26px; margin-top:5px; line-height:200px; overflow:hidden; background:url(../images/close.png) no-repeat 0 -26px; cursor:pointer}
+.win-title-m a:hover{ background-position:0 0;}
+.win-title-m h1{ font-size:16px; font-weight:bold; color:#036; line-height:36px;}
+.win-footer{ text-align:right;}
+/*内容*/
+.win-content{ *display:inline-block;background:#cfdff0; border:1px solid #7c94bf;}
+.win-border{ border:1px solid #e1ebf6; border-top:none; border-bottom:none;}
+.win-bg{ margin:7px 5px; background:#fff;}
+
+/*脚*/
+.win-footer-l{ background-position:0 -102px;}
+.win-footer-r{ background-position:right -146px;}
+.win-footer-m{height:44px; margin:0 15px; padding:0 7px; background-repeat:repeat-x; background-position:0 -190px;}
+.win-footer a:link,.win-footer a:visited{ display:inline-block; height:25px;  margin:8px 5px; background:url(../images/btn.gif) no-repeat 0px 0;  color:#000; font-size:14px; text-decoration:none;}
+.win-footer a:link span,.win-footer a:visited span{ display:inline-block;padding:0 10px 0 5px; margin-left:5px; height:25px;background:url(../images/btn.gif) no-repeat right -25px; line-height:26px; cursor:pointer;}
+
+.win-login{padding:25px 0 10px 63px;}
+.win-login p{ margin-bottom:14px;}
+.win-login p span{ display:inline-block; float:left; margin-top:3px; width:56px; text-align:right; font-size:14px; height:20px; line-height:20px;}
+.win-login p b{ letter-spacing:1em; font-weight:normal;}
+.win-login p  .input{ height:20px; line-height:20px; border:1px solid #7f9db9; width:158px; margin-right:5px;}
+.win-login p.login-tip{ text-indent:56px;}
+.win-login p.login-tip input{ position:relative; top:2px;*top:1px;}
+.win-login p.txt{ margin-top:-8px; color:#999}
+.win-login p a:link,.win-login p a:visited{ color:#369}
+.win-login p a:hover{ color:#ff0000}
+
+
+.win-notes{ padding:15px 20px;}
+.win-icon{ display:block; width:32px; height:32px; background:url(../images/icons.gif) no-repeat}
+.win-icon-a{ background-position: 0 -64px;}
+.win-icon-b{ background-position:0 0;}
+.win-icon-c{ background-position:0 -32px;}
+.ff0000{ color:#ff0000}
+.win-notes .win-icon{ float:left; margin:5px 10px 50px 0;}
+.notes-txt p{  line-height:24px; color:#333}
+.notes-txt p span{ font-size:14px;}
+
+.notes-code{ margin-top:8px;padding-left:42px; padding-top:15px; border-top:1px dashed #ccc}
+.notes-code input{ height:18px; width:96px; border:1px solid #7f9db9; position:relative;top:-1px; *top:2px;}
+.notes-code strong{ display:inline-block;line-height:24px; font-size:14px; font-weight:normal;}
+.notes-code .code-tip{ display:block; margin-left:55px; margin-top:5px; }
+.notes-code .code-num{ display:inline-block; height:22px; background:#000;  color:#fff; padding:0 5px 0 10px; position:relative;  line-height:22px; letter-spacing:0.5em; margin:0 2px; }
+.notes-code  p{ line-height:1.5; margin-top:10px;}
+
+
+.win-details{ padding:20px; display:inline-block;}
+.details-pic{ border:1px solid #90aed0; padding:2px; width:120px; height:120px; background:url(../images/nopic.gif) no-repeat 2px 2px; float:left;}
+.win-details ul{ margin-left:140px; color:#333}
+.win-details ul li{ margin-bottom:12px;}
+.win-details ul li p{ line-height:22px}
+.win-details ul li a:link,.win-details ul li a:visited{ text-decoration:none;}
+
+a.blue{ color:#369; text-decoration:underline}
+
+
+
