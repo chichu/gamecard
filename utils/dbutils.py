@@ -24,7 +24,8 @@ def insert_card_ids(all_lines,item):
             insert_items.append(insert)
     try:
         cursor.insert(insert_items)
-        return True
+        return len(insert_items)
     except Exception,e:
         print e
-        return False
+        return 0
+    

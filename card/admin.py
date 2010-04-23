@@ -34,8 +34,11 @@ class FileLoaderAdmin(admin.ModelAdmin):
             request.user.message_set.create(message=u"文件不符合格式！")
             return None
         all_lines = obj.card_id_files.readlines()
-        if not insert_card_ids(all_lines,obj.item):
-            request.user.message_set.create(message=u"部分卡号不符合格式或者重复:%s"%",".join(error_id_set))    
+        count = insert_card_ids(all_lines,obj.item)
+        if count == 0:
+            request.user.message_set.create(message=u"部分卡号不符合格式或者重复:%s"%",".join(error_id_set))
+        else:
+            Activity.object.filter(item=item).update(card_count=count)
 admin.site.register(CardFileLoader,FileLoaderAdmin)
 
 
