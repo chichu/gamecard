@@ -3,6 +3,7 @@
 from models import *
 from django.contrib import admin
 from gamecard.utils.dbutils import insert_card_ids
+from gamecard.utils.strutils import check_cardfile_format
 
 class GamesAdmin(admin.ModelAdmin):
     list_display = ('name','game_type','create_time')
@@ -29,17 +30,13 @@ admin.site.register(Activity,ActAdmin)
 class FileLoaderAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change): 
         format = obj.item.format
-        first_line = obj.card_id_files.readline()
-        if len(all_lines) == 0 or check_cardfile_format(first_line,format):
+        all_lines = obj.card_id_files.readlines()
+        first_line = all_lines[0] 
+        total_lines = len(all_lines)
+        if total_lines == 0 or not check_cardfile_format(first_line,format):
             request.user.message_set.create(message=u"文件不符合格式！")
             return None
-        all_lines = obj.card_id_files.readlines()
         count = insert_card_ids(all_lines,obj.item)
-        if count == 0:
-            request.user.message_set.create(message=u"部分卡号不符合格式或者重复:%s"%",".join(error_id_set))
-        else:
-            Activity.object.filter(item=item).update(card_count=count)
+        #request.user.message_set.create(message=u"部分卡号不符合格式或者重复:%s"%",".join(error_id_set))
+        Activity.objects.filter(item=obj.item).update(card_count=count)
 admin.site.register(CardFileLoader,FileLoaderAdmin)
-
-
-
