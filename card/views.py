@@ -63,7 +63,8 @@ def get_chance(request):
         return render_to_response('card/popup/chance_success.html',{'item':item})
     return render_to_response('card/popup/chance_notice.html',{'item':item})   
       
-def index(request):        
+def index(request):
+    begin_cards        
     return render_to_response('card/index.html',locals())
    
 def detail(request): 
