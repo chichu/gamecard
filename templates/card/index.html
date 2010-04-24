@@ -90,19 +90,17 @@ var product_nav_box_width = 980,product_post_width = 520;
 <div class="newstit"><a href="#" title="" class="rightfix">更多></a>
 发卡公告</div>
 <ul>
-<li><span>10日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>13日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>16日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>20日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>26日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
+{% for notice in notices %}
+<li><span>{{notice.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}/" title="{{notice.title}}">{{notice.content}}</a></li>
+{% endfor %}
 </ul>
 
 <div class="newstit"><a href="#" title="" class="rightfix">更多></a>
 发卡预告</div>
 <ul>
-<li><span>10日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>13日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
-<li><span>16日</span><a href="#" title="">暗黑3威力提升球替代卷轴和药水暴雪商城将</a></li>
+    {% for anounce in anounces %}
+    <li><span>{{anounce.day}}日</span>{{anounce.content}}</li>
+    {% endfor %}
 </ul>
 </div>
 <div class="clearfix"></div></div>
@@ -174,53 +172,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <script type="text/javascript">
-    			function popup(url)
-    			{
-    				window.open(url,'newwindow', 'height=100, width=400, top=0, left=0, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no');
-    				return false;
-    			}
-    		</script>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="成功.html" onkeypress="return popup('成功.html');" onclick="return popup('成功.html');">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+{% for c in c1 %}
     <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+      <td><a href="/card/activitydetail/{{c.id}}/" title="{{name}}">{{name}}</a></td>
+      <td>{{c.item.name}}</td>
+      <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+      <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+      <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+    </tr>
+{% endfor %}
 </table></div>
 <div id="c02" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -230,47 +190,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c2 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}   
 </table></div>
 <div id="c03" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
@@ -280,47 +208,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-<tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c3 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c04" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -329,46 +225,16 @@ window.onload = function(){
     <th>新手卡简介</th>
     <th>领卡</th>
     <th>淘号</th>
-  </tr> <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  </tr> 
+  {% for c in c4 %}
       <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c05" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -378,47 +244,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
 </tr>
-  <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-        <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c5 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c06" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
 <tr>
@@ -428,47 +262,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
 </tr>  
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-<tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-        <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c6 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c07" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
@@ -479,46 +281,15 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
 <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+    {% for c in c7 %}
+        <tr>
+          <td><a href="#" title="名将三国">名将三国</a></td>
+          <td>限量至尊卡</td>
+          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+          <td><a href="#">领卡</a></td>
+          <td><a href="#">淘号</a></td>
+        </tr>
+    {% endfor %}
 </table></div>
 <div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -528,47 +299,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+    {% for c in c8 %}
+        <tr>
+          <td><a href="#" title="名将三国">名将三国</a></td>
+          <td>限量至尊卡</td>
+          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+          <td><a href="#">领卡</a></td>
+          <td><a href="#">淘号</a></td>
+        </tr>
+    {% endfor %}
 </table></div>
 </div>
 </div></div>
@@ -600,46 +339,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c11 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c12" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -649,46 +357,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c12 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c13" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
@@ -698,47 +375,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-<tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+    {% for c in c13 %}
+        <tr>
+          <td><a href="#" title="名将三国">名将三国</a></td>
+          <td>限量至尊卡</td>
+          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+          <td><a href="#">领卡</a></td>
+          <td><a href="#">淘号</a></td>
+        </tr>
+    {% endfor %}
 </table></div>
 <div id="c14" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -747,46 +392,16 @@ window.onload = function(){
     <th>新手卡简介</th>
     <th>领卡</th>
     <th>淘号</th>
-  </tr> <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-      <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  </tr>  
+   {% for c in c15 %}
+        <tr>
+          <td><a href="#" title="名将三国">名将三国</a></td>
+          <td>限量至尊卡</td>
+          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+          <td><a href="#">领卡</a></td>
+          <td><a href="#">淘号</a></td>
+        </tr>
+    {% endfor %}
 </table></div>
 <div id="c15" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
@@ -796,47 +411,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-<tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c15 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c16" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
@@ -846,47 +429,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-<tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  {% for c in c16 %}
+      <tr>
+        <td><a href="#" title="名将三国">名将三国</a></td>
+        <td>限量至尊卡</td>
+        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+        <td><a href="#">领卡</a></td>
+        <td><a href="#">淘号</a></td>
+      </tr>
+  {% endfor %}
 </table></div>
 <div id="c17" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -895,46 +446,16 @@ window.onload = function(){
     <th>新手卡简介</th>
     <th>领卡</th>
     <th>淘号</th>
-  </tr> <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-      <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr><tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+  </tr>   
+  {% for c in c17 %}
+        <tr>
+          <td><a href="#" title="名将三国">名将三国</a></td>
+          <td>限量至尊卡</td>
+          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+          <td><a href="#">领卡</a></td>
+          <td><a href="#">淘号</a></td>
+        </tr>
+    {% endfor %}
 </table></div>
 <div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -944,47 +465,15 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-    <tr>
-    <td><a href="#" title="秦伤">秦伤</a></td>
-    <td>至尊新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>  <tr>
-    <td><a href="#" title="黄金国度">黄金国度</a></td>
-    <td>王国崛起新手卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="名将三国">名将三国</a></td>
-    <td>限量至尊卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="远征ol">远征ol</a></td>
-    <td>远征锋芒卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-    <tr>
-    <td><a href="#" title="逍遥界">逍遥界</a></td>
-    <td>封测试玩卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
-  <tr>
-    <td><a href="#" title="星球大战">星球大战</a></td>
-    <td>冥王卡</td>
-    <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-    <td><a href="#">领卡</a></td>
-    <td><a href="#">淘号</a></td>
-  </tr>
+   {% for c in c18 %}
+       <tr>
+         <td><a href="#" title="名将三国">名将三国</a></td>
+         <td>限量至尊卡</td>
+         <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
+         <td><a href="#">领卡</a></td>
+         <td><a href="#">淘号</a></td>
+       </tr>
+   {% endfor %}
 </table></div>
 </div>
 </div></div>

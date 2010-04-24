@@ -55,6 +55,28 @@ class Activity(models.Model):
     def __unicode__(self):
         return self.name  
 
+class Notice(models.Model):
+    title = models.CharField("公告标题",max_length=20,unique=True)
+    activity = models.ForeingKey(Activity,verbose_name='所属活动')
+    create_time = models.DateTimeField("创建时间",default=datetime.now())
+    content = tinymce_models.HTMLField("公告内容")
+    class Meta:
+        verbose_name = "活动公告"
+        verbose_name_plural = "活动公告"
+        ordering = ['-create_time']
+    def __unicode__(self):
+        return self.title
+        
+class Anounce(models.Model):
+    create_time = models.DateTimeField("创建时间",default=datetime.now())
+    content = tinymce_models.HTMLField("预告内容")
+    class Meta:
+        verbose_name = "预告公告"
+        verbose_name_plural = "预告公告"
+        ordering = ['-create_time']
+    def __unicode__(self):
+        return self.content
+    
 def get_cardfile_path(instance,filename):
     return "%s/%s-%s"%("card_files",instance.item.id,filename)
                    

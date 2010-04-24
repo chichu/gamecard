@@ -26,6 +26,16 @@ class ActAdmin(admin.ModelAdmin):
     list_filter = ('status','card_type')
     radio_fields = {"status": admin.HORIZONTAL,"card_type":admin.HORIZONTAL}
 admin.site.register(Activity,ActAdmin)
+
+class NoticeAdmin(admin.ModelAdmin):
+    list_display = ('title','content','activity','create_time')
+    search_fields = list_display
+admin.site.register(Notice,NoticeAdmin)
+
+class AnounceAdmin(admin.ModelAdmin):
+    list_display = ('content','create_time')
+    search_fields = list_display
+admin.site.register(Anounce,AnounceAdmin)
    
 class FileLoaderAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change): 

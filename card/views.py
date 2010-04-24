@@ -9,14 +9,15 @@ from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
 
 CHANGE_IDS_PERTIME = 5
+MAX_NOTICE = 5
+MAX_ANOUNCE = 3
 
-def get_card(request):
+def get_card(request,item_id):
+    item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        item_id = request.GET.get('item_id',1)
         username = request.COOKIES.get('user_name','chichu')
         if request.COOKIES.has_key("has_get"):
             return render_to_response('card/popup/failure2.html',{'item':item})
-        item = Item.objects.get(id=item_id)
         collect_name = get_collect_name(item_id)
         cursor = get_mongodb_cursor(collect_name)
         #find a available one
@@ -46,11 +47,9 @@ def get_card(request):
     return render_to_response('card/popup/get_notice.html',{'item':item})
        
 
-def get_chance(request):
+def get_chance(request,item_id):
+    item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        item_id = request.GET['item_id']
-
-        item = Item.objects.get(id=item_id)
         collect_name = get_collect_name(item_id)
         cursor = get_mongodb_cursor(collect_name)
         conditions = {'status':"used",'is_change':True,"chance_time":{"$lt": datetime.now()}}
@@ -64,8 +63,13 @@ def get_chance(request):
     return render_to_response('card/popup/chance_notice.html',{'item':item})   
       
 def index(request):
-    begin_cards        
+    anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
+    notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
+    
+    begin_cards = None       
     return render_to_response('card/index.html',locals())
-   
-def detail(request): 
+    
+def activity_detail(request,activity_id): 
+    activity = Activity.objects.get(id=activity_id)
+    content = activity.info
     return render_to_response('card/i2.html',locals())

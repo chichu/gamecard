@@ -6,7 +6,9 @@ def get_cardfile_dict(format,line):
     if len(values) != len(keys) or len(values) == 0:
         return None
     return_items = []
-    count = (keys[1] == "count") and int(values[1]) or 1 
+    count = 1
+    if len(value) > 1:
+        count = (keys[1] == "count") and int(values[1]) or 1 
     for j in range(0,count):
         tmp_dict = {"status":"normal"}
         for i in range(0,len(values)):
