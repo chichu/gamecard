@@ -14,7 +14,7 @@ class GamesAdmin(admin.ModelAdmin):
 admin.site.register(Games,GamesAdmin)
 
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ('name','format','is_chance','chance_time','max_apply_perday')
+    list_display = ('name','format','is_chance','chance_time_delta','max_apply_perday')
     search_fields = list_display
     radio_fields = {"format":admin.HORIZONTAL}
     list_filter = ('format','is_chance')

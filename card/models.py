@@ -22,7 +22,7 @@ class Item(models.Model):
     format = models.CharField("物品格式",max_length=25,choices=CARD_FILE_FORMAT_TYPE)
     pic = models.ImageField(upload_to='icons/',verbose_name="物品图片")
     is_chance = models.BooleanField("是否进入淘卡库",default=True)
-    chance_time = models.DateTimeField("进入淘卡库时间",default=datetime.now())
+    chance_time_delta = models.IntegerField("被领取后几小时进入淘卡库",default=2)
     max_apply_perday = models.IntegerField("每日最多领取次数",default=0)
     max_apply_perday_reminder = tinymce_models.HTMLField("达到每日最多领取次数提示语",default="")
     info = tinymce_models.HTMLField("物品信息",null=True,blank=True)

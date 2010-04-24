@@ -4,7 +4,7 @@ from django.utils.encoding import smart_unicode,force_unicode,smart_str
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from models import *
-from datetime import datetime
+from datetime import datetime,timedelta
 from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
 
@@ -28,7 +28,7 @@ def get_card(request):
         if item.is_chance:
             avail_one['is_chance'] = True
             avail_one["count"] = 0
-            avail_one["chance_time"] = item.chance_time
+            avail_one["chance_time"] = datetime.now()+timedelta(hours=int(item.chance_time_delta))
         request.COOKIES.set_cookies('has_get',True,expire=24*3600)
         return render_to_response('',)
        
