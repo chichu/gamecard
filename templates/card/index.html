@@ -91,7 +91,7 @@ var product_nav_box_width = 980,product_post_width = 520;
 发卡公告</div>
 <ul>
 {% for notice in notices %}
-<li><span>{{notice.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}/" title="{{notice.title}}">{{notice.content}}</a></li>
+<li><span>{{notice.create_time.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}/" title="{{notice.title}}">{{notice.content|safe}}</a></li>
 {% endfor %}
 </ul>
 
@@ -99,7 +99,7 @@ var product_nav_box_width = 980,product_post_width = 520;
 发卡预告</div>
 <ul>
     {% for anounce in anounces %}
-    <li><span>{{anounce.day}}日</span>{{anounce.content}}</li>
+    <li><span>{{anounce.create_time.day}}日</span><a>{{anounce.content|safe}}</a></li>
     {% endfor %}
 </ul>
 </div>
