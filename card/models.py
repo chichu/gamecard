@@ -8,7 +8,7 @@ class Games(models.Model):
     name = models.CharField("名称",max_length=50,unique=True)
     descri = tinymce_models.HTMLField("描述",null=True,blank=True)
     game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
-    create_time = models.DateTimeField("创建时间",default=datetime.now())
+    create_time = models.DateTimeField("创建时间")
     class Meta:
         verbose_name = "游戏信息"
         verbose_name_plural = "游戏信息"
@@ -36,7 +36,7 @@ class Item(models.Model):
 
 class Activity(models.Model):
     name = models.CharField("活动名称",max_length=50,unique=True)
-    name_start_alpha = models.CharField("名称首字母",max_length=1)
+    name_start_alpha = models.CharField("名称首字母(大写)",max_length=1)
     item = models.ForeignKey(Item,verbose_name="对应物品")
     game = models.ForeignKey(Games,verbose_name="所属游戏")
     is_hot = models.BooleanField("是否热门游戏",default=False)
@@ -49,7 +49,7 @@ class Activity(models.Model):
     info = tinymce_models.HTMLField("详细内容",null=True,blank=True)
     reminder_award = tinymce_models.HTMLField("中奖提示内容",null=True,blank=True)
     reminder_noaward = tinymce_models.HTMLField("未中奖提示内容",null=True,blank=True)
-    start_time = models.DateTimeField("活动开始时间",default=datetime.now()) 
+    start_time = models.DateTimeField("活动开始时间") 
     class Meta:
         verbose_name = "活动信息"
         verbose_name_plural = "活动信息"
@@ -60,7 +60,7 @@ class Activity(models.Model):
 class Notice(models.Model):
     title = models.CharField("公告标题",max_length=20,unique=True)
     activity = models.ForeignKey(Activity,verbose_name='所属活动')
-    create_time = models.DateTimeField("创建时间",default=datetime.now())
+    create_time = models.DateTimeField("创建时间")
     content = tinymce_models.HTMLField("公告内容")
     class Meta:
         verbose_name = "活动公告"
@@ -70,7 +70,7 @@ class Notice(models.Model):
         return self.title
         
 class Anounce(models.Model):
-    create_time = models.DateTimeField("创建时间",default=datetime.now())
+    create_time = models.DateTimeField("创建时间")
     content = tinymce_models.HTMLField("预告内容")
     class Meta:
         verbose_name = "发卡预告"
