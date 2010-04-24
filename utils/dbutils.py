@@ -28,4 +28,5 @@ def insert_card_ids(all_lines,item):
                 cursor.insert(insert)
         except Exception,e:
             continue 
+    curosr.commit()
     return cursor.count()
