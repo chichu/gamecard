@@ -1,15 +1,18 @@
 #encoding:utf-8
 # Create your views here.
+from django.utils.encoding import smart_unicode,force_unicode,smart_str
+from django.http import HttpResponse,HttpResponseRedirect
+from django.shortcuts import render_to_response
 from models import *
 from datetime import datetime
-from gamecard.utils.dbutil import *
-from gamecard.utils.strutil import *
+from gamecard.utils.dbutils import *
+from gamecard.utils.strutils import *
 
 CHANGE_IDS_PERTIME = 3
 
 def get_card(request):
     if request.method == "GET":
-        item_id = request.GET.['item_id']
+        item_id = request.GET['item_id']
         username = request.COOKIES['user_name']
         if request.COOKIES.has_key("has_get"):
             return "你已经领取过一次"
@@ -46,6 +49,8 @@ def get_chance(request):
             chance_cursor.save(one)
         return avails
         
-        
-    
-    
+def index(request):        
+    return render_to_response('card/index.html',locals())
+   
+def detail(request): 
+    return render_to_response('card/i2.html',locals())

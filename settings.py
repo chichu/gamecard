@@ -64,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    #'django.middleware.cache.CacheMiddleware',
 )
 
 ROOT_URLCONF = 'gamecard.urls'
@@ -73,7 +74,7 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #'templates',
-
+    '/zzdata/gamecard/templates/', 
 )
 
 INSTALLED_APPS = (
@@ -86,6 +87,9 @@ INSTALLED_APPS = (
     'gamecard.card',
     'tinymce',
 )
+
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+VIEW_CACHE_EXPIRE = 3600
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",
