@@ -64,7 +64,7 @@ def get_chance(request):
     return render_to_response('card/popup/chance_notice.html',{'item':item})   
       
 def index(request):
-    begin_cards        
+    begin_cards = None       
     return render_to_response('card/index.html',locals())
    
 def detail(request): 
