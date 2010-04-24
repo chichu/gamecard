@@ -23,3 +23,19 @@ def check_cardfile_format(first_line,item_format):
 def get_collect_name(item_id):
     CARDID_FILE_TEMPLATE = "%s-id_cards"
     return CARDID_FILE_TEMPLATE%(item_id)
+
+ALPHA_SECT = ["ABCD","EFGH","IJKL","MNOP","QRST","WXYZ"]
+MAX_LENGTH = 10
+def get_ordered_act(acts):
+    hot = acts.filter(is_hot=True)
+    new = acts.order_by('-start_time')
+    if len(hot) > MAX_LENGTH:
+        hot =  hot[0:9]
+    if len(new) > MAX_LENGTH:
+        new =  new[0:9]
+    return_list = [hot] 
+    for sect in ALPHA_SECT: 
+        return_list.append(acts.filter(name_start_alpha__in=sect))
+    return_list.append(new)
+    return turple(return_list)
+    

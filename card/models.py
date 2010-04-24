@@ -36,8 +36,10 @@ class Item(models.Model):
 
 class Activity(models.Model):
     name = models.CharField("活动名称",max_length=50,unique=True)
+    name_start_alpha = models.CharField("名称首字母",max_length=1)
     item = models.ForeignKey(Item,verbose_name="对应物品")
-    game = models.ForeignKey(Games,verbose_name="所属游戏") 
+    game = models.ForeignKey(Games,verbose_name="所属游戏")
+    is_hot = models.BooleanField("是否热门游戏",default=False)
     card_count = models.IntegerField("发卡数量",default=0)
     award_percent = models.IntegerField("中奖机率",default=100,help_text="百分比(%)")
     card_type = models.CharField("发号类型",max_length=10,choices=(('act_code','激活码'),('begin_card','新手卡')))

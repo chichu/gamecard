@@ -152,13 +152,13 @@ window.onload = function(){
 <h1>测试码</h1>	
 <ul class="scrollUl">
 <li class="choice" id="m01"><a href="#">热门游戏</a></li>
+<li class="nochoice" id="m08"><a href="#">新游戏</a></li>
 <li class="nochoice" id="m02"><a href="#">ABCD</a></li>
 <li class="nochoice" id="m03"><a href="#">EFGH</a></li>
 <li class="nochoice" id="m04"><a href="#">IJKL</a></li>
 <li class="nochoice" id="m05"><a href="#">MNOP</a></li>
 <li class="nochoice" id="m06"><a href="#">QRST</a></li>
 <li class="nochoice" id="m07"><a href="#">WXYZ</a></li>
-<li class="nochoice" id="m08"><a href="#">新游戏</a></li>
 </ul>
 <div class="clearfix"></div>
 </div>
@@ -174,7 +174,7 @@ window.onload = function(){
   </tr>
 {% for c in c1 %}
     <tr>
-      <td><a href="/card/activitydetail/{{c.id}}/" title="{{name}}">{{name}}</a></td>
+      <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
       <td>{{c.item.name}}</td>
       <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
       <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
@@ -191,13 +191,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
   {% for c in c2 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
   {% endfor %}   
 </table></div>
 <div id="c03" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -209,13 +209,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
   {% for c in c3 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
   {% endfor %}
 </table></div>
 <div id="c04" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -228,12 +228,12 @@ window.onload = function(){
   </tr> 
   {% for c in c4 %}
       <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+          <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.item.name}}</td>
+          <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+        </tr>
   {% endfor %}
 </table></div>
 <div id="c05" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -245,13 +245,13 @@ window.onload = function(){
     <th>淘号</th>
 </tr>
   {% for c in c5 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
   {% endfor %}
 </table></div>
 <div id="c06" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -263,13 +263,13 @@ window.onload = function(){
     <th>淘号</th>
 </tr>  
   {% for c in c6 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+  <tr>
+      <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+      <td>{{c.item.name}}</td>
+      <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+      <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+      <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+  </tr>
   {% endfor %}
 </table></div>
 <div id="c07" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -280,15 +280,14 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-<tr>
     {% for c in c7 %}
-        <tr>
-          <td><a href="#" title="名将三国">名将三国</a></td>
-          <td>限量至尊卡</td>
-          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-          <td><a href="#">领卡</a></td>
-          <td><a href="#">淘号</a></td>
-        </tr>
+       <tr>
+           <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.item.name}}</td>
+           <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+         </tr>
     {% endfor %}
 </table></div>
 <div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -300,13 +299,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
     {% for c in c8 %}
-        <tr>
-          <td><a href="#" title="名将三国">名将三国</a></td>
-          <td>限量至尊卡</td>
-          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-          <td><a href="#">领卡</a></td>
-          <td><a href="#">淘号</a></td>
-        </tr>
+       <tr>
+           <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.item.name}}</td>
+           <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+         </tr>
     {% endfor %}
 </table></div>
 </div>
@@ -319,13 +318,14 @@ window.onload = function(){
 <h1>新手卡</h1>	
 <ul class="scrollUl">
 <li class="nochoice" id="m11"><a href="#">热门游戏</a></li>
+<li class="choice" id="m18"><a href="#">新游戏</a></li>
 <li class="nochoice" id="m12"><a href="#">ABCD</a></li>
 <li class="nochoice" id="m13"><a href="#">EFGH</a></li>
 <li class="nochoice" id="m14"><a href="#">IJKL</a></li>
 <li class="nochoice" id="m15"><a href="#">MNOP</a></li>
 <li class="nochoice" id="m16"><a href="#">QRST</a></li>
 <li class="nochoice" id="m17"><a href="#">WXYZ</a></li>
-<li class="choice" id="m18"><a href="#">新游戏</a></li>
+
 </ul>
 <div class="clearfix"></div>
 </div>
@@ -341,12 +341,12 @@ window.onload = function(){
   </tr>
   {% for c in c11 %}
       <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+          <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.item.name}}</td>
+          <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+        </tr>
   {% endfor %}
 </table></div>
 <div id="c12" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -358,13 +358,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
   {% for c in c12 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
   {% endfor %}
 </table></div>
 <div id="c13" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -376,13 +376,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
     {% for c in c13 %}
-        <tr>
-          <td><a href="#" title="名将三国">名将三国</a></td>
-          <td>限量至尊卡</td>
-          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-          <td><a href="#">领卡</a></td>
-          <td><a href="#">淘号</a></td>
-        </tr>
+       <tr>
+           <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.item.name}}</td>
+           <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+         </tr>
     {% endfor %}
 </table></div>
 <div id="c14" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -394,13 +394,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>  
    {% for c in c15 %}
-        <tr>
-          <td><a href="#" title="名将三国">名将三国</a></td>
-          <td>限量至尊卡</td>
-          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-          <td><a href="#">领卡</a></td>
-          <td><a href="#">淘号</a></td>
-        </tr>
+       <tr>
+           <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.item.name}}</td>
+           <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+         </tr>
     {% endfor %}
 </table></div>
 <div id="c15" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -412,13 +412,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
   {% for c in c15 %}
-      <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
   {% endfor %}
 </table></div>
 <div id="c16" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -431,12 +431,12 @@ window.onload = function(){
   </tr>
   {% for c in c16 %}
       <tr>
-        <td><a href="#" title="名将三国">名将三国</a></td>
-        <td>限量至尊卡</td>
-        <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-        <td><a href="#">领卡</a></td>
-        <td><a href="#">淘号</a></td>
-      </tr>
+          <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.item.name}}</td>
+          <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+        </tr>
   {% endfor %}
 </table></div>
 <div id="c17" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -448,13 +448,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>   
   {% for c in c17 %}
-        <tr>
-          <td><a href="#" title="名将三国">名将三国</a></td>
-          <td>限量至尊卡</td>
-          <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-          <td><a href="#">领卡</a></td>
-          <td><a href="#">淘号</a></td>
-        </tr>
+       <tr>
+           <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.item.name}}</td>
+           <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+         </tr>
     {% endfor %}
 </table></div>
 <div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -466,13 +466,13 @@ window.onload = function(){
     <th>淘号</th>
   </tr>
    {% for c in c18 %}
-       <tr>
-         <td><a href="#" title="名将三国">名将三国</a></td>
-         <td>限量至尊卡</td>
-         <td>相关介绍相关介绍相关介绍相关介绍<a href="#">(查看详细)</a></td>
-         <td><a href="#">领卡</a></td>
-         <td><a href="#">淘号</a></td>
-       </tr>
+      <tr>
+          <td><a href="/card/activitydetail/{{c.id}}/" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.item.name}}</td>
+          <td>{{c.descri}}<a href="/card/activitydetail/{{c.id}}/">(查看详细)</a></td>
+          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+        </tr>
    {% endfor %}
 </table></div>
 </div>
