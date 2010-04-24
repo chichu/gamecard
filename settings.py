@@ -88,8 +88,8 @@ INSTALLED_APPS = (
     'tinymce',
 )
 
-CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-VIEW_CACHE_EXPIRE = 3600
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+#VIEW_CACHE_EXPIRE = 3600
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",

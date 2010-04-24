@@ -34,7 +34,7 @@ def get_card(request):
         avail_one.save()
         #save user info
         cursor = get_mongodb_cursor("user_info",indexs=[('name',True)])
-        user = cursor.find_one({"name",username}):
+        user = cursor.find_one({"name":username})
         if bool(user):
             user['cards'] += {'item_id':item_id,'card_id':avail_one['card_id']}
             user.save()

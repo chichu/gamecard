@@ -21,10 +21,10 @@ class ItemAdmin(admin.ModelAdmin):
 admin.site.register(Item,ItemAdmin)
 
 class ActAdmin(admin.ModelAdmin):
-    list_display = ('name','item','game','card_count','start_time','status')
+    list_display = ('name','item','game','card_count','card_type','start_time','status')
     search_fields = list_display
-    list_filter = ('status',)
-    radio_fields = {"status": admin.HORIZONTAL}
+    list_filter = ('status','card_type')
+    radio_fields = {"status": admin.HORIZONTAL,"card_type":admin.HORIZONTAL}
 admin.site.register(Activity,ActAdmin)
    
 class FileLoaderAdmin(admin.ModelAdmin):
