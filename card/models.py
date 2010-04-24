@@ -40,6 +40,7 @@ class Activity(models.Model):
     game = models.ForeignKey(Games,verbose_name="所属游戏") 
     card_count = models.IntegerField("发卡数量",default=0)
     award_percent = models.IntegerField("中奖机率",default=100,help_text="百分比(%)")
+    card_type = models.CharField("发号类型",max_length=10,choices=(('act_code','激活码'),('begin_card','新手卡')))
     status = models.CharField("活动状态",max_length=10,default='wait',
         choices=(('active','已发布'),('wait','待发布'),('halt','停止')))
     descri = tinymce_models.HTMLField("新手卡介绍",null=True,blank=True)
