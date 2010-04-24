@@ -71,8 +71,8 @@ class Anounce(models.Model):
     create_time = models.DateTimeField("创建时间",default=datetime.now())
     content = tinymce_models.HTMLField("预告内容")
     class Meta:
-        verbose_name = "预告公告"
-        verbose_name_plural = "预告公告"
+        verbose_name = "发卡预告"
+        verbose_name_plural = "发卡预告"
         ordering = ['-create_time']
     def __unicode__(self):
         return self.content
