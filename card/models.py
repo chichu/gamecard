@@ -36,7 +36,7 @@ class Item(models.Model):
 
 class Activity(models.Model):
     name = models.CharField("活动名称",max_length=50,unique=True)
-    name_start_alpha = models.CharField("名称首字母(大写)",max_length=1)
+    name_start_alpha = models.CharField("名称首字母",max_length=1,help_text="必须大写！！！")
     item = models.ForeignKey(Item,verbose_name="对应物品")
     game = models.ForeignKey(Games,verbose_name="所属游戏")
     is_hot = models.BooleanField("是否热门游戏",default=False)
