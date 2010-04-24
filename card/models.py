@@ -57,7 +57,7 @@ class Activity(models.Model):
 
 class Notice(models.Model):
     title = models.CharField("公告标题",max_length=20,unique=True)
-    activity = models.ForeingKey(Activity,verbose_name='所属活动')
+    activity = models.ForeignKey(Activity,verbose_name='所属活动')
     create_time = models.DateTimeField("创建时间",default=datetime.now())
     content = tinymce_models.HTMLField("公告内容")
     class Meta:
@@ -88,8 +88,3 @@ class CardFileLoader(models.Model):
         verbose_name_plural = "上传卡号"
     def __unicode__(self):
         return u"%s 卡号文件"%self.item.name
-   
-
-        
-        
-
