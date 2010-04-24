@@ -30,7 +30,7 @@ class Item(models.Model):
     class Meta:
         verbose_name = "物品信息"
         verbose_name_plural = "物品信息"
-        ordering = ['-chance_time']
+        #ordering = ['-chance_time']
     def __unicode__(self):
         return self.name
 
