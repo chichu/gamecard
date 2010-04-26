@@ -76,5 +76,6 @@ wget http://www.modsecurity.org/download/modsecurity-apache_2.5.12.tar.gz
 ./configure --with-apxs=/usr/local/apache22/bin/apxs --with-apr=/usr/local/apache22/bin/apr-1-config --with-apu=/usr/local/apache22/bin/apu-1-config
 wget http://www.sfr-fresh.com/unix/privat/mod_evasive_1.10.1.tar.gz
 /usr/local/apache22/bin/apxs -i -a -c mod_evasive20.c
-http://www.blogjava.net/sealyu/archive/2008/11/06/239110.html
+wget http://modwsgi.googlecode.com/files/mod_wsgi-3.2.tar.gz
+./configure --with-apxs=/usr/local/apache22/bin/apxs --with-python=/usr/bin/python
 
