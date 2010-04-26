@@ -60,5 +60,20 @@ grant all privileges on *.* to localhost identified by '***';
 ldconfig
 python manage.py syncdb
 
-nginx,mysql,settings:
+mysql settings:
 http://hi.baidu.com/lvmajia/blog/item/961bb10212313e054afb51f0.html
+
+apache settings:
+wget http://apache.freelamp.com/httpd/httpd-2.2.15.tar.gz
+tar xzf httpd-2.2.15.tar.gz
+./configure --prefix=/usr/local/apache22 --enable-so --enable-mods-shared=all
+make install clean
+mod_python:
+http://apache.freelamp.com/httpd/modpython/mod_python-3.3.1.tgz
+./configure --with-apxs=/usr/local/apache22/bin/apxs --with-python=/usr/bin/python
+make install clean
+wget http://www.zdziarski.com/projects/mod_evasive/mod_evasive_1.10.1.tar.gz
+tar zxvf mod_evasive_1.10.1.tar.gz
+cd mod_evasive
+/usr/local/apache2/bin/apxs -i -a -c mod_dosevasive20.c
+http://zeuik.com/studio/tag/%E9%98%B2%E5%88%B7%E6%96%B0/
