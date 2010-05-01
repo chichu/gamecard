@@ -71,7 +71,8 @@ def index(request):
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
     
     (b_hot,b_new,b_alpha) = get_ordered_act(begin_cards,start_alpha_index=2)
-    (a_hot,a_new,a_alpha) = get_ordered_act(act_codes,start_alpha_index=12)    
+    print b_alpha
+    #(a_hot,a_new,a_alpha) = get_ordered_act(act_codes,start_alpha_index=12)    
     return render_to_response('card/index.html',locals())
     
 def activity_detail(request,activity_id): 
