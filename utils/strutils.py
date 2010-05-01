@@ -23,18 +23,19 @@ def get_cardfile_set(all_line,has_passwd=False):
         else:
             tmp_dict = {"status":"normal","card_id":line}
         tmp_items.append(tmp_dict)
-    return return_items
+    return tmp_items
     
 def insert_card_ids(all_line,item):
+    from dbutils import get_mongodb_cursor
     collect_name = get_collect_name(item.id)
     cursor =  get_mongodb_cursor(collect_name)
     cursor.create_index("status",unique=False)
-    if item.format.index("count") == -1:
+    if item.format.find("count") == -1:
         cursor.create_index("card_id",unique=True)
     else:
         all_line = transfer_format(all_line)
     inserts = []
-    if item.format.index("passwd") == -1:
+    if item.format.find("passwd") == -1:
         inserts = get_cardfile_set(all_line)
     else:
         inserts = get_cardfile_set(all_line,has_passwd=True)
@@ -43,7 +44,6 @@ def insert_card_ids(all_line,item):
             cursor.insert(insert)
         except Exception,e:
             continue 
-    curosr.commit()
     return cursor.count()
 
 ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"
