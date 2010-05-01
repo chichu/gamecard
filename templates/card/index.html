@@ -289,6 +289,38 @@ window.onload = function(){
         </tr>
   {% endfor %}
 </table></div>
+
+{% for tab_index,alpha,acts in a_alpha %}
+    {% ifchanged tab_index%}
+    {% ifnotequal tab_index 12%}
+        </table></div>
+    {% endifnotequal %}
+    <div id="c{{tab_index}}" class="hidden">
+    <table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <th width="20%">游戏名称</th>
+              <th width="20%">新手卡名称</th>
+              <th>新手卡简介</th>
+              <th width="10%">领卡</th>
+              <th width="10%">淘号</th>
+        </tr>
+    {% endifchanged %}
+  <tr>
+      <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
+  </tr>
+  {% for c in acts%}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
+  {% endfor %}
+{% endfor %}
+</table>
+</div>
+
 <div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
        <th width="20%">游戏名称</th>
