@@ -18,6 +18,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r"^card/",include('gamecard.card.urls')),
     (r'^tinymce/', include('tinymce.urls')),
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-        {'document_root': MEDIA_ROOT}),
+#    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
+#        {'document_root': MEDIA_ROOT}),
 )

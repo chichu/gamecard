@@ -37,5 +37,5 @@ def get_ordered_act(acts):
     for sect in ALPHA_SECT: 
         return_list.append(acts.filter(name_start_alpha__in=sect))
     return_list.append(new)
-    return turple(return_list)
+    return tuple(return_list)
     

@@ -12,4 +12,4 @@ if [ -f $PIDFILE ]; then
 fi
 
 /usr/bin/python $PROJDIR/manage.py runfcgi method=prefork socket=$SOCKET pidfile=$PIDFILE
-/bin/chown nobody $SOCKET
+/bin/chown www:www $SOCKET
