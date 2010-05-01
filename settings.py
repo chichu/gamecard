@@ -49,7 +49,7 @@ MEDIA_URL = os.path.join(SERVER_DOMAIN,'/static/')
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = os.path.join(SERVER_DOMAIN,'/media/')
+ADMIN_MEDIA_PREFIX = '/media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'k)ax9-b9zp$mbrm9pscew#w+vbe&h8&l^4&4g*nto(@on!vc@f'
