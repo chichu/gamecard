@@ -183,8 +183,8 @@ window.onload = function(){
 <div id="c01"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
        <th width="20%">游戏名称</th>
-       <th width="20%">新手卡名称</th>
-       <th>新手卡简介</th>
+       <th width="20%">测试码名称</th>
+       <th>测试码简介</th>
        <th width="10%">领卡</th>
        <th width="10%">淘号</th>
      </tr>
@@ -201,12 +201,12 @@ window.onload = function(){
 
 <div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-       <th width="20%">游戏名称</th>
-       <th width="20%">新手卡名称</th>
-       <th>新手卡简介</th>
-       <th width="10%">领卡</th>
-       <th width="10%">淘号</th>
-     </tr>
+        <th width="20%">游戏名称</th>
+          <th width="20%">测试码名称</th>
+          <th>测试码简介</th>
+          <th width="10%">领卡</th>
+          <th width="10%">淘号</th>
+    </tr>
 {% for c in b_new %}
      <tr>
          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
@@ -275,13 +275,13 @@ window.onload = function(){
 <div class="m10">
 
 <div id="c11"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
   {% for c in a_hot %}
       <tr>
           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
@@ -293,13 +293,13 @@ window.onload = function(){
   {% endfor %}
 </table></div>
 <div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
   {% for c in a_new %}
      <tr>
          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
