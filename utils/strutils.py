@@ -1,28 +1,47 @@
 #encoding:utf-8
 
-def get_cardfile_dict(format,line):
-    values = line.split(',')
-    keys = format.split('&')
-    if len(values) != len(keys) or len(values) == 0:
-        return None
-    return_items = []
-    count = 1
-    if len(value) > 1:
-        count = (keys[1] == "count") and int(values[1]) or 1 
-    for j in range(0,count):
-        tmp_dict = {"status":"normal"}
-        for i in range(0,len(values)):
-            tmp_dict[keys[i].strip()] = values[i].strip()
-        return_items.append(tmp_dict)
+def check_cardfile_format(line,format):
+    return (len(line.split(",")) == len(format.split("&")))
+
+def transfer_format(lines):
+    tmp_list = []
+    for line in lines: 
+        card_id = line.split(",")[0]
+        count = int(line.split(",")[1])
+        tmp_list.extend([card_id]*count)
+    return tmp_list
+       
+def get_cardfile_set(all_line,has_passwd=False):
+    tmp_items = []
+    for line in all_line:
+        line = line.strip()
+        if has_passwd:
+            tmp_dict = {"status":"normal","card_id":line.split(",")[0],"passwd":line.split(",")[1]}
+        else
+            tmp_dict = {"status":"normal","card_id":line}
+        tmp_items.append(tmp_dict)
     return return_items
     
-def check_cardfile_format(first_line,item_format):
-    print (len(first_line.split(",")) == len(item_format.split("&")))
-    return (len(first_line.split(",")) == len(item_format.split("&")))
-
-def get_collect_name(item_id):
-    CARDID_FILE_TEMPLATE = "%s-id_cards"
-    return CARDID_FILE_TEMPLATE%(item_id)
+def insert_card_ids(all_line,item):
+    collect_name = get_collect_name(item.id)
+    cursor =  get_mongodb_cursor(collect_name)
+    cursor.create_index("status",unique=False)
+    if item.format.index("count") == -1:
+        cursor.create_index("card_id",unique=True)
+    else:
+        all_line = transfer_format(all_line)
+    inserts = []
+    if item.format.index("passwd") == -1:
+        inserts = get_cardfile_set(all_line)
+    else:
+        inserts = get_cardfile_set(all_line,has_passwd=True)
+    try:
+        for insert in inserts:
+            cursor.insert(insert)
+    except Exception,e:
+        continue 
+    curosr.commit()
+    return cursor.count()
 
 ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"
 MAX_LENGTH = 5

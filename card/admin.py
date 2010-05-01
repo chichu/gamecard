@@ -2,8 +2,7 @@
 
 from models import *
 from django.contrib import admin
-from gamecard.utils.dbutils import insert_card_ids
-from gamecard.utils.strutils import check_cardfile_format
+from gamecard.utils.strutils import insert_card_ids,check_cardfile_format
 
 class GamesAdmin(admin.ModelAdmin):
     list_display = ('name','game_type','create_time')
@@ -52,6 +51,5 @@ class FileLoaderAdmin(admin.ModelAdmin):
             request.user.message_set.create(message=u"文件不符合格式！")
             return None
         count = insert_card_ids(all_lines,obj.item)
-        #request.user.message_set.create(message=u"部分卡号不符合格式或者重复:%s"%",".join(error_id_set))
         Activity.objects.filter(item=obj.item).update(card_count=count)
 admin.site.register(CardFileLoader,FileLoaderAdmin)

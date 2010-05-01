@@ -91,10 +91,12 @@ var product_nav_box_width = 980,product_post_width = 520;
 	<div class="innerbox" id="slider">
     	<ul >
     	    {% for pic in pictures%}
-        	<li><img src="http://119.145.138.41:8000/static/{{pic.img_url}}">
+        	<li> <a href="{{pic.link_url}}" title="{{pic.title}}" target="_blank">
+        	    <img src="http://119.145.138.41:8000/static/{{pic.img_url}}">
+        	    </a>
             <span class="picnews_tit fixie6png">
                 <p class="fixie6png"></p>
-                <a href="{{pic.link_url}}" title="{{pic.title}}" class="newstit">{{pic.title}}</a>
+                <a href="{{pic.link_url}}" title="{{pic.title}}" class="newstit"  target="_blank">{{pic.title}}</a>
             </span>
             </li>
             {% endfor%}    	
@@ -107,7 +109,7 @@ var product_nav_box_width = 980,product_post_width = 520;
 发卡公告</div>
 <ul>
 {% for notice in notices %}
-<li><span>{{notice.create_time.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}/" title="{{notice.title}}">{{notice.content|safe}}</a></li>
+<li><span>{{notice.create_time.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}/" title="{{notice.title}}" target="_blank">{{notice.content|safe}}</a></li>
 {% endfor %}
 </ul>
 
@@ -190,9 +192,9 @@ window.onload = function(){
      </tr>
 {% for c in b_hot %}
     <tr>
-      <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+      <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
       <td>{{c.item.name}}</td>
-      <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+      <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/" target="_blank"></a></td>
       <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
       <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
     </tr>
@@ -219,7 +221,7 @@ window.onload = function(){
   </tr>
   {% for c in acts%}
      <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
          <td>{{c.item.name}}</td>
          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
@@ -240,7 +242,7 @@ window.onload = function(){
     </tr>
 {% for c in b_new %}
      <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
          <td>{{c.item.name}}</td>
          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
@@ -281,7 +283,7 @@ window.onload = function(){
      </tr>
   {% for c in a_hot %}
       <tr>
-          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
           <td>{{c.item.name}}</td>
           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
@@ -310,7 +312,7 @@ window.onload = function(){
   </tr>
   {% for c in acts%}
      <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
          <td>{{c.item.name}}</td>
          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
@@ -331,7 +333,7 @@ window.onload = function(){
      </tr>
   {% for c in a_new %}
      <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
          <td>{{c.item.name}}</td>
          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
