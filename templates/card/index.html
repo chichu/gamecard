@@ -199,26 +199,6 @@ window.onload = function(){
 {% endfor %}
 </table></div>
 
-<div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-        <th width="20%">游戏名称</th>
-          <th width="20%">测试码名称</th>
-          <th>测试码简介</th>
-          <th width="10%">领卡</th>
-          <th width="10%">淘号</th>
-    </tr>
-{% for c in b_new %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-{% endfor %}   
-</table></div>
-
-
 {% for tab_index,alpha,acts in b_alpha %}
     {% ifchanged tab_index%}
     {% ifnotequal tab_index 2%}
@@ -250,6 +230,24 @@ window.onload = function(){
 </table>
 </div>
 
+<div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+        <th width="20%">游戏名称</th>
+          <th width="20%">测试码名称</th>
+          <th>测试码简介</th>
+          <th width="10%">领卡</th>
+          <th width="10%">淘号</th>
+    </tr>
+{% for c in b_new %}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
+{% endfor %}   
+</table></div>
 </div>
 </div></div>
 
