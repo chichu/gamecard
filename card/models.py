@@ -71,7 +71,7 @@ class Notice(models.Model):
         
 class Anounce(models.Model):
     create_time = models.DateTimeField("创建时间")
-    content = tinymce_models.HTMLField("预告内容")
+    content = models.CharField("预告内�",max_length=50)
     class Meta:
         verbose_name = "发卡预告"
         verbose_name_plural = "发卡预告"

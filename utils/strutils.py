@@ -39,7 +39,7 @@ def get_ordered_act(acts,start_alpha_index):
         alpha = ALL_ALPHA[i]
         acts = acts.filter(name_start_alpha=alpha) 
         if bool(acts):
-            alphas.append((i,i/4+start_alpha_index,alpha,acts))
+            alphas.append((i/4+start_alpha_index,alpha,acts))
     return_list.append(alphas)
     return tuple(return_list)
     

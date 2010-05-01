@@ -219,12 +219,11 @@ window.onload = function(){
 </table></div>
 
 
-{% for alpha_index,tab_index,alpha,acts in b_alpha %}
+{% for tab_index,alpha,acts in b_alpha %}
     {% ifchanged tab_index%}
-        </table>
-        </div>
-    {% endifchanged %}
-    {% ifchanged tab_index%}
+    {% ifnotequal tab_index 2%}
+        </table></div>
+    {% endifnotequal %}
     <div id="c0{{tab_index}}" class="hidden">
     <table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
