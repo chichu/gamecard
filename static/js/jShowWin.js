@@ -2,6 +2,8 @@
 $(function(){
 	var winClose=$(".WinClose");
 	var showWin=$("#ShowWin");
-	showWin.click(function(){$(".pop-up-win").fadeIn("fast");$(".pop-up-wrap").fadeIn("fast");});
-	winClose.click(function(){$(".pop-up-win").fadeOut("fast");$(".pop-up-wrap").fadeOut("fast");});
+	var docHeight=$(document).height();
+	showWin.click(function(){$(".pop-up-win").fadeIn("fast");$(".pop-wrap").show().height(docHeight);});
+	winClose.click(function(){$(".pop-up-win").fadeOut("fast");$(".pop-wrap").hide("");});
+
 })

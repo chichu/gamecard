@@ -24,18 +24,22 @@ def get_collect_name(item_id):
     CARDID_FILE_TEMPLATE = "%s-id_cards"
     return CARDID_FILE_TEMPLATE%(item_id)
 
-ALPHA_SECT = ["ABCD","EFGH","IJKL","MNOP","QRST","WXYZ"]
-MAX_LENGTH = 10
-def get_ordered_act(acts):
-    hot = acts.filter(is_hot=True)
+ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"
+MAX_LENGTH = 5
+def get_ordered_act(acts,start_alpha_index):
+    hot = acts.filter(is_hot=True).order_by('-start_time')
     new = acts.order_by('-start_time')
     if len(hot) > MAX_LENGTH:
-        hot =  hot[0:9]
+        hot =  hot[0:MAX_LENGTH]
     if len(new) > MAX_LENGTH:
-        new =  new[0:9]
-    return_list = [hot] 
-    for sect in ALPHA_SECT: 
-        return_list.append(acts.filter(name_start_alpha__in=sect))
-    return_list.append(new)
+        new =  new[0:MAX_LENGTH]
+    return_list = [hot,new]
+    alphas = []
+    for i in range(0,len(ALL_ALPHA)):
+        alpha = ALL_ALPHA[i]
+        acts = acts.filter(name_start_alpha=alpha) 
+        if bool(acts):
+            alphas.append((i,i/4+start_alpha_index,alpha,acts))
+    return_list.append(alphas)
     return tuple(return_list)
     

@@ -65,12 +65,13 @@ def get_chance(request,item_id):
 def index(request):
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
+    pictures = Picture.objects.filter(is_active=True).order_by('-create_time')
     
     begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
     
-    (c1,c2,c3,c4,c5,c6,c7,c8) = get_ordered_act(begin_cards)
-    (c11,c12,c13,c14,c15,c16,c17,c18) = get_ordered_act(act_codes)    
+    (b_hot,b_new,b_alpha) = get_ordered_act(begin_cards,start_alpha_index=2)
+    (a_hot,a_new,a_alpha) = get_ordered_act(act_codes,start_alpha_index=12)    
     return render_to_response('card/index.html',locals())
     
 def activity_detail(request,activity_id): 

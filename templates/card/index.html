@@ -5,7 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
 <link rel="stylesheet" href="http://119.145.138.41:8000/static/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
-<link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" /> 
+<link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" />
+<script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
+<script type="text/javascript" src="http://119.145.138.41:8000/static/js/j.flashSlider.js"></script> 
 <title>新手卡首页</title>
 <!--[if lte IE 6]>
 <style>.fixie6png{behavior:url("http://119.145.138.41:8000/static/js/iepngfix.htc");}</style>
@@ -58,7 +60,7 @@ var product_nav_box_width = 980,product_post_width = 520;
 <div class="searchbar"><div class="innerbox">
 <div class="search fixie6png">
 <form action="" method="get">
-  <input class="searchcontent" name="input" type="text" value="请输入您要搜索的内容…" />
+  <input class="searchcontent" name="input" type="text" value="请输入您要搜索的内容…"   onblur="if(this.value==''){this.value=this.defaultValue;}"   onfocus="if(this.value==this.defaultValue){this.value='';}"/>
   <button class="searchbtn"></button>
 </form>
 </div>
@@ -69,22 +71,36 @@ var product_nav_box_width = 980,product_post_width = 520;
 <!--news-->
 <div class="news mt10">
 <!--picnews-->
-<div class="picnews"><div class="innerbox">
-<a href="#" title=""><img src="http://119.145.138.41:8000/static/images/picnews.jpg"></a>
-<div class="picnews_tit fixie6png">
-<p class="fixie6png"></p>
-<a href="#" title="" class="newstit">专题：游戏平台新势力 iPad风暴来袭</a>
+ <script type="text/javascript">
+        $(document).ready(function() {
+            $("#slider").flashSlider();
+        });
+		$.fn.flashSlider.defaults = {
+        controlsShow: true, //是否显示数字导航
+        vertical: false, //纵向还是横向滑动
+        speed: 1000, //滑动速度
+        auto: true, //是否自定滑动
+        pause: 2000, //两次滑动暂停时间
+        easing: "swing", //easing效果，默认swing，更多效果需要easing插件支持
+        height:0, //容器高度，不设置自动获取图片高度
+        width:0//容器宽度，不设置自动获取图片宽度
+    }
+</script>
 
-<div class="rightfix">
-<a href="#">1</a>
-<a href="#">2</a>
-<a href="#">3</a>
-<a href="#" class="current">4</a>
-<a href="#">5</a>
-</div>
-</div>
-</div></div>
-<!--end picnews-->
+<div class="picnews">
+	<div class="innerbox" id="slider">
+    	<ul >
+    	    {% for pic in pictures%}
+        	<li><img src="{{pic.img_url}}">
+            <span class="picnews_tit fixie6png">
+                <p class="fixie6png"></p>
+                <a href="{{pic.link_url}}" title="{{pic.title}}" class="newstit">{{pic.title}}</a>
+            </span>
+            </li>
+            {% endfor%}    	
+        </ul>
+</div><!--innerbox -->
+</div><!--end picnews-->
 
 <div class="fontnews">
 <div class="newstit"><a href="#" title="" class="rightfix">更多></a>
@@ -99,7 +115,7 @@ var product_nav_box_width = 980,product_post_width = 520;
 发卡预告</div>
 <ul>
     {% for anounce in anounces %}
-    <li><span>{{anounce.create_time.day}}日</span><a>{{anounce.content|safe}}</a></li>
+    <li><span>{{anounce.create_time.day}}日</span>{{anounce.content|safe}}</li>
     {% endfor %}
 </ul>
 </div>
@@ -165,14 +181,14 @@ window.onload = function(){
 <div class="m10">
 
 <div id="c01"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-{% for c in c1 %}
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
+{% for c in b_hot %}
     <tr>
       <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
       <td>{{c.item.name}}</td>
@@ -182,132 +198,59 @@ window.onload = function(){
     </tr>
 {% endfor %}
 </table></div>
-<div id="c02" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-  {% for c in c2 %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-  {% endfor %}   
-</table></div>
-<div id="c03" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-  {% for c in c3 %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-  {% endfor %}
-</table></div>
-<div id="c04" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr> 
-  {% for c in c4 %}
-      <tr>
-          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-          <td>{{c.item.name}}</td>
-          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-        </tr>
-  {% endfor %}
-</table></div>
-<div id="c05" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-</tr>
-  {% for c in c5 %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-  {% endfor %}
-</table></div>
-<div id="c06" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-<tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-</tr>  
-  {% for c in c6 %}
-  <tr>
-      <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-      <td>{{c.item.name}}</td>
-      <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-      <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-      <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-  </tr>
-  {% endfor %}
-</table></div>
-<div id="c07" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-    {% for c in c7 %}
-       <tr>
-           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-           <td>{{c.item.name}}</td>
-           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-         </tr>
-    {% endfor %}
-</table></div>
+
 <div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-    {% for c in c8 %}
-       <tr>
-           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-           <td>{{c.item.name}}</td>
-           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-         </tr>
-    {% endfor %}
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
+{% for c in b_new %}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
+{% endfor %}   
 </table></div>
+
+
+{% for alpha_index,tab_index,alpha,acts in b_alpha %}
+    {% ifequal alpha_index%4 1%}
+        </table>
+        </div>
+    {% endifequal %}
+    {% ifequal alpha_index%4 0%}
+    <div id="c0{{tab_index}}" class="hidden">
+    <table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+    </tr>
+    {% endifequal %}
+  <tr>
+      <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
+  </tr>
+  {% for c in acts%}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
+  {% endfor %}
+{% endfor %}
+</table>
+</div>
+
 </div>
 </div></div>
 
@@ -339,7 +282,7 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-  {% for c in c11 %}
+  {% for c in a_hot %}
       <tr>
           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
           <td>{{c.item.name}}</td>
@@ -348,114 +291,6 @@ window.onload = function(){
           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
         </tr>
   {% endfor %}
-</table></div>
-<div id="c12" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-  {% for c in c12 %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-  {% endfor %}
-</table></div>
-<div id="c13" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-    {% for c in c13 %}
-       <tr>
-           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-           <td>{{c.item.name}}</td>
-           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-         </tr>
-    {% endfor %}
-</table></div>
-<div id="c14" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>  
-   {% for c in c15 %}
-       <tr>
-           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-           <td>{{c.item.name}}</td>
-           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-         </tr>
-    {% endfor %}
-</table></div>
-<div id="c15" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-  {% for c in c15 %}
-     <tr>
-         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-         <td>{{c.item.name}}</td>
-         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-       </tr>
-  {% endfor %}
-</table></div>
-<div id="c16" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-   <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>
-  {% for c in c16 %}
-      <tr>
-          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-          <td>{{c.item.name}}</td>
-          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-        </tr>
-  {% endfor %}
-</table></div>
-<div id="c17" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
-    <tr>
-    <th>游戏名称</th>
-    <th>新手卡名称</th>
-    <th>新手卡简介</th>
-    <th>领卡</th>
-    <th>淘号</th>
-  </tr>   
-  {% for c in c17 %}
-       <tr>
-           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-           <td>{{c.item.name}}</td>
-           <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-           <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-           <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-         </tr>
-    {% endfor %}
 </table></div>
 <div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -465,16 +300,19 @@ window.onload = function(){
     <th>领卡</th>
     <th>淘号</th>
   </tr>
-   {% for c in c18 %}
-      <tr>
-          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
-          <td>{{c.item.name}}</td>
-          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-          <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
-          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
-        </tr>
-   {% endfor %}
+  {% for c in a_new %}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
+       </tr>
+  {% endfor %}
 </table></div>
+
+
+
 </div>
 </div></div>
 

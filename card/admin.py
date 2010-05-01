@@ -36,6 +36,11 @@ class AnounceAdmin(admin.ModelAdmin):
     list_display = ('content','create_time')
     search_fields = ('content',)
 admin.site.register(Anounce,AnounceAdmin)
+
+class PictureAdmin(admin.ModelAdmin):
+    list_display = ('title','link_url','create_time')
+    search_fields = ('title',)
+admin.site.register(Picture,PictureAdmin)
    
 class FileLoaderAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change): 

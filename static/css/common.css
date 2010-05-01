@@ -67,24 +67,28 @@ button.searchbtn:hover{ cursor:pointer;}
 .keywords a:hover{ color:#F00; text-decoration:none;}
 
 /*picnews*/
-.picnews{border:1px solid #E9EFFB; float:left;}
-.picnews .innerbox{ border:1px solid #fff; background:#f0f5f9; padding:3px; position:relative;}
-.picnews .innerbox .picnews_tit{background:url(../images/picnewsbg.png)\9; background:rgba(0, 0, 0, 0.5); width:330px; height:60px; position:absolute; bottom:3px; left:3px;_left:0px; padding:0 10px;}
+.picnews{border:1px solid #E9EFFB; float:left; width:358px; height:248px; overflow:hidden}
+.picnews .innerbox{ border:1px solid #fff; background:#f0f5f9; margin:3px; width:350px; height:240px; overflow:hidden;}
+.innerbox ul li{ position:relative;}
+.picnews .innerbox .picnews_tit{ display:inline-block;background:url(../images/picnewsbg.png);width:330px; height:60px; position:absolute; bottom:0px; left:0px; padding:0 10px;}
 .picnews .innerbox .picnews_tit p{ height:1px; line-height:1px; font-size:0; background:url(../images/picnews_titbg.png);}
 .picnews .innerbox .picnews_tit a.newstit{ font-size:14px; font-weight:bold; color:#FF0; margin:10px auto 0; display:block;filter:alpha(opacity=100)}
-.picnews_tit .rightfix a{ color:#fff; text-decoration:none; text-align:center; height:15px; width:15px; border:0 line-height:15px; display:inline-block; margin:10px 0 0 0;background:url(../images/element.png) no-repeat 0 -56px;}
-.picnews_tit .rightfix a:hover{color:#FF0; }
-.picnews_tit .rightfix a.current{background:url(../images/element.png) no-repeat -19px -56px; color:#FF0;}
 
-
+#flashnvanum{bottom: 10px; position: absolute; right: 20px;width: 90px;}
+#flashnvanum span{background:url(../images/element.png) no-repeat 0 -56px;color: #86A2B8; cursor: pointer;float: left;font-family: Arial;font-size: 12px;height: 15px; line-height: 15px; margin: 1px; text-align: center;width: 15px;}
+#flashnvanum span.on{background: url(../images/element.png) no-repeat -19px -56px; color:#FF0;height: 15px;line-height: 15px; width: 15px;}
 /*fontnews*/
 .fontnews{ margin-left:10px; float:left; width:340px; overflow:hidden;}
 .fontnews .newstit{ border:1px solid #E9EFFB; border-bottom:1px solid #ddd; height:25px; line-height:25px; padding:0 10px;background:url(../images/bg.jpg) repeat-x 0 -114px; font-weight:bold; font-size:14px; -moz-border-radius:3px 3px 0 0; -webkit-border-radius:3px 3px 0 0;}
 .fontnews .newstit .rightfix{font-weight: normal; font-size:12px;}
 
 .fontnews ul{ margin:5px 0 5px 5px;}
-.fontnews ul li span{ color:#c00; margin-right:5px;}
-.fontnews ul li a{height:23px; line-height:23px; font-size:14px; color:#333; display:inline-block;_text-decoration:none;}
+.fontnews ul li span{ color:#c00; margin-right:5px;height:23px; line-height:23px;}
+.fontnews ul li a{height:23px; line-height:23px; font-size:12px; color:#333; display:inline-block;_text-decoration:none;}
+
+
+
+
 
 /*cardbox*/
 .cardbox{ border:1px solid #d9d9d9;-moz-border-radius:3px; -webkit-border-radius:3px;}
@@ -102,6 +106,7 @@ button.searchbtn:hover{ cursor:pointer;}
 .cardbox .innerbox .cont table.cardtable{}
 table.cardtable tr th{ height:25px; line-height:25px; border-bottom:2px solid #ccc; text-align:left;}
 table.cardtable tr td{ height:25px; line-height:25px; border-bottom:1px solid #ddd; color:#555;}
+table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6CC0 }
 
 /*side*/
 .sidecolumn .sidetitle{ border-bottom:2px solid #ccc;}
@@ -116,16 +121,7 @@ table.cardtable tr td{ height:25px; line-height:25px; border-bottom:1px solid #d
 
 /**/
 
-.cardbox-list{ display:inline-block; padding:5px 10px; font-size:14px; color:#666; border-bottom:1px solid #d9d9d9; }
-.cardbox-list li{ clear:both; overflow:hidden; margin-bottom:20px;}
-.cardbox-list li span{ display:block; float:left; width:90px; text-align:right; font-weight:bold;}
-.cardbox-list li p{ display:block; width:569px; text-align:left; float:right; line-height:22px;}
-.cardbox-list li strong{ color:#ff7904;}
-.cardbox-btn{ margin-top:14px; text-align:center;}
-.cardbox-btn a{ display:inline-block; margin:0 5px; padding:1px; border:1px solid #b5b5b5;}
-.cardbox-btn a:link span,.cardbox-btn a:visited span{ display:inline-block; height:24px; line-height:24px;*line-height:26px; overflow:hidden; cursor:pointer;  font-size:14px;  font-weight:bold; padding:0 15px; background:url(../images/btn_bg.gif) repeat-x 0 -24px; color:#000}
-.cardbox-btn a:hover{ background:#ffffe9; text-decoration:none;}
-.cardbox-btn a:hover span{ background-position:0 0;}
+
 
 .login-info{ margin:10px 15px;}
 .login-info p{ padding-left:3px; color:#5c6b79; line-height:1.5;}

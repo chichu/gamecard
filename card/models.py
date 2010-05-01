@@ -78,6 +78,19 @@ class Anounce(models.Model):
         ordering = ['-create_time']
     def __unicode__(self):
         return self.content
+
+class Pictures(models.Model):
+    title = models.CharField("内容",max_length=25,choices=CARD_FILE_FORMAT_TYPE)
+    img_url = models.ImageField(upload_to='icons/',verbose_name="图片")
+    link_url = models.CharField(max_length=100,verbose_name="链接地址")
+    is_active = models.BooleanField("是否激活",default=True)
+    create_time = models.DateTimeField("创建时间")
+    class Meta:
+        verbose_name = "广告发布"
+        verbose_name_plural = "广告发布"
+        ordering = ['-create_time']
+    def __unicode__(self):
+        return self.title
     
 def get_cardfile_path(instance,filename):
     return "%s/%s-%s"%("card_files",instance.item.id,filename)
