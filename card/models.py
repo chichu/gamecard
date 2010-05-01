@@ -80,7 +80,7 @@ class Anounce(models.Model):
         return self.content
 
 class Pictures(models.Model):
-    title = models.CharField("内容",max_length=25,choices=CARD_FILE_FORMAT_TYPE)
+    title = models.CharField("内容",max_length=25)
     img_url = models.ImageField(upload_to='icons/',verbose_name="图片")
     link_url = models.CharField(max_length=100,verbose_name="链接地址")
     is_active = models.BooleanField("是否激活",default=True)
