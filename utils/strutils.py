@@ -3,6 +3,9 @@
 def check_cardfile_format(line,format):
     return (len(line.split(",")) == len(format.split("&")))
 
+def get_collect_name(item_id):
+    return "card_ids_%s"%item_id
+    
 def transfer_format(lines):
     tmp_list = []
     for line in lines: 
