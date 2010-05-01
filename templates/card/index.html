@@ -220,11 +220,11 @@ window.onload = function(){
 
 
 {% for alpha_index,tab_index,alpha,acts in b_alpha %}
-    {% ifequal alpha_index%4 1%}
+    {% ifchanged tab_index%}
         </table>
         </div>
-    {% endifequal %}
-    {% ifequal alpha_index%4 0%}
+    {% endifchanged %}
+    {% ifchanged tab_index%}
     <div id="c0{{tab_index}}" class="hidden">
     <table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
@@ -234,7 +234,7 @@ window.onload = function(){
        <th width="10%">领卡</th>
        <th width="10%">淘号</th>
     </tr>
-    {% endifequal %}
+    {% endifchanged %}
   <tr>
       <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
   </tr>

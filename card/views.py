@@ -65,7 +65,7 @@ def get_chance(request,item_id):
 def index(request):
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
-    pictures = Picture.objects.filter(is_active=True).order_by('-create_time')
+    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
     
     begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
