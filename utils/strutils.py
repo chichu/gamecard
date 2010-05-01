@@ -17,7 +17,7 @@ def get_cardfile_set(all_line,has_passwd=False):
         line = line.strip()
         if has_passwd:
             tmp_dict = {"status":"normal","card_id":line.split(",")[0],"passwd":line.split(",")[1]}
-        else
+        else:
             tmp_dict = {"status":"normal","card_id":line}
         tmp_items.append(tmp_dict)
     return return_items
@@ -35,11 +35,11 @@ def insert_card_ids(all_line,item):
         inserts = get_cardfile_set(all_line)
     else:
         inserts = get_cardfile_set(all_line,has_passwd=True)
-    try:
-        for insert in inserts:
+    for insert in inserts:
+        try:
             cursor.insert(insert)
-    except Exception,e:
-        continue 
+        except Exception,e:
+            continue 
     curosr.commit()
     return cursor.count()
 
