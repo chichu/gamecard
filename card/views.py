@@ -9,7 +9,8 @@ from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
 from gamecard.settings import *
 from forms import *
-CHANGE_IDS_PERTIME = 5
+
+MAX_CHANCE_CARD_IDS = 5
 MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
@@ -66,9 +67,9 @@ def get_chance(request,item_id):
         collect_name = get_collect_name(item_id)
         collect = get_mongodb_collect(collect_name)
         conditions = {'status':"used",'is_change':True,"chance_time":{"$lt": datetime.now()}}
-        avails = chance_collect.find(conditions,limit=MAX_CHANCE_CARD_IDS).order_by('count')
-        if avails.count() < CHANGE_IDS_PERTIME:
-            return render_to_response('card/popups/failure4.html',{'item':item})
+        avails = collect.find(conditions).sort("count").limit(MAX_CHANCE_CARD_IDS)
+        if avails.count() < MAX_CHANCE_CARD_IDS:
+            return render_to_response('card/popups/no_chance_card.html',{'item':item})
         for one in avails:
             one['count'] += 1
             chance_collect.save(one)
