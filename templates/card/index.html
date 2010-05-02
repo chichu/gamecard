@@ -182,6 +182,12 @@ window.onload = function(){
 </div>
 <div class="m10">
 
+<script language="javascript">
+    function get_popup(url){
+        $("body").load(url);
+    }
+    
+</script>
 <div id="c01"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
        <th width="20%">游戏名称</th>
@@ -224,7 +230,7 @@ window.onload = function(){
          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
          <td>{{c.item.name}}</td>
          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-         <td><a href="/card/get_card/{{c.item.id}}/">领卡</a></td>
+         <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
          <td><a href="/card/get_chance/{{c.item.id}}/">淘号</a></td>
        </tr>
   {% endfor %}
