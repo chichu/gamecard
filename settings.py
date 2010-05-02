@@ -94,6 +94,9 @@ INSTALLED_APPS = (
 RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
 RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"
 
+SESSION_COOKIE_DOMAIN = '.178.com'
+SESSION_COOKIE_AGE = 3600*24
+
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",
     'theme': "advanced",

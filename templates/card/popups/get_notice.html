@@ -1,7 +1,7 @@
 <link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
 <script src="http://gh.178.com/js/j.js"></script>
 <script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
-<form action='' mothed='POST' id=checkcode_form>
+<form action='/card/get_card/{{item.id}}/' method='POST' id=checkcode_form>
 <div class="fixie6png pop-wrap"><!--透明背景层 -->
 <div class="pop-up-win">   
         <div class="win-title">
@@ -45,7 +45,6 @@
 			<div class="win-footer-l">
 				<div class="win-footer-r">
 					<div class="win-footer-m">
-							<input type='submit' value=''/>
 							<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span >提交</span></a>
 							<a href="#" class=" WinClose"><span >关闭</span></a>
 					</div><!--win-footer-m -->

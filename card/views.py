@@ -7,6 +7,7 @@ from models import *
 from datetime import datetime,timedelta
 from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
+from gamecard.settings import *
 from forms import *
 CHANGE_IDS_PERTIME = 5
 MAX_NOTICE = 5
@@ -15,9 +16,11 @@ MAX_ANOUNCE = 3
 def get_card(request,item_id):
     item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        input_code = request.POST.get("checkcode","")
-        if input_code.strip() != request.session['checkcode']:
-            return render_to_response('card/popups/get_notice.html',{'item':item})
+        username = request.COOKIES.get('user_name','chichu')
+        #input_code = request.POST.get("checkcode","")
+        #if input_code.strip() != request.session['checkcode']:
+        #    return HttpResponse("<script>alert('thanks');</script>")
+            #return render_to_response('card/popups/get_notice.html',{'item':item})
         
         collect_name = get_collect_name(item_id)
         collect = get_mongodb_collect(collect_name)
@@ -33,18 +36,21 @@ def get_card(request,item_id):
             avail_one['is_chance'] = True
             avail_one["count"] = 0
             avail_one["chance_time"] = datetime.now()+timedelta(hours=int(item.chance_time_delta))
-        avail_one.save()
+        collect.save(avail_one)
         #save user info
-        collect = get_mongodb_collect("user_info",indexs=[('name',True)])
+        collect = get_mongodb_collect("user_info")
+        if collect.ensure_index("name"): 
+            collect.create_index('name',unique=True)
         user = collect.find_one({"name":username})
         if bool(user):
             user['cards'] += {'item_id':item_id,'card_id':avail_one['card_id']}
-            user.save()
+            collect.save(user)
         else:
             new_user = {"name":username,'cards':[{'item_id':item_id,'card_id':avail_one['card_id']}]}
             collect.insert(new_user)
-        request.COOKIES.set_cookies('has_get',True,expire=24*3600)
-        return render_to_response('card/popups/get_success.html',{'item':item})
+        res = render_to_response('card/popups/get_success.html',{'user_info':collect.find_one({"name":username}),'item':item,"card_id":avail_one['card_id']})
+        res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
+        return res
     else:
         username = request.COOKIES.get('user_name','chichu')
         if not bool(username):
@@ -86,18 +92,20 @@ def activity_detail(request,activity_id):
     content = activity.info
     return render_to_response('card/i2.html',locals())
     
-def get_check_code_image(request,image='media/images/checkcode.gif'):
+def get_check_code_image(request,image='/tmp/checkcode.gif'):
     import Image, ImageDraw, ImageFont, random
+    from gamecard.settings import MEDIA_ROOT
+    font_path = os.path.join(MEDIA_ROOT,'ukai.ttf')
     im = Image.open(image)
     draw = ImageDraw.Draw(im)
     mp = md5.new()
     mp_src = mp.update(str(datetime.now()))
     mp_src = mp.hexdigest()
     rand_str = mp_src[0:4]   
-    draw.text((10,10), rand_str[0], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
-    draw.text((48,10), rand_str[1], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
-    draw.text((85,10), rand_str[2], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
-    draw.text((120,10), rand_str[3], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
+    draw.text((10,10), rand_str[0], font=ImageFont.truetype(font_path, random.randrange(25,50)))
+    draw.text((48,10), rand_str[1], font=ImageFont.truetype(font_path, random.randrange(25,50)))
+    draw.text((85,10), rand_str[2], font=ImageFont.truetype(font_path, random.randrange(25,50)))
+    draw.text((120,10), rand_str[3], font=ImageFont.truetype(font_path, random.randrange(25,50)))
     del draw
     request.session['checkcode'] = rand_str
     buf = cStringIO.StringIO()
