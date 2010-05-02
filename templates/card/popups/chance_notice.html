@@ -1,6 +1,8 @@
 <link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
 <script src="http://gh.178.com/js/j.js"></script>
 <script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
+
+<form action='/card/get_chance/{{item.id}}/' method='POST' id=checkcode_form>
 <div class="fixie6png pop-wrap"><!--透明背景层 -->
 <div class="pop-up-win">   
         <div class="win-title">
@@ -28,7 +30,7 @@
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 						</div>
 						<div class="notes-code">
-							<strong>验证码：</strong><input name="" type="text" /> <span class="code-num">4619</span>  <a href="#" class="blue">看不清，换一张</a><span class="code-tip ff0000">验证码错误！</span>
+							<strong>验证码：</strong><input name="checkcode" type="text" /> <span class="code-num">4619</span>  <a href="#" class="blue">看不清，换一张</a><span class="code-tip ff0000">验证码错误！</span>
 							
 						</div>
 						
@@ -42,7 +44,7 @@
 			<div class="win-footer-l">
 				<div class="win-footer-r">
 					<div class="win-footer-m">
-							<a href="#" ><span>淘一下</span></a>
+							<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span>淘一下</span></a>
 							<a href="#" class="WinClose"><span>关闭</span></a>
 					</div><!--win-footer-m -->
 				</div><!--win-footer-r -->
@@ -51,3 +53,4 @@
 		</div> <!--win-footer -->
 </div><!--pop-up-win-->
 </div><!--pop-wrap -->
+</form>
