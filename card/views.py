@@ -20,7 +20,7 @@ def get_card(request,item_id):
         #find a available one
         avail_one = collect.find_one({"status":"normal"})
         if not bool(avail_one):
-            return render_to_response('card/popup/failure3.html',{'item':item})
+            return render_to_response('card/popups/failure3.html',{'item':item})
             
         avail_one["username"] = username
         avail_one["status"] = "used"
@@ -40,14 +40,14 @@ def get_card(request,item_id):
             new_user = {"name":username,'cards':[{'item_id':item_id,'card_id':avail_one['card_id']}]}
             collect.insert(new_user)
         request.COOKIES.set_cookies('has_get',True,expire=24*3600)
-        return render_to_response('card/popup/get_success.html',{'item':item})
+        return render_to_response('card/popups/get_success.html',{'item':item})
     else:
         username = request.COOKIES.get('user_name')#,'chichu')
         if not bool(username):
-            return render_to_response('card/popup/login.html')
+            return render_to_response('card/popups/login.html')
         if request.COOKIES.has_key("has_get"):
-            return render_to_response('card/popup/failure2.html')
-        return render_to_response('card/popup/get_notice.html')
+            return render_to_response('card/popups/failure2.html')
+        return render_to_response('card/popups/get_notice.html')
        
 
 def get_chance(request,item_id):
@@ -58,12 +58,12 @@ def get_chance(request,item_id):
         conditions = {'status':"used",'is_change':True,"chance_time":{"$lt": datetime.now()}}
         avails = chance_collect.find(conditions,limit=MAX_CHANCE_CARD_IDS).order_by('count')
         if avails.count() < CHANGE_IDS_PERTIME:
-            return render_to_response('card/popup/failure4.html',{'item':item})
+            return render_to_response('card/popups/failure4.html',{'item':item})
         for one in avails:
             one['count'] += 1
             chance_collect.save(one)
-        return render_to_response('card/popup/chance_success.html',{'item':item})
-    return render_to_response('card/popup/chance_notice.html',{'item':item})   
+        return render_to_response('card/popups/chance_success.html',{'item':item})
+    return render_to_response('card/popups/chance_notice.html',{'item':item})   
       
 def index(request):
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
