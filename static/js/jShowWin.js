@@ -5,6 +5,6 @@ $(function(){
 	var docHeight=$(document).height();
 	//showWin.click(function(){$(".pop-up-win").fadeIn("fast");$(".pop-wrap").show().height(docHeight);});
 	$(".pop-up-win").fadeIn("fast");$(".pop-wrap").show().height(docHeight);
-	winClose.click(function(){$(".pop-up-win").fadeOut("fast");$(".pop-wrap").detach();});
+	winClose.click(function(){$(".pop-up-win").fadeOut("fast");$(".pop-wrap").hide();$(".pop-wrap").detach();});
 
 })
