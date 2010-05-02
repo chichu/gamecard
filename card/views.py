@@ -13,11 +13,12 @@ MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
 def get_card(request,item_id):
+    item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        checkcode_form = CheckCodeForm(request.POST)
-        #if checkcode_form.is_valid():
-            #return HttpResponse("OK!")
-        item = Item.objects.get(id=item_id)
+        input_code = request.POST.get("checkcode","")
+        if input_code.strip() != request.session['checkcode']:
+            return render_to_response('card/popups/get_notice.html',{'item':item})
+        
         collect_name = get_collect_name(item_id)
         collect = get_mongodb_collect(collect_name)
         #find a available one
@@ -50,8 +51,7 @@ def get_card(request,item_id):
             return render_to_response('card/popups/login.html')
         if request.COOKIES.has_key("has_get"):
             return render_to_response('card/popups/failure2.html')
-        checkcode_form = CheckCodeForm(remote_ip=request.META['REMOTE_ADDR'])
-        return render_to_response('card/popups/get_notice.html',{"form":checkcode_form})
+        return render_to_response('card/popups/get_notice.html',{'item':item})
        
 
 def get_chance(request,item_id):
@@ -85,3 +85,21 @@ def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
     content = activity.info
     return render_to_response('card/i2.html',locals())
+    
+def get_check_code_image(request,image='media/images/checkcode.gif'):
+    import Image, ImageDraw, ImageFont, random
+    im = Image.open(image)
+    draw = ImageDraw.Draw(im)
+    mp = md5.new()
+    mp_src = mp.update(str(datetime.now()))
+    mp_src = mp.hexdigest()
+    rand_str = mp_src[0:4]   
+    draw.text((10,10), rand_str[0], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
+    draw.text((48,10), rand_str[1], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
+    draw.text((85,10), rand_str[2], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
+    draw.text((120,10), rand_str[3], font=ImageFont.truetype("ARIAL.TTF", random.randrange(25,50)))
+    del draw
+    request.session['checkcode'] = rand_str
+    buf = cStringIO.StringIO()
+    im.save(buf, 'gif')
+    return HttpResponse(buf.getvalue(),'image/gif')

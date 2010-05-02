@@ -1,7 +1,7 @@
 <link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
 <script src="http://gh.178.com/js/j.js"></script>
 <script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
-<form action='' mothed='POST'>
+<form action='' mothed='POST' id=checkcode_form>
 <div class="fixie6png pop-wrap"><!--透明背景层 -->
 <div class="pop-up-win">   
         <div class="win-title">
@@ -29,8 +29,10 @@
 	如您领取成功，我们将把卡的详细信息保存至您的“<span class="ff0000">存卡箱</span>”。</p>
 						</div>
 						<div class="notes-code">
-							<strong>验证码：</strong> {{form.captcha}} <a href="#" class="blue">看不清，换一张</a>
-							<span class="code-tip ff0000">{{form.captcha.errors}}</span>
+						<strong>验证码：</strong> <input name='checkcode' type='text'/>
+						<img id='checkcode' onclick="this.setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());" src="/card/get_check_code_image/" alt="CheckCode"/>  
+				<a onclick="javascript:$('#checkcode').setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());"  class="blue">看不清，换一张</a>
+							<span class="code-tip ff0000">{{error}}</span>
 							<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
 						</div>
 							
@@ -43,7 +45,8 @@
 			<div class="win-footer-l">
 				<div class="win-footer-r">
 					<div class="win-footer-m">
-							<input type='submit' value='提交'/>
+							<input type='submit' value=''/>
+							<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span >提交</span></a>
 							<a href="#" class=" WinClose"><span >关闭</span></a>
 					</div><!--win-footer-m -->
 				</div><!--win-footer-r -->
