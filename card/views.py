@@ -15,7 +15,9 @@ MAX_ANOUNCE = 3
 def get_card(request,item_id):
     item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        username = request.COOKIES.get('user_name','chichu')
+        username = request.COOKIES.get('user_name')#,'chichu')
+        if not bool(username):
+            return render_to_response('card/popup/login.html')
         if request.COOKIES.has_key("has_get"):
             return render_to_response('card/popup/failure2.html',{'item':item})
         collect_name = get_collect_name(item_id)
