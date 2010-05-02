@@ -1,7 +1,7 @@
 // JavaScript Document
 $(function(){
 	var winClose=$(".WinClose");
-	var showWin=$("#ShowWin");
+	//var showWin=$("#ShowWin");
 	var docHeight=$(document).height();
 	//showWin.click(function(){$(".pop-up-win").fadeIn("fast");$(".pop-wrap").show().height(docHeight);});
 	$(".pop-up-win").fadeIn("fast");$(".pop-wrap").show().height(docHeight);
