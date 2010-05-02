@@ -54,6 +54,14 @@ class Activity(models.Model):
         verbose_name = "活动信息"
         verbose_name_plural = "活动信息"
         ordering = ['-start_time']
+    def card_left(self):
+        from gamecard.utils.dbutils import get_mongodb_cursor
+        from gamecard.utils.dbutils import get_collect_name
+        cursor = get_mongodb_cursor(get_collect_name(self.item.id))
+    os.system("echo '%s'>>/tmp/test"%dir(show_card_left))
+        return cursor.find_all({"status":'normal'}).count()
+    #card_left.
+    #card_left.
     def __unicode__(self):
         return self.name  
 
