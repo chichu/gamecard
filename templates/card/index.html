@@ -184,11 +184,13 @@ window.onload = function(){
 
 <script language="javascript">
     function get_popup(url){
-        $.get(url, function(data) {
-         $("body").append(data);
-        }); 
+        //$.get(url, function(data) {
+         //$("body").append(data);
+        //}); 
+        $("#popup").load(url);
     };
 </script>
+<div id='popup'></div>
 <div id="c01"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
        <th width="20%">游戏名称</th>
