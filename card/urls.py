@@ -2,7 +2,8 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('card.views',
-   #('r^get_card','user.get_card'),
+   ('get_card/(.+)/','get_card'),
+   ('get_chance/(.+)/','get_chance'),
    ('activitydetail/(.+)/$','activity_detail'),
    ('','index'),
 )
