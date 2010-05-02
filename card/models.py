@@ -59,7 +59,7 @@ class Activity(models.Model):
         from gamecard.utils.strutils import get_collect_name
         collect = get_mongodb_collect(get_collect_name(self.item.id))
         return collect.find({"status":'normal'}).count()
-    card_left.show_description = "卡号剩余量"
+    card_left.short_description = "卡号剩余量"
     #card_left.
     def __unicode__(self):
         return self.name  
