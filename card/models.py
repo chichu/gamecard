@@ -56,7 +56,7 @@ class Activity(models.Model):
         ordering = ['-start_time']
     def card_left(self):
         from gamecard.utils.dbutils import get_mongodb_cursor
-        from gamecard.utils.dbutils import get_collect_name
+        from gamecard.utils.strutils import get_collect_name
         cursor = get_mongodb_cursor(get_collect_name(self.item.id))
         return cursor.find_all({"status":'normal'}).count()
     print dir(card_left)
