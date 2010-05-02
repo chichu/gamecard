@@ -59,7 +59,7 @@ class Activity(models.Model):
         from gamecard.utils.dbutils import get_collect_name
         cursor = get_mongodb_cursor(get_collect_name(self.item.id))
         return cursor.find_all({"status":'normal'}).count()
-    print dir(show_card_left)
+    print dir(card_left)
     #card_left.
     #card_left.
     def __unicode__(self):
