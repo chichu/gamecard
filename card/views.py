@@ -19,9 +19,9 @@ def get_card(request,item_id):
         if request.COOKIES.has_key("has_get"):
             return render_to_response('card/popup/failure2.html',{'item':item})
         collect_name = get_collect_name(item_id)
-        cursor = get_mongodb_cursor(collect_name)
+        collect = get_mongodb_collect(collect_name)
         #find a available one
-        avail_one = cursor.find_one({"status":"normal"})
+        avail_one = collect.find_one({"status":"normal"})
         if not bool(avail_one):
             return render_to_response('card/popup/failure3.html',{'item':item})
             
@@ -34,14 +34,14 @@ def get_card(request,item_id):
             avail_one["chance_time"] = datetime.now()+timedelta(hours=int(item.chance_time_delta))
         avail_one.save()
         #save user info
-        cursor = get_mongodb_cursor("user_info",indexs=[('name',True)])
-        user = cursor.find_one({"name":username})
+        collect = get_mongodb_collect("user_info",indexs=[('name',True)])
+        user = collect.find_one({"name":username})
         if bool(user):
             user['cards'] += {'item_id':item_id,'card_id':avail_one['card_id']}
             user.save()
         else:
             new_user = {"name":username,'cards':[{'item_id':item_id,'card_id':avail_one['card_id']}]}
-            cursor.insert(new_user)
+            collect.insert(new_user)
         request.COOKIES.set_cookies('has_get',True,expire=24*3600)
         return render_to_response('card/popup/get_success.html',{'item':item})
     return render_to_response('card/popup/get_notice.html',{'item':item})
@@ -51,14 +51,14 @@ def get_chance(request,item_id):
     item = Item.objects.get(id=item_id)
     if request.method == "POST":
         collect_name = get_collect_name(item_id)
-        cursor = get_mongodb_cursor(collect_name)
+        collect = get_mongodb_collect(collect_name)
         conditions = {'status':"used",'is_change':True,"chance_time":{"$lt": datetime.now()}}
-        avails = chance_cursor.find(conditions,limit=MAX_CHANCE_CARD_IDS).order_by('count')
+        avails = chance_collect.find(conditions,limit=MAX_CHANCE_CARD_IDS).order_by('count')
         if avails.count() < CHANGE_IDS_PERTIME:
             return render_to_response('card/popup/failure4.html',{'item':item})
         for one in avails:
             one['count'] += 1
-            chance_cursor.save(one)
+            chance_collect.save(one)
         return render_to_response('card/popup/chance_success.html',{'item':item})
     return render_to_response('card/popup/chance_notice.html',{'item':item})   
       

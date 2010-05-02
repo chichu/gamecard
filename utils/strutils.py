@@ -26,12 +26,12 @@ def get_cardfile_set(all_line,has_passwd=False):
     return tmp_items
     
 def insert_card_ids(all_line,item):
-    from dbutils import get_mongodb_cursor
+    from dbutils import get_mongodb_collect
     collect_name = get_collect_name(item.id)
-    cursor =  get_mongodb_cursor(collect_name)
-    cursor.create_index("status",unique=False)
+    collect =  get_mongodb_collect(collect_name)
+    collect.create_index("status",unique=False)
     if item.format.find("count") == -1:
-        cursor.create_index("card_id",unique=True)
+        collect.create_index("card_id",unique=True)
     else:
         all_line = transfer_format(all_line)
     inserts = []
@@ -41,10 +41,10 @@ def insert_card_ids(all_line,item):
         inserts = get_cardfile_set(all_line,has_passwd=True)
     for insert in inserts:
         try:
-            cursor.insert(insert)
+            collect.insert(insert)
         except Exception,e:
             continue 
-    return cursor.count()
+    return collect.count()
 
 ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"
 MAX_LENGTH = 5

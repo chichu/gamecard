@@ -6,7 +6,7 @@ MONGODB_HOST = "localhost"
 MONGODB_PORT = 0
 MONGODB_PASSWORD = "password"
 
-def get_mongodb_cursor(collection,database=MONGODB_NAME):
+def get_mongodb_collect(collection,database=MONGODB_NAME):
     db = Connection()[database]
-    cursor = db[collection]
-    return cursor
+    collect = db[collection]
+    return collect
