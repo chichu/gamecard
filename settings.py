@@ -91,6 +91,9 @@ INSTALLED_APPS = (
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 #VIEW_CACHE_EXPIRE = 3600
 
+RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
+RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"
+
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",
     'theme': "advanced",
