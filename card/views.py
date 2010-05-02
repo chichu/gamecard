@@ -13,13 +13,8 @@ MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
 def get_card(request,item_id):
-    item = Item.objects.get(id=item_id)
     if request.method == "POST":
-        username = request.COOKIES.get('user_name')#,'chichu')
-        if not bool(username):
-            return render_to_response('card/popup/login.html')
-        if request.COOKIES.has_key("has_get"):
-            return render_to_response('card/popup/failure2.html',{'item':item})
+        item = Item.objects.get(id=item_id)
         collect_name = get_collect_name(item_id)
         collect = get_mongodb_collect(collect_name)
         #find a available one
@@ -46,7 +41,13 @@ def get_card(request,item_id):
             collect.insert(new_user)
         request.COOKIES.set_cookies('has_get',True,expire=24*3600)
         return render_to_response('card/popup/get_success.html',{'item':item})
-    return render_to_response('card/popup/get_notice.html',{'item':item})
+    else:
+        username = request.COOKIES.get('user_name')#,'chichu')
+        if not bool(username):
+            return render_to_response('card/popup/login.html')
+        if request.COOKIES.has_key("has_get"):
+            return render_to_response('card/popup/failure2.html')
+        return render_to_response('card/popup/get_notice.html')
        
 
 def get_chance(request,item_id):
