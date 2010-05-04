@@ -3,16 +3,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
-<link rel="stylesheet" href="http://119.145.138.41:8000/static/css/common.css" type="text/css"/>
-<link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="http://media.ka.178.com/static/css/common.css" type="text/css"/>
+<link href="http://media.ka.178.com/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" />
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/j.flashSlider.js"></script> 
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
+<script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
+<script type="text/javascript" src="http://media.ka.178.com/static/js/jShowWin.js"></script>
+<script type="text/javascript" src="http://media.ka.178.com/static/js/jSwitchTabs.js"></script>
 <!--[if lte IE 6]>
-<style>.fixie6png{behavior:url("http://119.145.138.41:8000/static/js/iepngfix.htc");}</style>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/iepngfix-tilebg.js"></script>
+<style>.fixie6png{behavior:url("http://media.ka.178.com/static/js/iepngfix.htc");}</style>
+<script type="text/javascript" src="http://media.ka.178.com/static/js/iepngfix-tilebg.js"></script>
 <![endif]-->
 <!--全站导航开始 --> 
 <script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
@@ -30,29 +31,9 @@ var product_nav_box_width = 980,product_post_width = 520;
 <!--end header-->
 
 <body>
-<div class="contenner">
-<!--top-->
-<div class="topcontenner">
-<div class="top">
-<div class="advertisment"><img src="http://119.145.138.41:8000/static/images/ad.jpg"></div>
-<a href="#" title="" class="logo"></a>
-<div class="clearfix"></div>
-<!--navigation-->
-<div class="navigation mt10">
-<div class="outbox"><ul class="innerbox">
-<a href="#" title="使用帮助" class="fixie6png help rightfix mr10">使用帮助</a>
-<li><a href="#" title="" class="current">发卡首页</a></li>
-<span></span>
-<li><a href="#" title="">发卡合作</a></li>
-<span></span>
-<li><a href="#" title="">有话要说</a></li>
-<span></span>
-<li><a href="#" title="">存卡箱</a></li>
-</ul></div></div>
-<!--end navigation-->
 
-</div></div>
-<!--end top-->
+{% include "card/headnav.html"%}
+
 <div class="clearfix"></div>
 <!--content -->
 <div class="content">
@@ -67,6 +48,7 @@ var product_nav_box_width = 980,product_post_width = 520;
   <button class="searchbtn"></button>
 </form>
 </div>
+
 {% include "card/keywords.html" %}
 <div class="clearfix"></div></div></div>
 <!--end searchbar-->
@@ -74,28 +56,12 @@ var product_nav_box_width = 980,product_post_width = 520;
 <!--news-->
 <div class="news mt10">
 <!--picnews-->
- <script type="text/javascript">
-        $(document).ready(function() {
-            $("#slider").flashSlider();
-        });
-		$.fn.flashSlider.defaults = {
-        controlsShow: true, //是否显示数字导航
-        vertical: false, //纵向还是横向滑动
-        speed: 1000, //滑动速度
-        auto: true, //是否自定滑动
-        pause: 2000, //两次滑动暂停时间
-        easing: "swing", //easing效果，默认swing，更多效果需要easing插件支持
-        height:240, //容器高度，不设置自动获取图片高度
-        width:350//容器宽度，不设置自动获取图片宽度
-    }
-</script>
-
 <div class="picnews">
 	<div class="innerbox" id="slider">
     	<ul >
     	    {% for pic in pictures%}
         	<li> <a href="{{pic.link_url}}" title="{{pic.title}}" target="_blank">
-        	    <img src="http://119.145.138.41:8000/static/{{pic.img_url}}">
+        	    <img src="http://media.ka.178.com/static/{{pic.img_url}}">
         	    </a>
             <span class="picnews_tit fixie6png">
                 <p class="fixie6png"></p>
@@ -128,46 +94,6 @@ var product_nav_box_width = 980,product_post_width = 520;
 <!--end news-->
 
 <!--发卡box-->
-<script type="text/javascript">
-function scrollDoor(){
-}
-scrollDoor.prototype = {
-	sd : function(menus,divs,openClass,closeClass){
-		var _this = this;
-		if(menus.length != divs.length)
-		{
-			alert("菜单层数量和内容层数量不一样!");
-			return false;
-		}				
-		for(var i = 0 ; i < menus.length ; i++)
-		{	
-			_this.$(menus[i]).value = i;				
-			_this.$(menus[i]).onmouseover = function(){
-			//_this.$(menus[i]).onclick = function(){
-					
-				for(var j = 0 ; j < menus.length ; j++)
-				{						
-					_this.$(menus[j]).className = closeClass;
-					_this.$(divs[j]).style.display = "none";
-				}
-				_this.$(menus[this.value]).className = openClass;	
-				_this.$(divs[this.value]).style.display = "block";				
-			}
-		}
-		},
-	$ : function(oid){
-		if(typeof(oid) == "string")
-		return document.getElementById(oid);
-		return oid;
-	}
-}
-window.onload = function(){
-	var SDmodel = new scrollDoor();
-	SDmodel.sd(["m01","m02","m03","m04","m05","m06","m07","m08"],["c01","c02","c03","c04","c05","c06","c07","c08"],"choice","nochoice");
-    SDmodel.sd(["m11","m12","m13","m14","m15","m16","m17","m18"],["c11","c12","c13","c14","c15","c16","c17","c18"],"choice","nochoice");
-}
-</script>
-
 <div class="cardbox mt10"><div class="innerbox">
 
 <div class="cardboxtop">

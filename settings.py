@@ -43,7 +43,7 @@ MEDIA_ROOT = '/zzdata/gamecard/static/'
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://119.145.138.41:8000/static/'
+MEDIA_URL = 'http://media.ka.178.com/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -89,7 +89,7 @@ INSTALLED_APPS = (
 )
 
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-#VIEW_CACHE_EXPIRE = 3600
+#VIEW_CACHE_EXPIRE = 60*5
 
 RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
 RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"

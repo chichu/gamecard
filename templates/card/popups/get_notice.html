@@ -1,7 +1,7 @@
-{% extends "card/base.html" %}
+{% extends "card/popups/base.html" %}
 {% block title %} 领取须知 {% endblock %}
 {% block content %} 
-<form action='/card/get_card/{{item.id}}/' method='POST' id='checkcode_form'> 
+<form action='/card/get_card/{{item_id}}/' method='POST' id='checkcode_form'> 
 <div class="win-notes">
     <div class="notes-txt">
         <span class="win-icon win-icon-a"></span>

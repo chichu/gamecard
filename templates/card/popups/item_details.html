@@ -1,58 +1,16 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
-<link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
-<script src="http://gh.178.com/js/j.js"></script>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
-<link rel="stylesheet" href="http://119.145.138.41:8000/static/css/common.css" type="text/css"/>
-<link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
-<link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" />
-<script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/j.flashSlider.js"></script>
-<!--[if lte IE 6]>
-<style>.fixie6png{behavior:url("http://119.145.138.41:8000/static/js/iepngfix.htc");}</style>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/iepngfix-tilebg.js"></script>
-<![endif]-->
-<div class="fixie6png pop-wrap"><!--透明背景层 -->
-<div class="pop-up-win">   
-        <div class="win-title">
-			<div class="win-title-l">
-				<div class="win-title-r">
-					<div class="win-title-m">
-						<a href="javascript:" class="fixie6png WinClose">关闭</a>
-						<h1>物品详情</h1>
-					</div><!-- win-title-m-->
-				</div><!-- win-title-r-->
-			</div><!--win-title-l -->
-			
-		</div>  <!-- win-title--> 
-        <div class="win-content">
-			<div class="win-border">
-				<div class="win-bg">
-					
-					<div class="win-details">
-					
-						<div class="details-pic"><!--这里放图片,大小为120*120 --></div>
-						<ul>
-							<li>物品名称：<strong class="ff0000">名将三国新手卡</strong ></li>
-							<li>使用范围：<span class="ff0000">***</span></li>
-							<li><p>请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。</p></li>
-							<li><a href="#" class="ff0000">【激活游戏】</a> <a href="#" class="ff0000">【注册游戏】</a> <a href="#" class="ff0000">【下载游戏】</a></li>
-						</ul>
-					</div>
-
-				</div><!--win-bg -->
-			</div><!--win-border -->
-		</div><!--win-content -->
-		 <div class="win-footer">
-			<div class="win-footer-l">
-				<div class="win-footer-r">
-					<div class="win-footer-m">
-							
-							<a href="#" class="WinClose"><span >关闭</span></a>
-					</div><!--win-footer-m -->
-				</div><!--win-footer-r -->
-			</div><!-- win-footer-l-->
-			
-		</div> <!--win-footer -->
-</div><!--pop-up-win-->
-</div>
+{% extends "card/popups/base.html" %}
+{% block title %} 物品详情 {% endblock %}
+{% block content %} 
+	<div class="win-details">
+		<div class="details-pic"><!--这里放图片,大小为120*120 --></div>
+		<ul>
+			<li>物品名称：<strong class="ff0000">名将三国新手卡</strong ></li>
+			<li>使用范围：<span class="ff0000">***</span></li>
+			<li><p>请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。</p></li>
+			<li><a href="#" class="ff0000">【激活游戏】</a> <a href="#" class="ff0000">【注册游戏】</a> <a href="#" class="ff0000">【下载游戏】</a></li>
+		</ul>
+	</div>
+{% endblock %}
+{% block submit %} 
+<a href="#" class="WinClose"><span >关闭</span></a>
+{% endblock %}
