@@ -20,9 +20,4 @@ function get_popup(url){
         $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px",},-100); 
     });
     
-    var winClose=$(".WinClose");
-    winClose.click(function(){
-	$(".pop-up-win").remove();
-	$(".pop-wrap").hide();
-    });
 }
