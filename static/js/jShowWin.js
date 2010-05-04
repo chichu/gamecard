@@ -22,8 +22,7 @@ function get_popup(url){
     
     var winClose=$(".WinClose");
     winClose.click(function(){
-	//$(".pop-up-win").remove();
-	$(".pop-up-win").hide();
+	$(".pop-up-win").remove();
 	$(".pop-wrap").hide();
     });
 }
