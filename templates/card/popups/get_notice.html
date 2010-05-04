@@ -1,4 +1,4 @@
-{% extend "base.html" %}
+{% extends "card/base.html" %}
 {% block title %} 领取须知 {% endblock %}
 {% block content %} 
 <form action='/card/get_card/{{item.id}}/' method='POST' id='checkcode_form'> 

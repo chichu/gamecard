@@ -5,22 +5,23 @@ function get_popup(url){
     }); 
       
 	var docHeight=$(document).height();
-	$(".pop-up-win").fadeIn("fast");
-	$(".pop-wrap").show().height(docHeight);
+	//$(".pop-up-win").fadeIn("fast");
+	//$(".pop-wrap").show().height(docHeight);
+	$(".pop-wrap").height(docHeight);
 	
     var divWidth=$(".pop-up-win").width()/2;
     var divHeight=$(".pop-up-win").height()/2;
     var divLeft =  document.documentElement.clientWidth/2 - divWidth;
-    var divTop =  document.documentElement.clientHeight/2 - divHeight -20;
+    var divTop =  document.documentElement.clientHeight/2 - divHeight/2;
     $(".pop-up-win").css({"left":divLeft,"top":divTop});
     
-    $('.WinClose').onclick(function(){
-        $(".pop-up-win").remove();
+    $('.WinClose').click(function(){
+        $(".pop-up-win").hide();
     	$(".pop-wrap").hide();
     });
     
     $(window).scroll(function(){
-        var divScrollTop = document.documentElement.scrollTop + divTop;
+        var divScrollTop = document.documentElement.scrollTop + divTop -40;
         var divScrollLeft = divLeft - document.documentElement.scrollLeft/2;
         $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px",},-100); 
     });
