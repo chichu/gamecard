@@ -1,22 +1,22 @@
-﻿<div class="win-title">
+﻿<div class="pop-up-win" >
+    <div class="win-title">
 	<div class="win-title-l">
 		<div class="win-title-r">
 			<div class="win-title-m">
-				<a href="javascript:"  class="fixie6png WinClose">关闭</a>
+				<a href="#"  class="fixie6png WinClose">关闭</a>
 				<h1>{% block title %}{% endblock %}</h1>
 			</div><!-- win-title-m-->
 		</div><!-- win-title-r-->
 	</div><!--win-title-l -->
-	
-</div>  <!-- win-title--> 
+    </div>  <!-- win-title--> 
 
-<div class="win-content">
+    <div class="win-content">
 	<div class="win-border">
 		<div class="win-bg">
             {% block content %} {% endblock %}
 		</div><!--win-bg -->
 	</div><!--win-border -->
-</div><!--win-content -->
+    </div><!--win-content -->
 
 		 <div class="win-footer">
 			<div class="win-footer-l">
@@ -28,3 +28,5 @@
 			</div><!-- win-footer-l-->
 			
 		</div> <!--win-footer -->	
+
+</div><!--pop-up-win--> 
