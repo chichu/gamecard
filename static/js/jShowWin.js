@@ -1,7 +1,7 @@
 // JavaScript Document
 function get_popup(url){
     $.get(url, function(data) {
-        $("body").append(data);
+        $("#pop-pu").append(data);
     }); 
       
 	var docHeight=$(document).height();

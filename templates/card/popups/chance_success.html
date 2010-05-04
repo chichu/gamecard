@@ -1,49 +1,18 @@
-<link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
-<script src="http://gh.178.com/js/j.js"></script>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
-
-<div class="fixie6png pop-wrap"><!--透明背景层 -->
-<div class="pop-up-win">   
-        <div class="win-title">
-			<div class="win-title-l">
-				<div class="win-title-r">
-					<div class="win-title-m">
-						<a href="javascript:" class="WinClose" class="fixie6png">关闭</a>
-						<h1>淘号成功</h1>
-					</div><!-- win-title-m-->
-				</div><!-- win-title-r-->
-			</div><!--win-title-l -->
-			
-		</div>  <!-- win-title--> 
-        <div class="win-content">
-			<div class="win-border">
-				<div class="win-bg">
-					
-					<div class="win-details">
-					
-						<div class="details-pic"><!--这里放图片,大小为120*120 --></div>
-						<ul>
-							<li>恭喜您淘到：<strong class="ff0000">{{item.name}}</strong ></li>
-							<li>卡号：ASD1D8A6F7DSF4S98DF8C5D725DV    <a href="#" class="blue">点此复制</a></li>
-							<li><p class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</p></li>
-							<li><a href="#" class="ff0000">【激活游戏】</a> <a href="#" class="ff0000">【注册游戏】</a> <a href="#" class="ff0000">【下载游戏】</a></li>
-						</ul>
-					</div>
-
-				</div><!--win-bg -->
-			</div><!--win-border -->
-		</div><!--win-content -->
-		 <div class="win-footer">
-			<div class="win-footer-l">
-				<div class="win-footer-r">
-					<div class="win-footer-m">
-							<a href="#" ><span >有用</span></a>
-							<a href="#" ><span >没用，再淘一下</span></a>
-							<a href="#" class="WinClose" ><span >关闭</span></a>
-					</div><!--win-footer-m -->
-				</div><!--win-footer-r -->
-			</div><!-- win-footer-l-->
-			
-		</div> <!--win-footer -->
-</div><!--pop-up-win-->
-</div>
+{% extends "card/base.html" %}
+{% block title %} 淘号成功 {% endblock %}
+{% block content %} 
+	<div class="win-details">
+		<div class="details-pic"><!--这里放图片,大小为120*120 --></div>
+		<ul>
+			<li>恭喜您淘到：<strong class="ff0000">{{item.name}}</strong ></li>
+			<li>卡号：ASD1D8A6F7DSF4S98DF8C5D725DV    <a href="#" class="blue">点此复制</a></li>
+			<li><p class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</p></li>
+			<li><a href="#" class="ff0000">【激活游戏】</a> <a href="#" class="ff0000">【注册游戏】</a> <a href="#" class="ff0000">【下载游戏】</a></li>
+		</ul>
+	</div>
+{% endblock %}
+{% block submit %} 
+<a href="#" ><span >有用</span></a>
+<a href="#" ><span >没用，再淘一下</span></a>
+<a href="#" class="WinClose" ><span >关闭</span></a>
+{% endblock %}

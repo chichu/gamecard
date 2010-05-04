@@ -2,6 +2,7 @@
 {% block title %} 领取须知 {% endblock %}
 {% block content %} 
 <form action='/card/get_card/{{item.id}}/' method='POST' id='checkcode_form'> 
+<div class="win-notes">
     <div class="notes-txt">
         <span class="win-icon win-icon-a"></span>
 	    <p>本区发放的新手卡或激活码，单款游戏、单个ID每24小时只可领取一次。<br />
@@ -19,7 +20,8 @@
 							<span class="code-tip ff0000">{{error}}</span>
 -->
 		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
-	</div>			
+	</div>
+</div>			
 </form>
 {% endblock %}
 {% block submit %} 
