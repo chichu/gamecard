@@ -11,19 +11,19 @@ function get_popup(url){
     var divWidth=$(".pop-up-win").width()/2;
     var divHeight=$(".pop-up-win").height()/2;
     var divLeft =  document.documentElement.clientWidth/2 - divWidth;
-    var divTop =  document.documentElement.clientHeight/2 - divHeight -120;
+    var divTop =  document.documentElement.clientHeight/2 - divHeight -20;
     $(".pop-up-win").css({"left":divLeft,"top":divTop});
     
     $(window).scroll(function(){
         var divScrollTop = document.documentElement.scrollTop + divTop;
         var divScrollLeft = divLeft - document.documentElement.scrollLeft/2;
-        $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px",},1); 
+        $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px",},-100); 
     });
     
     var winClose=$(".WinClose");
     winClose.click(function(){
-		$(".pop-up-win").remove();
-		$(".pop-wrap").remove();
-	});
-
-})
+	//$(".pop-up-win").remove();
+	$(".pop-up-win").hide();
+	$(".pop-wrap").hide();
+    });
+}
