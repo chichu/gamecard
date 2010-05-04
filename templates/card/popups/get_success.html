@@ -1,52 +1,20 @@
-<link href="http://119.145.138.41:8000/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
-<script src="http://gh.178.com/js/j.js"></script>
-<script type="text/javascript" src="http://119.145.138.41:8000/static/js/jShowWin.js"></script>
-<p>{{card_id}},,{{user}}</p>
-<div class="fixie6png pop-wrap"><!--透明背景层 -->
-<div class="pop-up-win">   
-        <div class="win-title">
-			<div class="win-title-l">
-				<div class="win-title-r">
-					<div class="win-title-m">
-						<a href="javascript:" class="fixie6png WinClose">关闭</a>
-						<h1>成功</h1>
-					</div><!-- win-title-m-->
-				</div><!-- win-title-r-->
-			</div><!--win-title-l -->
-			
-		</div>  <!-- win-title--> 
-        <div class="win-content">
-			<div class="win-border">
-				<div class="win-bg">
-					
-					<div class="win-notes">
-						<div class="notes-txt">
-							<span class="win-icon win-icon-c"></span>
-							<p>
-<span><strong>物品已放至存卡箱!</strong></span><br />
-恭喜您！您获得了<strong class="ff0000">名将三国新手卡</strong>！<br />
-
-请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。
-</p>
-						</div>
-						
-						
-					
-					</div>
-
-				</div><!--win-bg -->
-			</div><!--win-border -->
-		</div><!--win-content -->
-		 <div class="win-footer">
-			<div class="win-footer-l">
-				<div class="win-footer-r">
-					<div class="win-footer-m">
-							<a href="#" ><span >现在查看</span></a>
-							<a href="#" ><span >转至存卡箱</span></a>
-					</div><!--win-footer-m -->
-				</div><!--win-footer-r -->
-			</div><!-- win-footer-l-->
-			
-		</div> <!--win-footer -->
-</div><!--pop-up-win-->
-</div><!--pop-wrap -->
+{% extend "base.html" %}
+{% block title %} 成功 {% endblock %}
+{% block content %} 
+<div class="win-notes">
+	<div class="notes-txt">
+		<span class="win-icon win-icon-c"></span>
+	<p>
+        <span><strong>物品已放至存卡箱!</strong></span><br />
+        恭喜您！您获得了<strong class="ff0000">{{item.name}}</strong>！<br />
+        请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。
+    </p>
+	</div>
+</div>
+{% endblock %}
+{% block submit %} 
+	<a href="#" ><span >现在查看</span></a>
+	<a href="#" ><span >转至存卡箱</span></a>
+{% endblock %}
+ 
+        

@@ -1,56 +1,28 @@
-<div class="fixie6png pop-wrap"><!--透明背景层 -->
-<div class="pop-up-win" id='pop-up'>
-<form action='/card/get_card/{{item.id}}/' method='POST' id=checkcode_form>  
-        <div class="win-title">
-			<div class="win-title-l">
-				<div class="win-title-r">
-					<div class="win-title-m">
-						<a href="#" onclick="javascript:$(".pop-up-win").remove();$(".pop-wrap").hide();"  class="fixie6png WinClose">关闭</a>
-						<h1>领取须知</h1>
-					</div><!-- win-title-m-->
-				</div><!-- win-title-r-->
-			</div><!--win-title-l -->
-			
-		</div>  <!-- win-title--> 
-        <div class="win-content">
-			<div class="win-border">
-				<div class="win-bg">
-					
-					<div class="win-notes">
-						<div class="notes-txt">
-							<span class="win-icon win-icon-a"></span>
-							<p>本区发放的新手卡或激活码，单款游戏、单个ID每24小时只可领取一次。<br />
+{% extend "base.html" %}
+{% block title %} 领取须知 {% endblock %}
+{% block content %} 
+<form action='/card/get_card/{{item.id}}/' method='POST' id='checkcode_form'> 
+    <div class="notes-txt">
+        <span class="win-icon win-icon-a"></span>
+	    <p>本区发放的新手卡或激活码，单款游戏、单个ID每24小时只可领取一次。<br />
 
-	某些数量较少的激活码或新手卡，如您没有领取成功，建议选择“<span class="ff0000">淘号</span>”。<br />
+	        某些数量较少的激活码或新手卡，如您没有领取成功，建议选择“<span class="ff0000">淘号</span>”。<br />
 
-	如您领取成功，我们将把卡的详细信息保存至您的“<span class="ff0000">存卡箱</span>”。</p>
-						</div>
-						<div class="notes-code">
-						<strong>验证码：</strong> <input name='checkcode' type='text'/>
+	        如您领取成功，我们将把卡的详细信息保存至您的“<span class="ff0000">存卡箱</span>”。
+	    </p>
+	</div>
+	<div class="notes-code">
+		<strong>验证码：</strong> <input name='checkcode' type='text'/>
 		<!--
 						<img id='checkcode' onclick="this.setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());" src="/card/get_check_code_image/" alt="CheckCode"/>  
 				<a onclick="javascript:$('#checkcode').setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());"  class="blue">看不清，换一张</a>
 							<span class="code-tip ff0000">{{error}}</span>
 -->
-							<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
-						</div>
-							
-					</div>
-
-				</div><!--win-bg -->
-			</div><!--win-border -->
-		</div><!--win-content -->
-		 <div class="win-footer">
-			<div class="win-footer-l">
-				<div class="win-footer-r">
-					<div class="win-footer-m">
-							<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span>提交</span></a>
-							<a href="#" onclick="javacript:$(".pop-up-win").remove();$(".pop-wrap").hide();" class=" WinClose"><span >关闭</span></a>
-					</div><!--win-footer-m -->
-				</div><!--win-footer-r -->
-			</div><!-- win-footer-l-->
-			
-		</div> <!--win-footer -->
+		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
+	</div>			
 </form>
-</div><!--pop-up-win-->
-</div><!--pop-wrap -->
+{% endblock %}
+{% block submit %} 
+<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span>提交</span></a> 
+<a href="#" class="WinClose"><span >关闭</span></a>
+{% endblock %}

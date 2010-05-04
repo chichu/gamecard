@@ -1,7 +1,7 @@
 // JavaScript Document
 function get_popup(url){
     $.get(url, function(data) {
-        $("#pop-up").append(data);
+        $("body").append(data);
     }); 
       
 	var docHeight=$(document).height();
@@ -14,10 +14,16 @@ function get_popup(url){
     var divTop =  document.documentElement.clientHeight/2 - divHeight -20;
     $(".pop-up-win").css({"left":divLeft,"top":divTop});
     
+    $('.WinClose').onclick(function(){
+        $(".pop-up-win").remove();
+    	$(".pop-wrap").hide();
+    });
+    
     $(window).scroll(function(){
         var divScrollTop = document.documentElement.scrollTop + divTop;
         var divScrollLeft = divLeft - document.documentElement.scrollLeft/2;
         $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px",},-100); 
     });
+    
     
 }
