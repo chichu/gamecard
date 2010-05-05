@@ -8,7 +8,7 @@ from datetime import datetime,timedelta
 from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
 from gamecard.settings import *
-from gamecard.logging import *
+#from gamecard.logging import *
 from forms import *
 
 MAX_CHANCE_CARD_IDS = 5
@@ -54,7 +54,7 @@ def get_card(request,item_id):
         '''
         set the cookie to note that this user has get one card,and can not get any in 24 hours
         '''
-        res = render_to_response('card/popups/get_success.html',{'item':item,"card_id":})
+        res = render_to_response('card/popups/get_success.html',{'item':item,"card_id":card_id})
         res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
