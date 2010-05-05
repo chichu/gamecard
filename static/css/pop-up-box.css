@@ -3,15 +3,15 @@
 
 h1,p,ul{ margin:0; padding:0;}
 ul{ list-style:none;}
-.pop-wrap{z-index:100;position:absolute;top:0; left:0; width:100%; background:url(http://119.145.138.41:8000/static/images/pop-wrap.png) repeat;＿background: none;＿filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://119.145.138.41:8000/statiimages/pop-wrap.png',sizingMethod='scale');}
+.pop-wrap{z-index:100;position:absolute;top:0; left:0; width:100%; background:url(http://media.ka.178.com/static/images/pop-wrap.png) repeat;＿background: none;＿filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://media.ka.178.com/statiimages/pop-wrap.png',sizingMethod='scale');}
 .pop-up-win{z-index:101;width:500px; position:absolute;}
 
 /*头*/
 .win-title{ height:34px; overflow:hidden;}
-.win-title-l,.win-title-r,.win-title-m,.win-footer-l,.win-footer-r,.win-footer-m{ background:url(http://119.145.138.41:8000/static/images/rounded.png) no-repeat;}
+.win-title-l,.win-title-r,.win-title-m,.win-footer-l,.win-footer-r,.win-footer-m{ background:url(http://media.ka.178.com/static/images/rounded.png) no-repeat;}
 .win-title-r{ background-position:right -34px;}
 .win-title-m{height:34px; margin:0 15px; padding:0 7px; background-repeat:repeat-x; background-position:0 -68px;}
-.win-title-m a:link,.win-title-m a:visited{ float:right; display:block; width:27px; height:26px; margin-top:5px; line-height:200px; overflow:hidden; background:url(http://119.145.138.41:8000/static/images/close.png) no-repeat 0 -26px; cursor:pointer}
+.win-title-m a:link,.win-title-m a:visited{ float:right; display:block; width:27px; height:26px; margin-top:5px; line-height:200px; overflow:hidden; background:url(http://media.ka.178.com/static/images/close.png) no-repeat 0 -26px; cursor:pointer}
 .win-title-m a:hover{ background-position:0 0;}
 .win-title-m h1{ font-size:16px; font-weight:bold; color:#036; line-height:36px;}
 .win-footer{ text-align:right;}
@@ -24,8 +24,8 @@ ul{ list-style:none;}
 .win-footer-l{ background-position:0 -102px;}
 .win-footer-r{ background-position:right -146px;}
 .win-footer-m{height:44px; margin:0 15px; padding:0 7px; background-repeat:repeat-x; background-position:0 -190px;}
-.win-footer a:link,.win-footer a:visited{ display:inline-block; height:25px;  margin:8px 5px; background:url(http://119.145.138.41:8000/static/images/btn.gif) no-repeat 0px 0;  color:#000; font-size:14px; text-decoration:none;}
-.win-footer a:link span,.win-footer a:visited span{ display:inline-block;padding:0 10px 0 5px; margin-left:5px; height:25px;background:url(http://119.145.138.41:8000/static/images/btn.gif) no-repeat right -25px; line-height:26px; cursor:pointer;}
+.win-footer a:link,.win-footer a:visited{ display:inline-block; height:25px;  margin:8px 5px; background:url(http://media.ka.178.com/static/images/btn.gif) no-repeat 0px 0;  color:#000; font-size:14px; text-decoration:none;}
+.win-footer a:link span,.win-footer a:visited span{ display:inline-block;padding:0 10px 0 5px; margin-left:5px; height:25px;background:url(http://media.ka.178.com/static/images/btn.gif) no-repeat right -25px; line-height:26px; cursor:pointer;}
 
 .win-login{padding:25px 0 10px 63px;}
 .win-login p{ margin-bottom:14px;}
@@ -40,7 +40,7 @@ ul{ list-style:none;}
 
 
 .win-notes{ padding:15px 20px;}
-.win-icon{ display:block; width:32px; height:32px; background:url(http://119.145.138.41:8000/static/images/icons.gif) no-repeat}
+.win-icon{ display:block; width:32px; height:32px; background:url(http://media.ka.178.com/static/images/icons.gif) no-repeat}
 .win-icon-a{ background-position: 0 -64px;}
 .win-icon-b{ background-position:0 0;}
 .win-icon-c{ background-position:0 -32px;}
@@ -58,7 +58,7 @@ ul{ list-style:none;}
 
 
 .win-details{ padding:20px; display:inline-block;}
-.details-pic{ border:1px solid #90aed0; padding:2px; width:120px; height:120px; background:url(http://119.145.138.41:8000/static/images/nopic.gif) no-repeat 2px 2px; float:left;}
+.details-pic{ border:1px solid #90aed0; padding:2px; width:120px; height:120px; background:url(http://media.ka.178.com/static/images/nopic.gif) no-repeat 2px 2px; float:left;}
 .win-details ul{ margin-left:140px; color:#333}
 .win-details ul li{ margin-bottom:12px;}
 .win-details ul li p{ line-height:22px}
