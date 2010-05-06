@@ -96,7 +96,7 @@ def activity_detail(request,activity_id):
     return render_to_response('card/i2.html',{"activity":Activity.objects.get(id=activity_id)})
     
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
-font_path = os.path.join(MEDIA_ROOT,'ukai.ttf')
+FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
 def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     import cStringIO,md5,Image, ImageDraw, ImageFont, random
     im = Image.open(image)
@@ -105,10 +105,10 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     mp_src = mp.update(str(datetime.now()))
     mp_src = mp.hexdigest()
     rand_str = mp_src[0:4]   
-    draw.text((10,10), rand_str[0], font=ImageFont.truetype(font_path, random.randrange(25,50)))
-    draw.text((48,10), rand_str[1], font=ImageFont.truetype(font_path, random.randrange(25,50)))
-    draw.text((85,10), rand_str[2], font=ImageFont.truetype(font_path, random.randrange(25,50)))
-    draw.text((120,10), rand_str[3], font=ImageFont.truetype(font_path, random.randrange(25,50)))
+    draw.text((10,10), rand_str[0], font=ImageFont.truetype(FONT_PATH, random.randrange(25,50)))
+    draw.text((48,10), rand_str[1], font=ImageFont.truetype(FONT_PATH, random.randrange(25,50)))
+    draw.text((85,10), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(25,50)))
+    draw.text((120,10), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(25,50)))
     del draw
     request.session['checkcode'] = rand_str
     buf = cStringIO.StringIO()

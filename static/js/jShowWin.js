@@ -1,7 +1,4 @@
-function get_popup(url){
-$.get(url, function(data) {
-    $("#pop-up").append(data);
-      
+function show_popup(){    
     var docHeight=$(document).height();
     var docWidth=$(document).width();
     $(".pop-up-win").fadeIn("fast");
@@ -24,7 +21,21 @@ $.get(url, function(data) {
         var divScrollLeft = divLeft - document.documentElement.scrollLeft/2;
         var divScrollTop = document.documentElement.scrollTop + divTop;
         $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px"},-100); 
-    });
-    
-}); 
+    });  
+}
+
+function get_popup(url){
+    $.get(url, function(data) {
+        $("#pop-up").append(data);
+        show_popup();
+    }); 
+}
+
+function post_popup(url,form){
+    $.post(url, $("#"+form).serialize(),function(data) {        
+        $(".pop-up-win").remove();
+        $(".pop-wrap").hide();
+        $("#pop-up").append(data);
+        show_popup();
+    }); 
 }
