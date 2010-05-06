@@ -20,3 +20,5 @@ logger.addHandler(fh)
 def log_error(e):
     logger.error(e)
 
+if "__name__" == "__main__":
+    log_error("test")

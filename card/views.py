@@ -8,7 +8,7 @@ from datetime import datetime,timedelta
 from gamecard.utils.dbutils import *
 from gamecard.utils.strutils import *
 from gamecard.settings import *
-#from gamecard.logging import *
+from gamecard.log import *
 from forms import *
 
 MAX_CHANCE_CARD_IDS = 5
