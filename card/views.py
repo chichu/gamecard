@@ -1,6 +1,7 @@
 #encoding:utf-8
 # Create your views here.
 from django.utils.encoding import smart_unicode,force_unicode,smart_str
+from django.views.decorators.cache import cache_page
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from models import *
@@ -16,9 +17,11 @@ MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
 def get_card(request,item_id):
+    if not request.session.test_cookie_worked():
+        print "ererqewrqw" 
+
     #if not request.COOKIES.has_key('user_name'):
     #    return render_to_response('card/popups/login.html')
-        
     if request.COOKIES.has_key("has_get"):
         return render_to_response('card/popups/failure2.html')
  
@@ -26,9 +29,10 @@ def get_card(request,item_id):
         username = request.COOKIES.get('user_name')
         item = Item.objects.get(id=item_id)
         
-        input_code = request.POST.get("checkcode","")
-        if input_code.strip() != request.session['checkcode']:
-            return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+        input_code = request.POST.get("checkcode","").strip()
+        checkcode = request.session.get('checkcode','error')
+        if input_code != checkcode:
+        	return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
         '''
         1.get one available card for user 
         2.change the info of the card
@@ -78,7 +82,6 @@ def get_chance(request,item_id):
             return render_to_response('card/popups/chance_notice.html',{'item':item,'error':'领卡错误！'})
         return render_to_response('card/popups/chance_success.html',{'item':item})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
-      
       
 def index(request):
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
