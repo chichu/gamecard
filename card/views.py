@@ -96,10 +96,9 @@ def activity_detail(request,activity_id):
     return render_to_response('card/i2.html',{"activity":Activity.objects.get(id=activity_id)})
     
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
+font_path = os.path.join(MEDIA_ROOT,'ukai.ttf')
 def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
-    import Image, ImageDraw, ImageFont, random
-    from gamecard.settings import MEDIA_ROOT
-    font_path = os.path.join(MEDIA_ROOT,'ukai.ttf')
+    import cStringIO,md5,Image, ImageDraw, ImageFont, random
     im = Image.open(image)
     draw = ImageDraw.Draw(im)
     mp = md5.new()
