@@ -26,9 +26,9 @@ def get_card(request,item_id):
         username = request.COOKIES.get('user_name')
         item = Item.objects.get(id=item_id)
         
-        #input_code = request.POST.get("checkcode","")
-        #if input_code.strip() != request.session['checkcode']:
-            #return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+        input_code = request.POST.get("checkcode","")
+        if input_code.strip() != request.session['checkcode']:
+            return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
         '''
         1.get one available card for user 
         2.change the info of the card
@@ -95,8 +95,8 @@ def index(request):
 def activity_detail(request,activity_id):
     return render_to_response('card/i2.html',{"activity":Activity.objects.get(id=activity_id)})
     
-    
-def get_check_code_image(request,image='/tmp/checkcode.gif'):
+CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
+def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     import Image, ImageDraw, ImageFont, random
     from gamecard.settings import MEDIA_ROOT
     font_path = os.path.join(MEDIA_ROOT,'ukai.ttf')
