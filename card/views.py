@@ -23,7 +23,7 @@ def get_card(request,item_id):
     #if not request.COOKIES.has_key('user_name'):
     #    return render_to_response('card/popups/login.html')
     if request.COOKIES.has_key("has_get"):
-        return render_to_response('card/popups/failure2.html')
+        return render_to_response('card/popups/failure2.html',{'item_id':item_id})
  
     if request.method == "POST":
         username = request.COOKIES.get('user_name','chichu')
@@ -41,7 +41,7 @@ def get_card(request,item_id):
             collect = get_mongodb_collect(get_collect_name(item_id))
             avail_one = collect.find_one({"status":"normal"})
             if not bool(avail_one):
-                return render_to_response('card/popups/failure3.html',{'item':item})
+                return render_to_response('card/popups/failure3.html',{'item_id':item_id})
             
             card_id = avail_one['card_id'] 
             avail_one = tag_used_card(username,item,avail_one)
@@ -79,8 +79,8 @@ def get_chance(request,item_id):
                 one['count'] += 1
                 chance_collect.save(one)
         except:
-            return render_to_response('card/popups/chance_notice.html',{'item':item,'error':'领卡错误！'})
-        return render_to_response('card/popups/chance_success.html',{'item':item})
+            return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':'领卡错误！'})
+        return render_to_response('card/popups/chance_success.html',{'item':item,'card_ids':",".join([one.card_id for one in avails])})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
 def index(request):      

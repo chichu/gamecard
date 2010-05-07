@@ -12,12 +12,20 @@
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 			</div>
 			<div class="notes-code">
-				<strong>验证码：</strong><input name="checkcode" type="text" /> <span class="code-num">4619</span>  <a href="#" class="blue">看不清，换一张</a><span class="code-tip ff0000">验证码错误！</span>
+        		<strong>验证码：</strong> <input name='checkcode' type='text'/>
+
+        		<script language='javascript'>
+        			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
+        		</script>	
+        		<img id='checkcode' onclick="this.setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());" src="" alt="CheckCode"/>  
+        	    <a href='#' onclick="javascript:$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());"  class="blue">看不清，换一张</a>
+        							<span class="code-tip ff0000">{{error}}</span>
+        	</div>
 				
 	</div>
 </form>
 {% endblock %}
 {% block submit %} 
-	<a href="#" onclick="javascript:$('#checkcode_form').submit()"><span>淘一下</span></a>
+	<a href="#" onclick="javascript:post_popup('/card/get_card/{{item_id}}/','checkcode_form')"><span>淘一下</span></a>
 	<a href="#" class="WinClose"><span>关闭</span></a>
 {% endblock %}

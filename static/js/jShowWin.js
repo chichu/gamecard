@@ -1,4 +1,7 @@
 function show_popup(){    
+    $(".pop-up-win").remove();
+    $(".pop-wrap").hide();
+    
     var docHeight=$(document).height();
     var docWidth=$(document).width();
     $(".pop-up-win").fadeIn("fast");
@@ -33,8 +36,6 @@ function get_popup(url){
 
 function post_popup(url,form){
     $.post(url, $("#"+form).serialize(),function(data) {        
-        $(".pop-up-win").remove();
-        $(".pop-wrap").hide();
         $("#pop-up").append(data);
         show_popup();
     }); 
