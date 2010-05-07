@@ -68,6 +68,10 @@ def get_chance(request,item_id):
     if request.method == "POST":
         try:
             item = Item.objects.get(id=item_id)
+            input_code = request.POST.get("checkcode","").strip()
+            checkcode = request.session.get('checkcode','error')
+            if input_code != checkcode:
+            	return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
             if item.is_chance == False:
                 return render_to_response('card/popups/no_chance_available.html')
             collect = get_mongodb_collect(get_collect_name(item_id))
