@@ -84,6 +84,7 @@ def get_chance(request,item_id):
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
 def index(request):      
+    keywords = KeyWords.objects.filer(is_acitve=True).order_by('+show_order')
     return render_to_response('card/index.html',locals())
 
 def act_codes(request,start_alpha_index=2):
