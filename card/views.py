@@ -84,7 +84,7 @@ def get_chance(request,item_id):
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
 def index(request):      
-    keywords = KeyWords.objects.filter(is_acitve=True).order_by('+show_order')
+    keywords = KeyWords.objects.filter(is_active=True).order_by('+show_order')
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
     pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
