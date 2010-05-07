@@ -79,17 +79,20 @@ var product_nav_box_width = 980,product_post_width = 520;
                 {% endfor %}
             </ul>
 
-    <div class="newstit"><a href="#" title="" class="rightfix">更多></a>
-        发卡预告</div>
-        <ul>
-            {% for anounce in anounces %}
-            <li><span>{{anounce.create_time.day}}日</span>{{anounce.content|safe}}</li>
-            {% endfor %}
-        </ul>
+        <div class="newstit"><a href="#" title="" class="rightfix">更多></a>
+            发卡预告</div>
+            <ul>
+                {% for anounce in anounces %}
+                <li><span>{{anounce.create_time.day}}日</span>{{anounce.content|safe}}</li>
+                {% endfor %}
+            </ul>
     </div>
 <div class="clearfix"></div></div>
 <!--end news-->
 
+<div class="fixie6png pop-wrap" id='pop-up'><!--透明背景层 -->
+</div><!--pop-wrap -->
+   
 <!--发卡box-->
 <div class="cardbox mt10"><div class="innerbox">
     <div class="cardboxtop">
@@ -157,9 +160,6 @@ var product_nav_box_width = 980,product_post_width = 520;
     {% endfor %}
     </table>
     </div>
-
-    <div class="fixie6png pop-wrap" id='pop-up'><!--透明背景层 -->
-    </div><!--pop-wrap -->
 
     <div id="c08" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
         <tr>
