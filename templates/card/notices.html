@@ -1,0 +1,8 @@
+<div class="fontnews">
+<div class="newstit"><a href="#" title="" class="rightfix">更多></a>
+发卡公告</div>
+<ul>
+{% for notice in notices %}
+<li><span>{{notice.create_time.day}}日</span><a href="/card/activitydetail/{{notice.activity.id}}.html" title="{{notice.title}}" target="_blank">{{notice.content|safe}}</a></li>
+{% endfor %}
+</ul>

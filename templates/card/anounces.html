@@ -1,0 +1,8 @@
+<div class="newstit"><a href="#" title="" class="rightfix">更多></a>
+发卡预告</div>
+<ul>
+    {% for anounce in anounces %}
+    <li><span>{{anounce.create_time.day}}日</span>{{anounce.content|safe}}</li>
+    {% endfor %}
+</ul>
+</div>

@@ -1,0 +1,17 @@
+<!--picnews-->
+<div class="picnews">
+	<div class="innerbox" id="slider">
+    	<ul >
+    	    {% for pic in pictures%}
+        	<li> <a href="{{pic.link_url}}" title="{{pic.title}}" target="_blank">
+        	    <img src="http://media.ka.178.com/static/{{pic.img_url}}">
+        	    </a>
+            <span class="picnews_tit fixie6png">
+                <p class="fixie6png"></p>
+                <a href="{{pic.link_url}}" title="{{pic.title}}" class="newstit"  target="_blank">{{pic.title}}</a>
+            </span>
+            </li>
+            {% endfor%}    	
+        </ul>
+</div><!--innerbox -->
+</div><!--end picnews-->

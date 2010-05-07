@@ -83,17 +83,34 @@ def get_chance(request,item_id):
         return render_to_response('card/popups/chance_success.html',{'item':item})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
-def index(request):
-    anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
-    notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
-    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
-    
-    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
-    act_codes = Activity.objects.filter(card_type='act_code',status="active")
-    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
-    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)    
+def index(request):      
     return render_to_response('card/index.html',locals())
+
+def act_codes(request,start_alpha_index=2):
+    act_codes = Activity.objects.filter(card_type='act_code',status="active")
+    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index)
+    return render_to_response('card/act_codes.html',locals())
   
+def begin_cards(request,start_alpha_index=12):
+    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
+    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index)
+    return render_to_response('card/begin_cards.html',locals())
+    
+def keywords(request):
+    keywords = KeyWords.objects.filer(is_acitve=True).order_by('+show_order')
+    return render_to_response('card/keywords.html',{"keywords":keywords})
+    
+def notices(request):
+    notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
+    return render_to_response('card/notices.html',{"notices":notices})
+    
+def anounces(request):
+    anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
+    return render_to_response('card/anounces.html',{"anounces":anounces})
+
+def pictures(request):    
+    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
+    return render_to_response('card/pictures.html',{"pictures":pictures})
     
 def activity_detail(request,activity_id):
     return render_to_response('card/i2.html',{"activity":Activity.objects.get(id=activity_id)})

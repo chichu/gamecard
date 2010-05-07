@@ -32,6 +32,11 @@ class NoticeAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 admin.site.register(Notice,NoticeAdmin)
 
+class KeyWordsAdmin(admin.ModelAdmin):
+    list_display = ('title','link_url','show_order','is_active')
+    search_fields = ('title',)
+admin.site.register(KeyWords,KeyWordsAdmin)
+
 class AnounceAdmin(admin.ModelAdmin):
     list_display = ('content','create_time')
     search_fields = ('content',)

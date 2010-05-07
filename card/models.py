@@ -86,10 +86,21 @@ class Anounce(models.Model):
     def __unicode__(self):
         return self.content
 
+class KeyWords(models.Model):
+    title = models.CharField("内容",max_length=20)
+    link_url = models.URLField(verbose_name="链接地址")
+    is_active = models.BooleanField("是否激活",default=True)
+    show_order = models.IntegerField("显示顺序号",help_text='从左至右依照序号大小排列')
+    class Meta:
+        verbose_name = "热点关键字"
+        verbose_name_plural = "热点关键字"
+    def __unicode__(self):
+        return self.title
+    
 class Pictures(models.Model):
     title = models.CharField("内容",max_length=25)
     img_url = models.ImageField(upload_to='icons/',verbose_name="图片")
-    link_url = models.CharField(max_length=100,verbose_name="链接地址")
+    link_url = models.URLField(verbose_name="链接地址")
     is_active = models.BooleanField("是否激活",default=True)
     create_time = models.DateTimeField("创建时间")
     class Meta:

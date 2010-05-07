@@ -1,3 +1,6 @@
 <div class="keywords">
-<span></span><a href="http://www.178.com" target="_blank">魔兽天下</a> | <a href="#">梦幻西游</a> | <a href="#">剑侠情缘2</a> | <a href="#">诛仙2</a>
+<span></span>
+    {% for w in keywords%}
+    <a href="{{w.link_url}}" target="_blank" title='{{w.title}}'>{{w.title}}</a> {% if not forloop.last%}| {% endif %} 
+    {% endfor %}
 </div>

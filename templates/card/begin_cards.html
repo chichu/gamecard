@@ -1,0 +1,86 @@
+<div class="cardboxtop">
+<h1>新手卡</h1>	
+<ul class="scrollUl">
+<li class="choice" id="m11"><a href="#">热门游戏</a></li>
+<li class="nochoice" id="m18"><a href="#">新游戏</a></li>
+<li class="nochoice" id="m12"><a href="#">ABCD</a></li>
+<li class="nochoice" id="m13"><a href="#">EFGH</a></li>
+<li class="nochoice" id="m14"><a href="#">IJKL</a></li>
+<li class="nochoice" id="m15"><a href="#">MNOP</a></li>
+<li class="nochoice" id="m16"><a href="#">QRST</a></li>
+<li class="nochoice" id="m17"><a href="#">WXYZ</a></li>
+
+</ul>
+<div class="clearfix"></div>
+</div>
+<div class="m10">
+
+<div id="c11"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
+  {% for c in a_hot %}
+      <tr>
+          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
+          <td>{{c.item.name}}</td>
+          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+          <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
+           <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
+        </tr>
+  {% endfor %}
+</table></div>
+
+{% for tab_index,alpha,acts in a_alpha %}
+    {% ifchanged tab_index%}
+    {% ifnotequal tab_index 12%}
+        </table></div>
+    {% endifnotequal %}
+    <div id="c{{tab_index}}" class="hidden">
+    <table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <th width="20%">游戏名称</th>
+              <th width="20%">新手卡名称</th>
+              <th>新手卡简介</th>
+              <th width="10%">领卡</th>
+              <th width="10%">淘号</th>
+        </tr>
+    {% endifchanged %}
+  <tr>
+      <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
+  </tr>
+  {% for c in acts%}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
+         <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
+       </tr>
+  {% endfor %}
+{% endfor %}
+</table>
+</div>
+
+<div id="c18" class="hidden"><table class="cardtable" width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+       <th width="20%">游戏名称</th>
+       <th width="20%">新手卡名称</th>
+       <th>新手卡简介</th>
+       <th width="10%">领卡</th>
+       <th width="10%">淘号</th>
+     </tr>
+  {% for c in a_new %}
+     <tr>
+         <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
+         <td>{{c.item.name}}</td>
+         <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
+         <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
+         <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
+       </tr>
+  {% endfor %}
+</table></div>
+</div>
