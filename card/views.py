@@ -71,7 +71,7 @@ def get_chance(request,item_id):
             input_code = request.POST.get("checkcode","").strip()
             checkcode = request.session.get('checkcode','error')
             if input_code != checkcode:
-            	return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+            	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
             if item.is_chance == False:
                 return render_to_response('card/popups/no_chance_available.html')
             collect = get_mongodb_collect(get_collect_name(item_id))
@@ -79,12 +79,14 @@ def get_chance(request,item_id):
             avails = collect.find(conditions).sort("count").limit(MAX_CHANCE_CARD_IDS)
             if avails.count() < MAX_CHANCE_CARD_IDS:
                 return render_to_response('card/popups/no_chance_card.html')
+            card_ids = ",".join([one['card_id'] for one in avails]) 
             for one in avails:
                 one['count'] += 1
-                chance_collect.save(one)
-        except:
-            return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':'领卡错误！'})
-        return render_to_response('card/popups/chance_success.html',{'item':item,'card_ids':",".join([one.card_id for one in avails])})
+                collect.save(one)
+        except Exception,e:
+            log_error("error in get chance %s" % e)
+            return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':"error!"})
+        return render_to_response('card/popups/chance_success.html',{'item':item,'card_ids':card_ids})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
 def index(request):      
