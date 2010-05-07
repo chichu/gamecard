@@ -18,9 +18,9 @@ function show_popup(){
     });
     
     $(window).scroll(function(){
-        var divScrollLeft = divLeft - document.documentElement.scrollLeft/2;
-        var divScrollTop = document.documentElement.scrollTop + divTop;
-        $(".pop-up-win").animate({ top: divScrollTop + "px",left: divScrollLeft + "px"},-100); 
+        var ScrollLeft = divLeft - document.documentElement.scrollLeft/2;
+        var ScrollTop = document.documentElement.scrollTop + divTop;
+        $(".pop-up-win").animate({ top: ScrollTop + "px",left: ScrollLeft + "px"},-100); 
     });  
 }
 
