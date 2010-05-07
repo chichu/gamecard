@@ -1,7 +1,4 @@
 function show_popup(){    
-    $(".pop-up-win").remove();
-    $(".pop-wrap").hide();
-    
     var docHeight=$(document).height();
     var docWidth=$(document).width();
     $(".pop-up-win").fadeIn("fast");
@@ -28,6 +25,8 @@ function show_popup(){
 }
 
 function get_popup(url){
+    $(".pop-up-win").remove();
+    $(".pop-wrap").hide();
     $.get(url, function(data) {
         $("#pop-up").append(data);
         show_popup();
@@ -35,6 +34,8 @@ function get_popup(url){
 }
 
 function post_popup(url,form){
+    $(".pop-up-win").remove();
+    $(".pop-wrap").hide();
     $.post(url, $("#"+form).serialize(),function(data) {        
         $("#pop-up").append(data);
         show_popup();
