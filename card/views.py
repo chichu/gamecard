@@ -18,7 +18,7 @@ MAX_ANOUNCE = 3
 
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
-        print "ererqewrqw" 
+        print "cookie unenabled!" 
 
     #if not request.COOKIES.has_key('user_name'):
     #    return render_to_response('card/popups/login.html')
