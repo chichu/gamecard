@@ -1,6 +1,6 @@
 #encoding:utf-8
 from pymongo import Connection,ASCENDING
-from datetime import datetime
+from datetime import datetime,timedelta
 
 MONGODB_NAME = "gamecard"
 MONGODB_HOST = "localhost"

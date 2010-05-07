@@ -26,7 +26,7 @@ def get_card(request,item_id):
         return render_to_response('card/popups/failure2.html')
  
     if request.method == "POST":
-        username = request.COOKIES.get('user_name')
+        username = request.COOKIES.get('user_name','chichu')
         item = Item.objects.get(id=item_id)
         
         input_code = request.POST.get("checkcode","").strip()
@@ -59,7 +59,7 @@ def get_card(request,item_id):
         set the cookie to note that this user has get one card,and can not get any in 24 hours
         '''
         res = render_to_response('card/popups/get_success.html',{'item':item,"card_id":card_id})
-        res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
+        #res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
@@ -84,7 +84,7 @@ def get_chance(request,item_id):
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
 def index(request):      
-    keywords = KeyWords.objects.filter(is_active=True).order_by('+show_order')
+    keywords = KeyWords.objects.filter(is_active=True).order_by('show_order')
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
     pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
@@ -92,7 +92,7 @@ def index(request):
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
     (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
     begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
-    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index)
+    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
     return render_to_response('card/index.html',locals())
     
 def activity_detail(request,activity_id):
