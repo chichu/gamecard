@@ -113,7 +113,7 @@ class Pictures(models.Model):
 class OnlineNews(models.Model):
     content = models.CharField("游戏名称",max_length=10)
     link_url = models.URLField(verbose_name="链接地址")
-    status = models.CharField("状态",max_length=10,choices=(("none",'暂无'),('discuss','论坛活动'),('pic','截图活动'),('sending','正在发放')))
+    status = models.CharField("状态",max_length=10,choices=(("暂无",'暂无'),('论坛活动','论坛活动'),('截图活动','截图活动'),('正在发放','正在发放')))
     online_time = models.DateTimeField("上线时间")
     class Meta:
         verbose_name = "新游戏上线公告"
