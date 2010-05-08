@@ -17,12 +17,18 @@ function show_popup(){
        $(".pop-wrap").hide();
     });
     
-    $(window).scroll(function(){
-        var ScrollLeft = divLeft - document.documentElement.scrollLeft/2;
-        var ScrollTop = document.documentElement.scrollTop + divTop;
-        $(".pop-up-win").animate({ top: ScrollTop + "px",left: ScrollLeft + "px"},-100); 
-    });  
 }
+
+$(window).scroll(function(){
+    var divWidth=$(".pop-up-win").width()/2;
+    var divHeight=$(".pop-up-win").height()/2;
+    var divLeft =  document.documentElement.clientWidth/2 - divWidth;
+    var divTop =  document.documentElement.clientHeight/2 - divHeight/2 -100;
+    var ScrollLeft = divLeft - document.documentElement.scrollLeft/2;
+    var ScrollTop = document.documentElement.scrollTop + divTop;
+    $(".pop-up-win").animate({ top: ScrollTop + "px",left: ScrollLeft + "px"},-100);
+});
+
 
 function get_popup(url){
     $.get(url, function(data) {
@@ -33,8 +39,10 @@ function get_popup(url){
     }); 
 }
 
-function post_popup(url,form){
-    $.post(url, $("#"+form).serialize(),function(data) {        
+function post_popup(url,code){
+    if(code == "")
+        alert(code);
+    $.post(url,{checkcode:code} ,function(data) {        
         $(".pop-up-win").remove();
         $(".pop-wrap").hide();
         $("#pop-up").append(data);

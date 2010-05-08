@@ -1,7 +1,6 @@
 {% extends "card/popups/base.html" %}
 {% block title %} 淘号须知 {% endblock %}
 {% block content %} 
-<form action='/card/get_chance/{{item_id}}/' method='POST' id='checkcode_form'> 
 	<div class="win-notes">
 			<div class="notes-txt">
 				<span class="win-icon win-icon-a"></span>
@@ -12,20 +11,19 @@
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 			</div>
 			<div class="notes-code">
-        		<strong>验证码：</strong> <input name='checkcode' type='text'/>
+        		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
 
         		<script language='javascript'>
         			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
         		</script>	
         		<img id='checkcode' onclick="this.setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());" src="" alt="CheckCode"/>  
         	    <a href='#' onclick="javascript:$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());"  class="blue">看不清，换一张</a>
-        							<span class="code-tip ff0000">{{error}}</span>
+ 			<span class="code-tip ff0000">{{error}}</span>
         	</div>
 				
 	</div>
-</form>
 {% endblock %}
 {% block submit %} 
-	<a href="#" onclick="javascript:post_popup('/card/get_chance/{{item_id}}/','checkcode_form')"><span>淘一下</span></a>
+	<a id='checkcode_submit' href="#" onclick="javascript:post_popup('/card/get_chance/{{item_id}}/',$('#checkcode_input').val());"><span>淘一下</span></a>
 	<a href="#" class="WinClose"><span>关闭</span></a>
 {% endblock %}

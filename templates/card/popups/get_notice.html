@@ -1,7 +1,6 @@
 {% extends "card/popups/base.html" %}
 {% block title %} 领取须知 {% endblock %}
 {% block content %} 
-<form action='/card/get_card/{{item_id}}/' method='POST' id='checkcode_form'> 
 <div class="win-notes">
     <div class="notes-txt">
         <span class="win-icon win-icon-a"></span>
@@ -24,9 +23,8 @@
 		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
 	</div>
 </div>			
-</form>
 {% endblock %}
 {% block submit %} 
-<a href="#" onclick="javascript:post_popup('/card/get_card/{{item_id}}/','checkcode_form')"><span>提交</span></a> 
+<a id='checkcode_submit' href="#" onclick="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val())"><span>提交</span></a> 
 <a href="#" class="WinClose"><span >关闭</span></a>
 {% endblock %}
