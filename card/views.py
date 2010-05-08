@@ -93,7 +93,8 @@ def index(request):
     keywords = KeyWords.objects.filter(is_active=True).order_by('show_order')
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
-    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
+    pictur = Pictures.objects.filter(is_active=True).order_by('-create_time')
+    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
     (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
@@ -102,7 +103,9 @@ def index(request):
     return render_to_response('card/index.html',locals())
     
 def activity_detail(request,activity_id):
-    return render_to_response('card/i2.html',{"activity":Activity.objects.get(id=activity_id)})
+    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
+    activity = Activity.objects.get(id=activity_id)
+    return render_to_response('card/i2.html',local())
     
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")

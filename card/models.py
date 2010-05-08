@@ -118,7 +118,6 @@ class OnlineNews(models.Model):
     class Meta:
         verbose_name = "新游戏上线公告"
         verbose_name_plural = "新游戏上线公告"
-        ordering = ['-create_time']
     def __unicode__(self):
         return self.content
     
