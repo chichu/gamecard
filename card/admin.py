@@ -42,6 +42,11 @@ class AnounceAdmin(admin.ModelAdmin):
     search_fields = ('content',)
 admin.site.register(Anounce,AnounceAdmin)
 
+class OnlineNewsAdmin(admin.ModelAdmin):
+    list_display = ('content','online_time','status','link_url')
+    search_fields = ('content',)
+admin.site.register(OnlineNews,OnlineNewsAdmin)
+
 class PictureAdmin(admin.ModelAdmin):
     list_display = ('title','link_url','create_time')
     search_fields = ('title',)

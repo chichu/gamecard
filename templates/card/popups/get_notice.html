@@ -12,7 +12,7 @@
 	    </p>
 	</div>
 	<div class="notes-code">
-		<strong>验证码：</strong> <input name='checkcode' type='text'/>
+		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
 		
 		<script language='javascript'>
 			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
@@ -25,6 +25,6 @@
 </div>			
 {% endblock %}
 {% block submit %} 
-<a id='checkcode_submit' href="#" onclick="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val())"><span>提交</span></a> 
+<a href="#" onclick="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val())"><span>提交</span></a> 
 <a href="#" class="WinClose"><span >关闭</span></a>
 {% endblock %}

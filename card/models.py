@@ -109,6 +109,18 @@ class Pictures(models.Model):
         ordering = ['-create_time']
     def __unicode__(self):
         return self.title
+        
+class OnlineNews(models.Model):
+    content = models.CharField("游戏名称",max_length=10)
+    link_url = models.URLField(verbose_name="链接地址")
+    status = models.CharField("状态",max_length=10,choices=(("none",'暂无'),('discuss','论坛活动'),('pic','截图活动'),('sending','正在发放'))
+    online_time = models.DateTimeField("上线时间")
+    class Meta:
+        verbose_name = "新游戏上线公告"
+        verbose_name_plural = "新游戏上线公告"
+        ordering = ['-create_time']
+    def __unicode__(self):
+        return self.content
     
 def get_cardfile_path(instance,filename):
     return "%s/%s-%s"%("card_files",instance.item.id,filename)

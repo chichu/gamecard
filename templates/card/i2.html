@@ -45,7 +45,24 @@ var product_nav_box_width = 980,product_post_width = 520;
 
 </div><!--end main-->
 
+<!--side-->
+<div class="side">
 {% include "card/side.html" %}
+<!--sidecolumn-->
+<div class="sidecolumn">
+<div class="sidetitle"><h2>新游戏上线时间表</h2><span></span><div class="clearfix"></div></div>
+<div class="cont">
+{% for n in online_news %}
+<div class="sidenews">
+    <a href="{{n.link_url}}" class="fontgreen rightfix" target='_blank'>{{n.status}}</a>
+    <span>[{{n.online_time.month}}.{{n.online_time.day}}]</span>{{n.content}}
+</div>
+{% endfor %}
+</div>
+</div>
+<!--end sidecolumn-->
+</div>
+<!--end side-->
 
 <div class="clearfix"></div></div>
 <!--end content -->

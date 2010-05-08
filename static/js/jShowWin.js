@@ -40,8 +40,10 @@ function get_popup(url){
 }
 
 function post_popup(url,code){
-    if(code == "")
-        alert(code);
+    if(code == ""){
+        alert("请输入验证码！");
+        return false;
+    }
     $.post(url,{checkcode:code} ,function(data) {        
         $(".pop-up-win").remove();
         $(".pop-wrap").hide();
