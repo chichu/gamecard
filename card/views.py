@@ -93,7 +93,7 @@ def index(request):
     keywords = KeyWords.objects.filter(is_active=True).order_by('show_order')
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
-    pictur = Pictures.objects.filter(is_active=True).order_by('-create_time')
+    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
     online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     
     act_codes = Activity.objects.filter(card_type='act_code',status="active")
