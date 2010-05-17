@@ -30,22 +30,22 @@ a:hover{ color: #036; text-decoration: underline }
 
 
 /*top*/
-.topcontenner{background:url(../images/bodybg.jpg)  bottom repeat-x;}
+.topcontenner{background:url(http://media.ka.178.com/static/images/bodybg.jpg)  bottom repeat-x;}
 .top{margin:0 auto; width:960px;}
-.top a.logo{ background:url(../images/logo.gif) no-repeat; width:131px; height:60px; margin:10px 0 0 0; display:block;}
+.top a.logo{ background:url(http://media.ka.178.com/static/images/logo.gif) no-repeat; width:131px; height:60px; margin:10px 0 0 0; display:block;}
 .top .advertisment{ float:right; margin:10px 0 0 0; padding:3px; border:1px solid #d9d9d9; background:#fff;}
 /*navigation */
 .navigation .outbox{border:1px solid #ff4e00;-moz-border-radius:3px; -webkit-border-radius:3px;}
-.navigation .innerbox{ height:33px; border:1px solid #ffba68; background:url(../images/bg.jpg) repeat-x; padding-left:5px\9;-moz-border-radius:3px; -webkit-border-radius:3px;}
+.navigation .innerbox{ height:33px; border:1px solid #ffba68; background:url(http://media.ka.178.com/static/images/bg.jpg) repeat-x; padding-left:5px\9;-moz-border-radius:3px; -webkit-border-radius:3px;}
 
 .navigation li{float:left;  margin:0 5px; margin:0\9;}
 .navigation li a{line-height:33px; font-size:14px; font-weight:bold; color:#fff; padding:0 12px; float:left; _text-decoration:none;}
 .navigation li a:hover{ text-decoration:none; color:#FF6;}
-.navigation li a.current{background:url(../images/bg.jpg) repeat-x 0 -33px;color:#000; position:relative; top:-5px;  display:inline-block; height:40px; line-height:43px;
+.navigation li a.current{background:url(http://media.ka.178.com/static/images/bg.jpg) repeat-x 0 -33px;color:#000; position:relative; top:-5px;  display:inline-block; height:40px; line-height:43px;
                          _line-height:33px; _height:33px;  _top:2px; -moz-border-radius:5px 5px 0 0; -webkit-border-radius:5px 5px 0 0;}
 .navigation li a.current:hover{_color:#000;}
-.navigation .innerbox span{float:left; width:2px; height:33px; background:url(../images/element.png) no-repeat; margin:0 5px\9;}
-.navigation .innerbox a.help{ font-size:12px; height:18px;line-height:18px; line-height:22px\0; background:url(../images/element.png) no-repeat left -33px; padding-left:22px; font-weight:100; margin-top:8px; color:#fff;}
+.navigation .innerbox span{float:left; width:2px; height:33px; background:url(http://media.ka.178.com/static/images/element.png) no-repeat; margin:0 5px\9;}
+.navigation .innerbox a.help{ font-size:12px; height:18px;line-height:18px; line-height:22px\0; background:url(http://media.ka.178.com/static/images/element.png) no-repeat left -33px; padding-left:22px; font-weight:100; margin-top:8px; color:#fff;}
 
 /*content*/
 .content{ margin:10px auto; width:960px;}
@@ -53,16 +53,16 @@ a:hover{ color: #036; text-decoration: underline }
 .content .side{ width:230px; overflow-x:hidden; float:left;}
 
 .searchbar{ border:1px solid #E9EFFB; height:43px; overflow-y:hidden;/**/}
-.searchbar .innerbox{ border:1px solid #fff; background:#EFF4FB url(../images/bg.jpg) repeat-x 0 -73px; padding:9px;}
+.searchbar .innerbox{ border:1px solid #fff; background:#EFF4FB url(http://media.ka.178.com/static/images/bg.jpg) repeat-x 0 -73px; padding:9px;}
 .searchbar .innerbox .search{ border:1px solid #DAE5F9; float:left; background:#fff;}
 
-input.searchcontent{width:260px; float:left;height:22px; line-height:23px; font-size:10px\9; color:#bbb; background:#fff url(../images/searchbg.gif) no-repeat; padding-left:30px;   border:1px solid #f4f4f4;/**/}
+input.searchcontent{width:260px; float:left;height:22px; line-height:23px; font-size:10px\9; color:#bbb; background:#fff url(http://media.ka.178.com/static/images/searchbg.gif) no-repeat; padding-left:30px;   border:1px solid #f4f4f4;/**/}
 input.searchcontent:focus{outline:none;}
-button.searchbtn{ width:57px; height:25px;background:url(../images/element.png) no-repeat 0 -75px; border:0; margin-top:-3px; float:left; margin-top:-1px;}
+button.searchbtn{ width:57px; height:25px;background:url(http://media.ka.178.com/static/images/element.png) no-repeat 0 -75px; border:0; margin-top:-3px; float:left; margin-top:-1px;}
 button.searchbtn:hover{ cursor:pointer;}
 
 .keywords{margin-left:40px; float:left;}
-.keywords span{background:url(../images/element.png) no-repeat -3px 0; width:40px; height:18px; display:inline-block; margin:2px 5px 0 0;}
+.keywords span{background:url(http://media.ka.178.com/static/images/element.png) no-repeat -3px 0; width:40px; height:18px; display:inline-block; margin:2px 5px 0 0;}
 .keywords a{_text-decoration:none;}
 .keywords a:hover{ color:#F00; text-decoration:none;}
 
@@ -70,16 +70,16 @@ button.searchbtn:hover{ cursor:pointer;}
 .picnews{border:1px solid #E9EFFB; float:left; width:358px; height:248px; overflow:hidden}
 .picnews .innerbox{ border:1px solid #fff; background:#f0f5f9; margin:3px; width:350px; height:240px; overflow:hidden;}
 .innerbox ul li{ position:relative;}
-.picnews .innerbox .picnews_tit{ display:inline-block;background:url(../images/picnewsbg.png);width:330px; height:60px; position:absolute; bottom:0px; left:0px; padding:0 10px;}
-.picnews .innerbox .picnews_tit p{ height:1px; line-height:1px; font-size:0; background:url(../images/picnews_titbg.png);}
+.picnews .innerbox .picnews_tit{ display:inline-block;background:url(http://media.ka.178.com/static/images/picnewsbg.png);width:330px; height:60px; position:absolute; bottom:0px; left:0px; padding:0 10px;}
+.picnews .innerbox .picnews_tit p{ height:1px; line-height:1px; font-size:0; background:url(http://media.ka.178.com/static/images/picnews_titbg.png);}
 .picnews .innerbox .picnews_tit a.newstit{ font-size:14px; font-weight:bold; color:#FF0; margin:10px auto 0; display:block;filter:alpha(opacity=100)}
 
 #flashnvanum{bottom: 10px; position: absolute; right: 20px;width: 90px;}
-#flashnvanum span{background:url(../images/element.png) no-repeat 0 -56px;color: #86A2B8; cursor: pointer;float: left;font-family: Arial;font-size: 12px;height: 15px; line-height: 15px; margin: 1px; text-align: center;width: 15px;}
-#flashnvanum span.on{background: url(../images/element.png) no-repeat -19px -56px; color:#FF0;height: 15px;line-height: 15px; width: 15px;}
+#flashnvanum span{background:url(http://media.ka.178.com/static/images/element.png) no-repeat 0 -56px;color: #86A2B8; cursor: pointer;float: left;font-family: Arial;font-size: 12px;height: 15px; line-height: 15px; margin: 1px; text-align: center;width: 15px;}
+#flashnvanum span.on{background: url(http://media.ka.178.com/static/images/element.png) no-repeat -19px -56px; color:#FF0;height: 15px;line-height: 15px; width: 15px;}
 /*fontnews*/
 .fontnews{ margin-left:10px; float:left; width:340px; overflow:hidden;}
-.fontnews .newstit{ border:1px solid #E9EFFB; border-bottom:1px solid #ddd; height:25px; line-height:25px; padding:0 10px;background:url(../images/bg.jpg) repeat-x 0 -114px; font-weight:bold; font-size:14px; -moz-border-radius:3px 3px 0 0; -webkit-border-radius:3px 3px 0 0;}
+.fontnews .newstit{ border:1px solid #E9EFFB; border-bottom:1px solid #ddd; height:25px; line-height:25px; padding:0 10px;background:url(http://media.ka.178.com/static/images/bg.jpg) repeat-x 0 -114px; font-weight:bold; font-size:14px; -moz-border-radius:3px 3px 0 0; -webkit-border-radius:3px 3px 0 0;}
 .fontnews .newstit .rightfix{font-weight: normal; font-size:12px;}
 
 .fontnews ul{ margin:5px 0 5px 5px;}
@@ -92,13 +92,13 @@ button.searchbtn:hover{ cursor:pointer;}
 
 /*cardbox*/
 .cardbox{ border:1px solid #d9d9d9;-moz-border-radius:3px; -webkit-border-radius:3px;}
-.cardbox .innerbox{ border:2px solid #fff; background:url(../images/cardboxbg.jpg) repeat-x;-moz-border-radius:3px; -webkit-border-radius:3px;}
+.cardbox .innerbox{ border:2px solid #fff; background:url(http://media.ka.178.com/static/images/cardboxbg.jpg) repeat-x;-moz-border-radius:3px; -webkit-border-radius:3px;}
 
 .cardbox .innerbox .cardboxtop{ border-bottom:1px solid #ddd; clear:both;}
 .cardbox .innerbox .cardboxtop h1{ float:left; font-size:14px; font-weight:bold; color:#F30; height:30px; line-height:30px; margin-left:15px; }
 .cardbox .innerbox .scrollUl{margin:5px 0 0 0; float:right;}
 .cardbox .innerbox .scrollUl li{float:left;height:26px; line-height:26px; margin:0 7px; letter-spacing:1px; }
-.scrollUl li.choice a{background:url(../images/bg.jpg) repeat-x 0px -139px; border:1px solid #787066; border-bottom:0; position:relative; top:1px; _top:3px;height:26px; line-height:24px; display:inline-block; padding:0 10px; color:#644512; font-weight:bold;-moz-border-radius:3px 3px 0 0; -webkit-border-radius:3px 3px 0 0;}
+.scrollUl li.choice a{background:url(http://media.ka.178.com/static/images/bg.jpg) repeat-x 0px -139px; border:1px solid #787066; border-bottom:0; position:relative; top:1px; _top:3px;height:26px; line-height:24px; display:inline-block; padding:0 10px; color:#644512; font-weight:bold;-moz-border-radius:3px 3px 0 0; -webkit-border-radius:3px 3px 0 0;}
 
 .scrollUl li.nochoice a{cursor:pointer; color:#999; border:1px solid #fff;}
 
@@ -110,8 +110,8 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 
 /*side*/
 .sidecolumn .sidetitle{ border-bottom:2px solid #ccc;}
-.sidecolumn .sidetitle h2{font-size:14px; font-weight:700; background:url(../images/element.png) no-repeat 0px -100px;padding:6px 8px 0 15px; height:17px; float:left; position:relative; top:2px; _top:6px; }
-.sidecolumn .sidetitle span{background:url(../images/element.png) no-repeat -60px -75px; width:7px; height:23px; float:left;position:relative; top:2px; _top:6px;}
+.sidecolumn .sidetitle h2{font-size:14px; font-weight:700; background:url(http://media.ka.178.com/static/images/element.png) no-repeat 0px -100px;padding:6px 8px 0 15px; height:17px; float:left; position:relative; top:2px; _top:6px; }
+.sidecolumn .sidetitle span{background:url(http://media.ka.178.com/static/images/element.png) no-repeat -60px -75px; width:7px; height:23px; float:left;position:relative; top:2px; _top:6px;}
 .sidecolumn .cont{ padding:0 10px; margin:10px 0 20px; width:210px; overflow:hidden;}
 .sidecolumn .cont div.sidenews{ height:24px; line-height:24px; clear:both; color:#666;}
 .sidecolumn .cont div.sidenews span{ color:#F60; margin-right:3px;}
@@ -127,7 +127,7 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 .login-info p{ padding-left:3px; color:#5c6b79; line-height:1.5;}
 .login-info p strong{ color:#930;}
 .login-info ul{ margin-top:5px; width:100%; overflow:hidden;}
-.login-info ul li{ width:43%; padding-left:5%; display:inline-block; float:left;background:url(../images/login_icon.gif) no-repeat 0 3px; _background-position:0 5px; margin-bottom:8px;}
+.login-info ul li{ width:43%; padding-left:5%; display:inline-block; float:left;background:url(http://media.ka.178.com/static/images/login_icon.gif) no-repeat 0 3px; _background-position:0 5px; margin-bottom:8px;}
 .login-info ul li a:link,.login-info ul li a:visited{ color:#000; text-decoration:none;}
 .login-info ul li a:hover{ text-decoration:underline;}
 /*footer*/
@@ -138,7 +138,7 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 .card-info span{ display:inline-block; margin:0 0 0 15px ; line-height:24px; float:left;}
 .info-content{ width:350px; text-align:center;}
 .info-btn a{border:1px solid #B5B5B5;display:inline-block; margin:0 0 0 10px;padding:1px; text-decoration:none}
-.info-btn a:link strong,.info-btn a:visited strong{background:url("../images/btn_bg.gif") repeat-x scroll 0 -24px;color:#000000;cursor:pointer;display:inline-block;height:22px;line-height:22px;overflow:hidden;padding:0 10px;}
+.info-btn a:link strong,.info-btn a:visited strong{background:url("http://media.ka.178.com/static/images/btn_bg.gif") repeat-x scroll 0 -24px;color:#000000;cursor:pointer;display:inline-block;height:22px;line-height:22px;overflow:hidden;padding:0 10px;}
 .info-btn a:hover strong{ background-position:0 0}
 
 .pages{ margin:15px 0; text-align:center;}
@@ -154,7 +154,7 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 .form-main li .option .input{ width:300px; height:22px; line-height:22px; border:1px solid #D9D9D9}
 .form-main li .option textarea{ width:300px; border:1px solid #D9D9D9; height:80px; line-height:1.5; overflow-y:auto; font-size:12px; color:#333}
 .form-main li .option p{ line-height:18px; color:#999}
-.form-btn input{ height:24px; line-height:22px; border:1px solid #848484; margin:10px 0 0 220px; background:url("../images/btn_bg.gif") repeat-x scroll 0 -24px; padding:0 10px;}
+.form-btn input{ height:24px; line-height:22px; border:1px solid #848484; margin:10px 0 0 220px; background:url("http://media.ka.178.com/static/images/btn_bg.gif") repeat-x scroll 0 -24px; padding:0 10px;}
 .form-btn input:hover{background-position:0 0; cursor:pointer}
 
 .news-list{ padding:10px 40px ; color:#333}
