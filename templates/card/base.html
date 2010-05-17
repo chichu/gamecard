@@ -11,18 +11,19 @@
 <style>.fixie6png{behavior:url("http://media.ka.178.com/static/js/iepngfix.htc");}</style>
 <script type="text/javascript" src="http://media.ka.178.com/static/js/iepngfix-tilebg.js"></script>
 <![endif]-->
-<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
-<script language='javascript'>
-var product_nav_box_width = 980,product_post_width = 520;
-</script>
-<script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
-<script type="text/javascript" src="http://www.178.com/s/pronav.js"></script>
 {% block extra_js %}{% endblock %}
 <title>{% block title %}新手卡首页{% endblock %}</title>
 </head>
 <body>
 <div class="contenner">
+<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
+<script>
+var product_nav_box_width = 980,product_post_width = 520;
+//var product_nav_box_width = 960,product_post_width = 500;
+</script>
+<script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
+<script type="text/javascript" src="http://www.178.com/s/pronav.js"></script> 
 {% block headnav %}
     {% load card_tags %}
     {% headnav 1 %}
