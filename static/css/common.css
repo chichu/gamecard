@@ -104,9 +104,9 @@ button.searchbtn:hover{ cursor:pointer;}
 
 .cardbox .innerbox .cont{ margin:10px;}
 .cardbox .innerbox .cont table.cardtable{}
-table.cardtable tr th{ height:25px; line-height:25px; border-bottom:2px solid #ccc; text-align:left;}
-table.cardtable tr td{ height:25px; line-height:25px; border-bottom:1px solid #ddd; color:#555;}
-table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6CC0 }
+table.cardtable tr th{ height:25px;line-height:25px; border-bottom:2px solid #ccc; text-align:left;}
+table.cardtable tr td{ height:25px;line-height:25px; border-bottom:1px solid #ddd; color:#555;}
+table.cardtable tr td.itemtitle{text-align:center;font-weight:bold; color:#2C6CC0 }
 
 /*side*/
 .sidecolumn .sidetitle{ border-bottom:2px solid #ccc;}
