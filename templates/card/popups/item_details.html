@@ -2,12 +2,12 @@
 {% block title %} 物品详情 {% endblock %}
 {% block content %} 
 	<div class="win-details">
-		<div class="details-pic"><!--这里放图片,大小为120*120 --></div>
+		<div class="details-pic"><img src='http://media.ka.178.com/static/{{item.pic}}' alt='item image'/></div>
 		<ul>
-			<li>物品名称：<strong class="ff0000">名将三国新手卡</strong ></li>
-			<li>使用范围：<span class="ff0000">***</span></li>
+			<li>物品名称：<strong class="ff0000">{{item.name}}</strong ></li>
+			<li>卡号：<span class="ff0000">{{card_id}}</span></li>
 			<li><p>请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。</p></li>
-			<li><a href="#" class="ff0000">【激活游戏】</a> <a href="#" class="ff0000">【注册游戏】</a> <a href="#" class="ff0000">【下载游戏】</a></li>
+			<li>{{item.info|safe}}</li>
 		</ul>
 	</div>
 {% endblock %}

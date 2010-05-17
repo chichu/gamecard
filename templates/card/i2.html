@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+﻿{% load card_tags %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -6,7 +7,7 @@
 <link rel="stylesheet" href="http://media.ka.178.com/static/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" /> 
-<title>{{activity.item.name}}</title>
+<title>{% block title %}{{activity.item.name}}{% endblock %}</title>
 <!--[if lte IE 6]>
 <style>.fixie6png{behavior:url("http://media.ka.178.com/static/js/iepngfix.htc");}</style>
 <script type="text/javascript" src="http://media.ka.178.com/static/js/iepngfix-tilebg.js"></script>
@@ -26,8 +27,9 @@ var product_nav_box_width = 980,product_post_width = 520;
 <script type="text/javascript" src="http://www.178.com/s/pronav.js"></script> 
 <!--产品导航结束-->
 <!--end header-->
-
-{% include "card/headnav.html"%}
+{% block headnav %}
+{% headnav 1 %}
+{% endblock %}
 
 <div class="clearfix"></div>
 <!--content -->
@@ -38,8 +40,9 @@ var product_nav_box_width = 980,product_post_width = 520;
 
 <!--cardbox-->
 <div class="cardbox mt10"><div class="innerbox p15">
-
+{% block content %}
 {{activity.info|safe}}
+{% endblock %}
 </div></div>
 <!--end cardbox-->
 

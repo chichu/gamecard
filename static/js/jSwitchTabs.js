@@ -11,8 +11,7 @@ scrollDoor.prototype = {
 		for(var i = 0 ; i < menus.length ; i++)
 		{	
 			_this.$(menus[i]).value = i;				
-			_this.$(menus[i]).onmouseover = function(){
-			//_this.$(menus[i]).onclick = function(){
+			_this.$(menus[i]).onclick= function(){
 					
 				for(var j = 0 ; j < menus.length ; j++)
 				{						
