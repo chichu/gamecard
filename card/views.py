@@ -73,7 +73,7 @@ def get_chance(request,item_id):
             if input_code != checkcode:
             	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
             if item.is_chance == False:
-                return render_to_response('card/popups/no_chance_available.html')
+                return render_to_response('card/popups/chance_not_available.html')
             collect = get_mongodb_collect(get_collect_name(item_id))
             conditions = {'status':"used","chance_time":{"$lt": datetime.now()}}
             avails = collect.find(conditions).sort("count").limit(MAX_CHANCE_CARD_IDS)
@@ -101,11 +101,20 @@ def index(request):
     begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
     (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
     return render_to_response('card/index.html',locals())
+
+def coperation(request):
+    return render_to_response('card/coperation.html',locals())
     
 def activity_detail(request,activity_id):
     online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     activity = Activity.objects.get(id=activity_id)
-    return render_to_response('card/i2.html',local())
+    return render_to_response('card/i2.html',locals())
+    
+def item_detail(request):
+    card_id = request.GET.get('card_id','')
+    item_id = request.GET.get('item_id','')
+    item = Item.objects.get(id=item_id)
+    return render_to_response('card/popups/item_details.html',locals())
     
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")

@@ -121,9 +121,9 @@ var product_nav_box_width = 980,product_post_width = 520;
          </tr>
     {% for c in b_hot %}
         <tr>
-          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-          <td>{{c.item.name}}</td>
-          <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/" target="_blank"></a></td>
+          <td>{{c.game.name}}</td>
+          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.descri|safe}}</td>
           <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
            <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
         </tr>
@@ -150,12 +150,12 @@ var product_nav_box_width = 980,product_post_width = 520;
       </tr>
       {% for c in acts%}
          <tr>
-             <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-             <td>{{c.item.name}}</td>
-             <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-             <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
-             <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
-           </tr>
+           <td>{{c.game.name}}</td>
+           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.descri|safe}}</td>
+           <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
+            <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
+         </tr>
       {% endfor %}
     {% endfor %}
     </table>
@@ -170,13 +170,13 @@ var product_nav_box_width = 980,product_post_width = 520;
               <th width="10%">淘号</th>
         </tr>
     {% for c in b_new %}
-         <tr>
-             <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-             <td>{{c.item.name}}</td>
-             <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-             <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
-             <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
-           </tr>
+        <tr>
+          <td>{{c.game.name}}</td>
+          <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+          <td>{{c.descri|safe}}</td>
+          <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
+           <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
+        </tr>
     {% endfor %}   
     </table></div>
     </div>
@@ -210,13 +210,13 @@ var product_nav_box_width = 980,product_post_width = 520;
            <th width="10%">淘号</th>
          </tr>
       {% for c in a_hot %}
-          <tr>
-              <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-              <td>{{c.item.name}}</td>
-              <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-              <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
-               <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
-            </tr>
+         <tr>
+           <td>{{c.game.name}}</td>
+           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.descri|safe}}</td>
+           <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
+            <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
+         </tr>
       {% endfor %}
     </table></div>
 
@@ -240,12 +240,12 @@ var product_nav_box_width = 980,product_post_width = 520;
       </tr>
       {% for c in acts%}
          <tr>
-             <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-             <td>{{c.item.name}}</td>
-             <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-             <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
-             <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
-           </tr>
+           <td>{{c.game.name}}</td>
+           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.descri|safe}}</td>
+           <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
+            <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
+         </tr>
       {% endfor %}
     {% endfor %}
     </table>
@@ -261,12 +261,12 @@ var product_nav_box_width = 980,product_post_width = 520;
          </tr>
       {% for c in a_new %}
          <tr>
-             <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.game.name}}">{{c.game.name}}</a></td>
-             <td>{{c.item.name}}</td>
-             <td>{{c.descri|safe}}<a href="/card/activitydetail/{{c.id}}/"  target="_blank"></a></td>
-             <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/')">领卡</a></td>
-             <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/')">淘号</a></td>
-           </tr>
+           <td>{{c.game.name}}</td>
+           <td><a href="/card/activitydetail/{{c.id}}/"  target="_blank" title="{{c.name}}">{{c.name}}</a></td>
+           <td>{{c.descri|safe}}</td>
+           <td><a onclick="javascript:get_popup('/card/get_card/{{c.item.id}}/');">领卡</a></td>
+            <td><a onclick="javascript:get_popup('/card/get_chance/{{c.item.id}}/');">淘号</a></td>
+         </tr>
       {% endfor %}
     </table></div>
     </div>
@@ -296,7 +296,10 @@ var product_nav_box_width = 980,product_post_width = 520;
 <div class="clearfix"></div></div>
 <!--end content -->
 <!--footer-->
-<div class="footer"><script src='http://www.178.com/s/footer.js'></script></div>
+<div class="footer">
+    <script src='http://www.178.com/s/footer.js'></script>
+    <script src="http://s9.cnzz.com/stat.php?id=2154328&web_id=2154328"></script>
+</div>
 <!--end footer-->
 </div><!-- end contenner-->
 </body>
