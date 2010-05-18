@@ -20,7 +20,7 @@ def sidebar(username):
     online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     return {
         'username' : username,
-        'online_news',online_news,
+        'online_news':online_news,
     }
 
 @register.inclusion_tag('card/keywords.html')
@@ -38,7 +38,7 @@ def cardbox():
     return locals()
 
 @register.inclusion_tag('card/news.html')
-def anounces():
+def news():
     anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
     notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
     pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
