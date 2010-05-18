@@ -12,10 +12,6 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
-MAX_CHANCE_CARD_IDS = 5
-MAX_NOTICE = 5
-MAX_ANOUNCE = 3
-
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -89,17 +85,7 @@ def get_chance(request,item_id):
         return render_to_response('card/popups/chance_success.html',{'item':item,'card_ids':card_ids})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
       
-def index(request):      
-    keywords = KeyWords.objects.filter(is_active=True).order_by('show_order')
-    notices = Notice.objects.all().order_by('-create_time')[0:MAX_NOTICE]
-    anounces = Anounce.objects.all().order_by('-create_time')[0:MAX_ANOUNCE]
-    pictures = Pictures.objects.filter(is_active=True).order_by('-create_time')
-    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
-    
-    act_codes = Activity.objects.filter(card_type='act_code',status="active")
-    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
-    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
-    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
+def index(request):
     return render_to_response('card/index.html',locals())
 
 def coperation(request):

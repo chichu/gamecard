@@ -1,14 +1,29 @@
-<!--sidecolumn-->
-<div class="sidecolumn">
-<div class="sidetitle"><h2>登录</h2><span></span><div class="clearfix"></div></div>
-<div class="login-info">
-	
-			<p>michaelwangvm，欢迎您<br />
-			<ul>
-				<li><a href="#">我的个人页</a></li>
-				<li><a href="#">进入论坛</a></li>
-				<li><a href="#">退出</a></li>
-			</ul>
-		</div><!--login-info-->
+<!--side-->
+<div class="side">
+
+    <div class="sidecolumn">
+    <div class="sidetitle"><h2>登录</h2><span></span><div class="clearfix"></div></div>
+    <div class="login-info">
+    			<p>{{username}}欢迎您<br />
+    			<ul>
+    				<li><a href="#">我的个人页</a></li>
+    				<li><a href="#">进入论坛</a></li>
+    				<li><a href="#">退出</a></li>
+    			</ul>
+    		</div><!--login-info-->
+    </div>
+
+
+    <div class="sidecolumn">
+        <div class="sidetitle"><h2>新游戏上线时间表</h2><span></span><div class="clearfix"></div></div>
+        <div class="cont">
+            {% for n in online_news %}
+                <div class="sidenews">
+                    <a href="{{n.link_url}}" class="fontgreen rightfix" target='_blank'>{{n.status}}</a>
+                    <span>[{{n.online_time.month}}.{{n.online_time.day}}]</span>{{n.content}}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 </div>
-<!--end sidecolumn-->
+<!--end side-->
