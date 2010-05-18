@@ -1,38 +1,16 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
-<link rel="stylesheet" href="http://media.ka.178.com/static/css/common.css" type="text/css"/>
-<link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
-<link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" />
+﻿{% extends "card/base.html" %}
+
+{% block extra_css %}
 <link href="http://media.ka.178.com/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
+{% endblock %}
+
+{% block extra_js %}
 <script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
 <script type="text/javascript" src="http://media.ka.178.com/static/js/jShowWin.js"></script>
 <script type="text/javascript" src="http://media.ka.178.com/static/js/jSwitchTabs.js"></script>
-<!--[if lte IE 6]>
-<style>.fixie6png{behavior:url("http://media.ka.178.com/static/js/iepngfix.htc");}</style>
-<script type="text/javascript" src="http://media.ka.178.com/static/js/iepngfix-tilebg.js"></script>
-<![endif]-->
-<title>新手卡首页</title>
-</head>
-<body>
-<div class="contenner">
-<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
-<script>
-var product_nav_box_width = 980,product_post_width = 520;
-</script>
-<script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
-<script type="text/javascript" src="http://www.178.com/s/pronav.js"></script>
+{% endblock %}
 
-{% load card_tags %}
-{% headnav 1 %}
-<div class="clearfix"></div>
-<!--content -->
-<div class="content">
-<!--main-->
-<div class="main">
+{% block main %}
 <!--searchbar-->
 <div class="searchbar"><div class="innerbox">
 {% include "card/searchbar.html" %}
@@ -268,38 +246,4 @@ var product_nav_box_width = 980,product_post_width = 520;
     </div>
 </div></div>
 <!--end 发卡box-->
-</div><!--end main-->
-
-{% block side %}
-<!--side-->
-<div class="side">
-{% include "card/side.html" %}
-<!--sidecolumn-->
-<div class="sidecolumn">
-<div class="sidetitle"><h2>新游戏上线时间表</h2><span></span><div class="clearfix"></div></div>
-<div class="cont">
-{% for n in online_news %}
-<div class="sidenews">
-    <a href="{{n.link_url}}" class="fontgreen rightfix" target='_blank'>{{n.status}}</a>
-    <span>[{{n.online_time.month}}.{{n.online_time.day}}]</span>{{n.content}}
-</div>
-{% endfor %}
-</div>
-</div>
-<!--end sidecolumn-->
-</div>
-<!--end side-->
 {% endblock %}
-
-{% block foot %}
-<div class="clearfix"></div></div>
-<!--end content -->
-<!--footer-->
-<div class="footer">
-    <script src='http://www.178.com/s/footer.js'></script>
-</div>
-<!--end footer-->
-{% endblock %}
-</div><!-- end contenner-->
-</body>
-</html>
