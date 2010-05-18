@@ -1,0 +1,6 @@
+<div class="keywords">
+<span></span>
+    {% for w in keywords%}
+    <a href="{{w.link_url}}" target="_blank" title='{{w.title}}'>{{w.title}}</a> {% if not forloop.last%}| {% endif %} 
+    {% endfor %}
+</div>
