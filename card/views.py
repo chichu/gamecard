@@ -87,10 +87,6 @@ def get_chance(request,item_id):
       
 def index(request):
     username = 'chichu'
-    act_codes = Activity.objects.filter(card_type='act_code',status="active")
-    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
-    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
-    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
     return render_to_response('card/index.html',locals())
 
 def coperation(request):
