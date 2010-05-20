@@ -5,7 +5,6 @@ from gamecard.card.models import *
 
 register = template.Library()
 
-MAX_CHANCE_CARD_IDS = 5
 MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
@@ -31,10 +30,6 @@ def keywords():
 @register.inclusion_tag('card/cardbox.html')
 def cardbox():
     from gamecard.utils.strutils import get_ordered_act
-    act_codes = Activity.objects.filter(card_type='act_code',status="active")
-    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
-    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
-    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
     return locals()
 
 @register.inclusion_tag('card/news.html')

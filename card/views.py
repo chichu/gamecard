@@ -59,7 +59,7 @@ def get_card(request,item_id):
         return res
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
-       
+MAX_CHANCE_CARD_IDS = 5   
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -87,6 +87,10 @@ def get_chance(request,item_id):
       
 def index(request):
     username = 'chichu'
+    act_codes = Activity.objects.filter(card_type='act_code',status="active")
+    begin_cards = Activity.objects.filter(card_type='begin_card',status="active")
+    (a_hot,a_new,a_alpha) = get_ordered_act(begin_cards,start_alpha_index=12)
+    (b_hot,b_new,b_alpha) = get_ordered_act(act_codes,start_alpha_index=2)
     return render_to_response('card/index.html',locals())
 
 def coperation(request):
