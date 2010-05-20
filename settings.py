@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-#    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.cache.CacheMiddleware',
 )
 
 ROOT_URLCONF = 'gamecard.urls'
@@ -89,15 +89,25 @@ INSTALLED_APPS = (
 )
 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-VIEW_CACHE_EXPIRE = 6
+VIEW_CACHE_EXPIRE = 3600
 
 RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
 RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"
 
-#SESSION_COOKIE_DOMAIN = '.178.com'
-#SESSION_COOKIE_AGE = 3600*24
+SESSION_COOKIE_DOMAIN = '.178.com'
+SESSION_COOKIE_AGE = 3600*24
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 #SESSION_COOKIE_SECURE = True
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    #"django.contrib.auth.context_processors.auth",
+    #"django.core.context_processors.auth",
+    "django.contrib.context_processors.request",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    #"django.contrib.messages.context_processors.messages"
+)
 
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",

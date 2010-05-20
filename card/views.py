@@ -15,14 +15,16 @@ from forms import *
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
-
-    #if not request.COOKIES.has_key('user_name'):
-    #    return render_to_response('card/popups/login.html')
+        
+    username = request.session.get('username','')
+    if not bool(username):
+        return render_to_response('card/popups/login.html')
+        
     if request.COOKIES.has_key("has_get"):
         return render_to_response('card/popups/failure2.html',{'item_id':item_id})
  
     if request.method == "POST":
-        username = request.COOKIES.get('user_name','chichu')
+        
         item = Item.objects.get(id=item_id)
         
         input_code = request.POST.get("checkcode","").strip()
@@ -84,9 +86,10 @@ def get_chance(request,item_id):
             return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':"error!"})
         return render_to_response('card/popups/chance_success.html',{'item':item,'card_ids':card_ids})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
-      
+        
 def index(request):
-    username = ''
+    if not request.session.has_key('username'):
+        request.session['username'] = get_username_from_cookie(request)
     return render_to_response('card/index.html',locals())
 
 def coperation(request):
