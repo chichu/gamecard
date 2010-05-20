@@ -1,7 +1,8 @@
 #encoding:utf-8
 # Create your views here.
 from django.utils.encoding import smart_unicode,force_unicode,smart_str
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import * 
+from django.template import RequestContext
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render_to_response
 from models import *
@@ -24,9 +25,7 @@ def get_card(request,item_id):
         return render_to_response('card/popups/failure2.html',{'item_id':item_id})
  
     if request.method == "POST":
-        
         item = Item.objects.get(id=item_id)
-        
         input_code = request.POST.get("checkcode","").strip()
         checkcode = request.session.get('checkcode','error')
         if input_code != checkcode:
@@ -88,14 +87,16 @@ def get_chance(request,item_id):
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
         
 def index(request):
-    if not request.session.has_key('username'):
-        request.session['username'] = get_username_from_cookie(request)
+    request.session['username'] = get_username_from_cookie(request)
+    username = request.session.get('username')
     return render_to_response('card/index.html',locals())
 
 def coperation(request):
+    username = request.session.get('username')
     return render_to_response('card/coperation.html',locals())
     
 def activity_detail(request,activity_id):
+    username = request.session.get('username')
     online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())

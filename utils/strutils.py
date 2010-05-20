@@ -1,4 +1,5 @@
 #encoding:utf-8
+import urllib
 
 def get_username_from_cookie(request):
     '''
@@ -7,12 +8,17 @@ def get_username_from_cookie(request):
        md5验证段的内容=uid<>email<>username<>timestamp+4b21e6f4
        用_178c里得到的uid，username，email去和_i中的md5段验证
     '''
-    if (not request.COOKIES.has_key('_178c')) or (not request.COOKIES.has_key()):
-        return None
-    (uid,email,username) = request.COOKIES.get('_178c').split('#')
-    if (uid,email,username) == tuple(request.COOKIES.get('_i').split('_')[1].split('<>')[0:2])
-        return username
-    return None
+    if (not request.COOKIES.has_key('_178c')) or (not request.COOKIES.has_key("_i")):
+        return '' 
+    (uid,email,username) = tuple(urllib.unquote(request.COOKIES.get('_178c')).split('#'))
+    (code,md5code,timestamp) = tuple(urllib.unquote(request.COOKIES.get('_i')).split('_'))
+    seed = "%s<>%s<>%s<>%s%s" % (uid,email,username,timestamp,'4b21e6f4')
+    import md5
+    m = md5.new(seed)
+    m.digest()
+    if md5code == m.hexdigest():
+        return username 
+    return '' 
     
 def check_cardfile_format(line,format):
     return (len(line.split(",")) == len(format.split("&")))
