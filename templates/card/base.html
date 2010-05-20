@@ -11,6 +11,13 @@
 {% block extra_css %}{% endblock %}
 
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
+<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
+<script type="text/javascript">
+    var product_nav_box_width = 980;
+    var product_post_width = 520;
+</script>
+<script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
+<script type="text/javascript" src="http://www.178.com/s/pronav.js"></script> 
 {% block extra_js %}{% endblock %}
 <title>{% block title %}新手卡首页{% endblock %}</title>
 <!--[if lte IE 6]>
@@ -20,17 +27,6 @@
 </head>
 <body>
 <div class="contenner">
-    <!--全站导航开始 --> 
-    <script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
-    <!--全站导航结束-->
-    <!--产品导航开始 -->
-    <script>
-    var product_nav_box_width = 980,product_post_width = 520;
-    //var product_nav_box_width = 960,product_post_width = 500;
-    </script>
-    <script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
-    <script type="text/javascript" src="http://www.178.com/s/pronav.js"></script> 
-    <!--产品导航结束-->
 {% load card_tags %}
 {% block headnav %}
     {% headnav 1 %}
