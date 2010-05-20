@@ -3,21 +3,34 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=7" />
+
+
 <link rel="stylesheet" href="http://media.ka.178.com/static/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" /> 
 {% block extra_css %}{% endblock %}
+
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
+{% block extra_js %}{% endblock %}
+<title>{% block title %}新手卡首页{% endblock %}</title>
 <!--[if lte IE 6]>
 <style>.fixie6png{behavior:url("http://media.ka.178.com/static/js/iepngfix.htc");}</style>
 <script type="text/javascript" src="http://media.ka.178.com/static/js/iepngfix-tilebg.js"></script>
 <![endif]-->
-{% block extra_js %}{% endblock %}
-<title>{% block title %}新手卡首页{% endblock %}</title>
 </head>
 <body>
 <div class="contenner">
-    
+    <!--全站导航开始 --> 
+    <script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
+    <!--全站导航结束-->
+    <!--产品导航开始 -->
+    <script>
+    var product_nav_box_width = 980,product_post_width = 520;
+    //var product_nav_box_width = 960,product_post_width = 500;
+    </script>
+    <script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
+    <script type="text/javascript" src="http://www.178.com/s/pronav.js"></script> 
+    <!--产品导航结束-->
 {% load card_tags %}
 {% block headnav %}
     {% headnav 1 %}
