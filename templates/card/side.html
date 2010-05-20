@@ -4,13 +4,32 @@
     <div class="sidecolumn">
     <div class="sidetitle"><h2>登录</h2><span></span><div class="clearfix"></div></div>
     <div class="login-info">
+        {% if username %}
     			<p>{{username}}欢迎您<br />
     			<ul>
     				<li><a href="#">我的个人页</a></li>
     				<li><a href="#">进入论坛</a></li>
     				<li><a href="#">退出</a></li>
     			</ul>
-    		</div><!--login-info-->
+    	{% else %}
+    	    <form action="http://account.178.com/q_account.php" name="login" method="post" id="loginform">
+            	<div class="win-login">
+                        <select name="type">
+                         <option value="username">用户名</option>
+                         <option value="uid">UID</option>
+                         <option value="email">Email</option>
+                        </select>
+                        <input type="hidden" value="login" name="_act">
+                        <input type="text" onclick="this.value = ''" value="" tabindex="1" maxlength="40" size="20" name="email" id="username">
+                        <input type="password" onkeypress="if((event.keyCode ? event.keyCode : event.charCode) == 13) $('loginform').submit()" tabindex="2" size="10" name="password" id="password">
+                    <p class="login-tip"><input type="checkbox" value="31536000" name="noexpires" id="noexpires"><label class="noexpires" for="noexpires">记住我</label></p>
+                    <p class="login-tip txt">为了帐号安全，请不要在网吧等公用电脑上保留登录状态。</p>          
+                </div>
+            <a href="#" onclick="$('loginform').submit();"><span >登陆</span></a>
+            <a href="http://account.178.com/?p=register" ><span >还没帐号，立即注册</span></a>
+            </form>
+    	{% endif%}
+    </div><!--login-info-->
     </div>
 
 
