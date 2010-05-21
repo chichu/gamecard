@@ -12,7 +12,7 @@ class CoperationForm(forms.ModelForm):
         exclude = ('create_time',)
         widgets = {
             'content': forms.Textarea(attrs={'cols': 50, 'rows': 10}),
-            'game_type':forms.RadioSelect()
+            'game_type':forms.RadioSelect(choices=(('aa','aa'),('bb','bb')))
         }
         
 class SuggestForm(forms.ModelForm):
