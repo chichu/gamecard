@@ -88,15 +88,26 @@ def get_chance(request,item_id):
         
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
-    username = request.session.get('username')
+    username = request.session.get('username','')
     return render_to_response('card/index.html',locals())
 
 def coperation(request):
-    username = request.session.get('username')
+    username = request.session.get('username','')
     return render_to_response('card/coperation.html',locals())
     
+def suggest(request):
+    username = request.session.get('username','')
+    return render_to_response('card/suggest.html',locals())
+    
+def cardbox(request):
+    request.session['username'] = get_username_from_cookie(request)
+    username = request.session.get('username','')
+    if not bool(username):
+        render_to_response('card/popups/login.html',locals())
+    return render_to_response('card/cardbox.html',locals())
+    
 def activity_detail(request,activity_id):
-    username = request.session.get('username')
+    username = request.session.get('username','')
     online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())

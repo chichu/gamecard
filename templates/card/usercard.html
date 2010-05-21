@@ -1,0 +1,28 @@
+{% extends "card/i2.html" %}
+{% load card_tags %}
+{% block title %}存卡箱{% endblock %}
+{% block headnav %}{% headnav 4 %}{% endblock %}
+{% block content %}
+            <div class="card-info">
+            	<span>2010-4-16  15:28 </span>
+                <span class="info-content"> 领取<a href="#">《名将三国》限量至尊卡</a></span>
+                <span class="info-btn"><a href=""><strong>物品详情</strong></a><a href=""><strong>删除</strong></a></span>
+            </div>
+            
+            <div class="pages">
+            	共12页，1/12
+                <a href="#">&lt;&lt;</a>
+                <a href="#">&lt;</a>
+                <a href="#" class="current">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">4</a>
+                <a href="#">5</a>
+                ...
+              
+                <a href="#">&gt;</a>
+                <a href="#">&gt;&gt;</a>
+            </div>
+{% endblock %}            
+
+
