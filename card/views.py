@@ -105,7 +105,8 @@ def suggest(request):
             s.create_time = datetime.now()
             s.save()
             return HttpResponse('/card/')
-    f = SuggestForm()        
+    else:
+        f = SuggestForm()        
     return render_to_response('card/suggest.html',locals())
     
 def cardbox(request):

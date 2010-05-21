@@ -115,9 +115,9 @@ class GameCompany(models.Model):
     game_name = models.CharField("游戏名称",max_length=50)
     game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
     content = models.TextField("合作内容")
-    contact_person = models.CharField("联系人姓名",,max_length=10)
-    person_position = models.CharField("联系人职位",,max_length=50)
-    contact = models.CharField("联系方式",,max_length=10)
+    contact_person = models.CharField("联系人姓名",max_length=10)
+    person_position = models.CharField("联系人职位",max_length=50)
+    contact = models.CharField("联系方式",max_length=10)
     create_time = models.DateTimeField("创建时间",null=True,blank=True,default=datetime.now())  
     class Meta:
         verbose_name = "发卡合作"

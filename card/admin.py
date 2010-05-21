@@ -19,6 +19,12 @@ class ItemAdmin(admin.ModelAdmin):
     list_filter = ('format','is_chance')
 admin.site.register(Item,ItemAdmin)
 
+class SuggestAdmin(admin.ModelAdmin):
+    list_display = ('title','content','email','username','create_time')
+    search_fields = ('title','content','email','username')
+admin.site.register(Suggest,SuggestAdmin)
+
+
 class ActAdmin(admin.ModelAdmin):
     list_display = ('name','item','game','card_count','card_left','card_type','start_time','status')
     search_fields = ('name',)
