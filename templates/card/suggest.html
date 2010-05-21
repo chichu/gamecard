@@ -8,16 +8,6 @@
             	<div class="tip">尊敬的用户，您好！为了给您带来更好的使用体验，178新手卡平台欢迎您使用用户留言系统。如果您对于我们的工作有任何疑问或建议，都可以通过这个系统向我们反馈，我们的工作人员将会把这些信息进行汇总，并在第一时间解决。谢谢您对我们工作的支持！</div>
                   <ul class="form-main">
                     {% for field in f %}
-                  	<li>
-                      	<div class="txt">{{ field.label_tag }}：</div>
-                          <div class="option">{{ field }}
-                            <font color="red">{{ field.errors }}</font>    
-      			            <p>{{field.help_text}}</p>  
-                          <div>
-                      </li>
-                    {% endfor %}
-                    <ul class="form-main">
-                    {% for field in f %}
                          <li>
                         	<div class="txt">{{field.label_tag}}：</div>
                             <div class="option">{{field}}
