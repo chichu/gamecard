@@ -93,15 +93,16 @@ def index(request):
 
 def search(request):
     from gamecard.utils.strutils import get_alpha_ordered_act
+    username = request.session.get('username','')
     if request.method == "POST":
         keyword = request.POST.get('keywords','')
-        if not bool(keywords):
-            return HttpResponseRedirect("/card/")
+        if not bool(keyword):
+            return render_to_response('card/results.html',locals())
         keywords = keyword.split(" ")     
         act_codes = Activity.objects.filter(card_type='act_code',name__in=keywords,status="active")
         begin_cards = Activity.objects.filter(card_type='begin_card',name__in=keywords,status="active")
-        a_alpha = get_alpha_ordered_act(begin_cards)
-        b_alpha = get_alpha_ordered_act(act_codes)
+        a_alpha = get_alpha_ordered_act(begin_cards,12)
+        b_alpha = get_alpha_ordered_act(act_codes,2)
         return render_to_response('card/results.html',locals()) 
     return render_to_response('card/results.html',locals())
         

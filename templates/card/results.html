@@ -3,7 +3,13 @@
 {% block title %}搜索结果{% endblock %}
 {% block headnav %}{% headnav 1 %}{% endblock %}
 {% block main %}
-{% block search %} {{block.super}} {% endblock %}
+<!--searchbar-->
+<div class="searchbar"><div class="innerbox">
+{% include "card/searchbar.html" %}
+{% keywords %}
+<div class="clearfix"></div></div></div>
+<!--end searchbar-->
+
 {% if a_alpha or b_alpha %}
     <div class="cardbox mt10"><div class="innerbox">
     <div class="cardboxtop">

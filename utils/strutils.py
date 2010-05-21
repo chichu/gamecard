@@ -76,16 +76,18 @@ def get_ordered_act(acts,start_alpha_index):
     if len(new) > MAX_LENGTH:
         new =  new[0:MAX_LENGTH]
     return_list = [hot,new]
-    alphas = get_alpha_ordered_act(acts)
+    alphas = get_alpha_ordered_act(acts,start_alpha_index)
     return_list.append(alphas)
     return tuple(return_list)
 
 ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"    
-def get_alpha_ordered_act(acts):
+def get_alpha_ordered_act(acts,start_alpha_index):
     alphas = []
     for i in range(0,len(ALL_ALPHA)):
         alpha = ALL_ALPHA[i]
         tmp = acts.filter(name_start_alpha__iexact=alpha.strip()) 
+        #if bool(tmp):
+         #   alphas.append((i/4+start_alpha_index,alpha,tmp))
         alphas.append((i/4+start_alpha_index,alpha,tmp))
     return alphas
     
