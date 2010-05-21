@@ -111,13 +111,13 @@ class Pictures(models.Model):
         return self.title
 
 class GameCompany(models.Model):
-    company_name = models.CharField("公司名称",max_length=50)
-    game_name = models.CharField("游戏名称",max_length=50)
+    company_name = models.CharField("公司名称",max_length=100)
+    game_name = models.CharField("游戏名称",max_length=100)
     game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
-    content = models.TextField("合作内容")
-    contact_person = models.CharField("联系人姓名",max_length=10)
-    person_position = models.CharField("联系人职位",max_length=50)
-    contact = models.CharField("联系方式",max_length=10)
+    content = models.TextField("合作内容",max_length=500)
+    contact_person = models.CharField("联系人姓名",max_length=100)
+    person_position = models.CharField("联系人职位",max_length=100)
+    contact = models.CharField("联系方式",max_length=100,help_text="（QQ、Msn、Email、电话、或其他联系方式）")
     create_time = models.DateTimeField("创建时间",null=True,blank=True,default=datetime.now())  
     class Meta:
         verbose_name = "发卡合作"
@@ -127,9 +127,9 @@ class GameCompany(models.Model):
         return self.company_name
         
 class Suggest(models.Model):
-    title = models.CharField("标题",max_length=25)
-    content = models.TextField("内容")
-    email = models.EmailField("电子邮箱")
+    title = models.CharField("标题",max_length=100)
+    content = models.TextField("内容",max_length=500)
+    email = models.EmailField("电子邮箱",max_length=100)
     username = models.CharField("标题",max_length=50)
     create_time = models.DateTimeField("创建时间",null=True,blank=True,default=datetime.now())
     class Meta:

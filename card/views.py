@@ -93,6 +93,15 @@ def index(request):
 
 def coperation(request):
     username = request.session.get('username','')
+    if request.method == "POST":
+        f = CoperationForm(request.POST)
+        if f.is_valid():
+            c = f.save(commit=False)
+            c.create_time = datetime.now()
+            c.save()
+            return HttpResponseRedirect('/card/')
+    else:
+        f = CoperationForm()
     return render_to_response('card/coperation.html',locals())
     
 def suggest(request):
@@ -104,7 +113,7 @@ def suggest(request):
             s.username = username
             s.create_time = datetime.now()
             s.save()
-            return HttpResponse('/card/')
+            return HttpResponseRedirect('/card/')
     else:
         f = SuggestForm()        
     return render_to_response('card/suggest.html',locals())

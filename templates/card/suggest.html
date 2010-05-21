@@ -10,7 +10,7 @@
                     {% for field in f %}
                   	<li>
                       	<div class="txt">{{ field.label_tag }}：</div>
-                          <div class="option">{{ field }}<p>{{ field.errors }}</p></div>
+                          <div class="option">{{ field }}<p style="font-color:red;">{{ field.errors }}</p></div>
                       </li>
                     {% endfor %}
                   </ul>
