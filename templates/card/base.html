@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="http://media.ka.178.com/static/css/common.css" type="text/css"/>
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" /> 
+<link href="http://media.ka.178.com/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
 {% block extra_css %}{% endblock %}
 
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
-<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script> 
+<script type="text/javascript" src="http://www.178.com/s/top_nav.js"></script>
+<script type="text/javascript" src="http://media.ka.178.com/static/js/jShowWin.js"></script> 
 <script type="text/javascript">
     var product_nav_box_width = 980;
     var product_post_width = 520;
@@ -36,6 +38,8 @@
 <div class="content">
 <!--main-->
 <div class="main">
+<div class="fixie6png pop-wrap" id='pop-up'><!--透明背景层 -->
+</div><!--pop-wrap -->
 {% block main %}{% endblock %}
 </div><!--end main-->
 

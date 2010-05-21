@@ -3,23 +3,18 @@
 {% block title %}有话要说{% endblock %}
 {% block headnav %}{% headnav 3 %}{% endblock %}
 {% block content %}      
+<form action="" method="post" id='suggestform'>
           <div class="card-form">
             	<div class="tip">尊敬的用户，您好！为了给您带来更好的使用体验，178新手卡平台欢迎您使用用户留言系统。如果您对于我们的工作有任何疑问或建议，都可以通过这个系统向我们反馈，我们的工作人员将会把这些信息进行汇总，并在第一时间解决。谢谢您对我们工作的支持！</div>
                   <ul class="form-main">
+                    {% for field in f %}
                   	<li>
-                      	<div class="txt">标题：</div>
-                          <div class="option"><input name="" type="text" class="input" /></div>
+                      	<div class="txt">{{ field.label_tag }}：</div>
+                          <div class="option">{{ field }}<p>{{ field.errors }}</p></div>
                       </li>
-                      <li>
-                      	<div class="txt">内容：</div>
-                          <div class="option"><textarea name="" cols="" rows=""></textarea></div>
-                      </li>
-                       <li>
-                      	<div class="txt"> 电子邮箱：</div>
-                          <div class="option"><input name="" type="text"  class="input"/></div>
-                      </li>
-
+                    {% endfor %}
                   </ul>
-                  <div class="form-btn"><input name="" type="button"  value="确认提交" /></div>
+                  <div class="form-btn"><input type="button" onclick="$('suggestform').submit();" value="确认提交" /></div>
             </div>
+</form>
 {% endblock %}

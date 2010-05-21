@@ -97,6 +97,15 @@ def coperation(request):
     
 def suggest(request):
     username = request.session.get('username','')
+    if request.method == "POST":
+        f = SuggestForm(request.POST)
+        if f.is_valid():
+            s = f.save(commit=False)
+            s.username = username
+            s.create_time = datetime.now()
+            s.save()
+            return HttpResponse('/card/')
+    f = SuggestForm()        
     return render_to_response('card/suggest.html',locals())
     
 def cardbox(request):
