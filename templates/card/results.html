@@ -10,7 +10,7 @@
 <div class="clearfix"></div></div></div>
 <!--end searchbar-->
 
-{% if a_alpha or b_alpha %}
+{% if b_alpha  %}
     <div class="cardbox mt10"><div class="innerbox">
     <div class="cardboxtop">
     <h1>测试码</h1>	
@@ -27,7 +27,7 @@
         <th width="10%">领卡</th>
         <th width="10%">淘号</th>
       </tr>
-      {% for tab_index,alpha,acts in b_alpha %}
+      {% for alpha,acts in b_alpha %}
         {% ifchanged alpha%}
       <tr>
         <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
@@ -46,8 +46,9 @@
     </table></div>
     </div>
     </div></div>
+{% endif %}
 
-
+{% if a_alpha  %}
     <div class="cardbox mt10"><div class="innerbox">
 
     <div class="cardboxtop">
@@ -65,7 +66,7 @@
         <th width="10%">领卡</th>
         <th width="10%">淘号</th>
       </tr>
-      {% for tab_index,alpha,acts in a_alpha %}
+      {% for alpha,acts in a_alpha %}
           {% ifchanged alpha%}
         <tr>
           <td colspan="5"  class="itemtitle" >首字以{{alpha}}开头的游戏</td>
@@ -84,7 +85,11 @@
     </table></div>
     </div>
     </div></div>
-{% else %}
+{% endif %}
+
+{% if not a_alpha and not b_alpha %}
+<div class="cardbox mt10"><div class="innerbox p15">
     <p>没有结果可以显示</p>
+</div></div>
 {% endif %}
 {% endblock %}

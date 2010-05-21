@@ -101,8 +101,8 @@ def search(request):
         keywords = keyword.split(" ")     
         act_codes = Activity.objects.filter(card_type='act_code',name__in=keywords,status="active")
         begin_cards = Activity.objects.filter(card_type='begin_card',name__in=keywords,status="active")
-        a_alpha = get_alpha_ordered_act(begin_cards,12)
-        b_alpha = get_alpha_ordered_act(act_codes,2)
+        a_alpha = get_clean_alpha_act(get_alpha_ordered_act(begin_cards,12))
+        b_alpha = get_clean_alpha_act(get_alpha_ordered_act(act_codes,2))
         return render_to_response('card/results.html',locals()) 
     return render_to_response('card/results.html',locals())
         

@@ -86,8 +86,12 @@ def get_alpha_ordered_act(acts,start_alpha_index):
     for i in range(0,len(ALL_ALPHA)):
         alpha = ALL_ALPHA[i]
         tmp = acts.filter(name_start_alpha__iexact=alpha.strip()) 
-        #if bool(tmp):
-         #   alphas.append((i/4+start_alpha_index,alpha,tmp))
         alphas.append((i/4+start_alpha_index,alpha,tmp))
     return alphas
-    
+
+def get_clean_alpha_act(sets):
+    tmp = []
+    for index,alpha,acts in sets:
+        if bool(acts):
+            tmp.append((alpha,acts))
+    return tmp
