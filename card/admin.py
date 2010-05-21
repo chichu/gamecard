@@ -24,6 +24,11 @@ class SuggestAdmin(admin.ModelAdmin):
     search_fields = ('title','content','email','username')
 admin.site.register(Suggest,SuggestAdmin)
 
+class GameCompanyAdmin(admin.ModelAdmin):
+    list_display = ('company_name','game_name','game_type','content','contact_person','person_position','contact','create_time')
+    search_fields = ('company_name','game_name','contact_person')
+    radio_fields = {"game_type":admin.HORIZONTAL}
+admin.site.register(GameCompany,GameCompanyAdmin)
 
 class ActAdmin(admin.ModelAdmin):
     list_display = ('name','item','game','card_count','card_left','card_type','start_time','status')

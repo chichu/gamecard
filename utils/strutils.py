@@ -66,7 +66,7 @@ def insert_card_ids(all_line,item):
             continue 
     return collect.count()
 
-ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"
+
 MAX_LENGTH = 5
 def get_ordered_act(acts,start_alpha_index):
     hot = acts.filter(is_hot=True).order_by('-start_time')
@@ -76,11 +76,16 @@ def get_ordered_act(acts,start_alpha_index):
     if len(new) > MAX_LENGTH:
         new =  new[0:MAX_LENGTH]
     return_list = [hot,new]
+    alphas = get_alpha_ordered_act(acts)
+    return_list.append(alphas)
+    return tuple(return_list)
+
+ALL_ALPHA = "ABCDEFGHIJKLMNOPQRSTWXYZ"    
+def get_alpha_ordered_act(acts):
     alphas = []
     for i in range(0,len(ALL_ALPHA)):
         alpha = ALL_ALPHA[i]
         tmp = acts.filter(name_start_alpha__iexact=alpha.strip()) 
         alphas.append((i/4+start_alpha_index,alpha,tmp))
-    return_list.append(alphas)
-    return tuple(return_list)
+    return alphas
     

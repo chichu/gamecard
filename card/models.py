@@ -130,7 +130,7 @@ class Suggest(models.Model):
     title = models.CharField("标题",max_length=100)
     content = models.TextField("内容",max_length=500)
     email = models.EmailField("电子邮箱",max_length=100)
-    username = models.CharField("标题",max_length=50)
+    username = models.CharField("用户名",max_length=50)
     create_time = models.DateTimeField("创建时间",null=True,blank=True,default=datetime.now())
     class Meta:
         verbose_name = "用户反馈"
