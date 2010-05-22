@@ -7,23 +7,24 @@ MONGODB_HOST = "localhost"
 MONGODB_PORT = 0
 MONGODB_PASSWORD = "password"
 
+USER_INFO = "user_info"
 def get_mongodb_collect(collection,database=MONGODB_NAME):
     db = Connection()[database]
     collect = db[collection]
     return collect
     
-def save_user_card_id(username,item,card_id):
-    collect = get_mongodb_collect("user_info")
+def save_user_card_id(username,item,object_id):
+    collect = get_mongodb_collect(USER_INFO)
     timestamp = datetime.now()
     if collect.ensure_index("name"): 
         collect.create_index('name',unique=True)
     user = collect.find_one({"name":username})
     try:
         if bool(user):
-            user['cards'] += (item.id,card_id,timestamp)
+            user['cards'] += (item.id,object_id,timestamp)
             collect.save(user)
         else:
-            new_user = {"name":username,'cards':[(item.id,card_id,timestamp)]}
+            new_user = {"name":username,'cards':[(item.name,item.id,object_id,timestamp)]}
             collect.insert(new_user)
     except Exception,e:
         return e

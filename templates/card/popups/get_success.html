@@ -6,15 +6,15 @@
 		<span class="win-icon win-icon-c"></span>
 	<p>
         <span><strong>物品已放至存卡箱!</strong></span><br />
-        恭喜您！您获得了<strong class="ff0000">{{item.name}}</strong>！<br />
+        恭喜您！您获得了<strong class="ff0000">{{item_name}}</strong>！<br />
         请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。
     </p>
 	</div>
 </div>
 {% endblock %}
 {% block submit %} 
-	<a href="/card/itemdetail/?card_id={{card_id}}&item_id={{item.id}}" ><span >现在查看</span></a>
-	<a href="#" ><span >转至存卡箱</span></a>
+	<a href="/card/itemdetail/{{object_id}}/{{item_id}}/" ><span >现在查看</span></a>
+	<a href="/card/cardbox/" ><span >转至存卡箱</span></a>
 	<a href="#" class="WinClose" ><span >关闭</span></a>
 {% endblock %}
  

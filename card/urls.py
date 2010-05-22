@@ -9,7 +9,7 @@ urlpatterns = patterns('card.views',
    ('suggest/$','suggest'),
    ('cardbox/$','cardbox'),
    ('search/$','search'),
-   ('itemdetail/(.+).html$','item_detail'),
+   ('itemdetail/(.+)/(.+)/$','item_detail'),
    ('get_check_code_image/$', 'get_check_code_image'),  
    ('','index'),
 )

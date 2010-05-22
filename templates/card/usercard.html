@@ -4,11 +4,13 @@
 {% block headnav %}{% headnav 4 %}{% endblock %}
 {% block content %}
             <div class="card-info">
-            	<span>2010-4-16  15:28 </span>
-                <span class="info-content"> 领取<a href="#">《名将三国》限量至尊卡</a></span>
-                <span class="info-btn"><a href=""><strong>物品详情</strong></a><a href=""><strong>删除</strong></a></span>
+                {% for item_name,item_id,object_id,timestamp in all_cards %}
+            	<span>{{timestamp}} </span>
+                <span class="info-content"> 领取<a href="/card/itemdetail/{{object_id}}/{{item_id}}/">{{item_name}}</a></span>
+                <span class="info-btn"><a href="/card/itemdetail/{{object_id}}/{{item_id}}/"><strong>物品详情</strong></a><a href="/card/cardbox/{{object_id}}/{{item_id}}/delete/"><strong>删除</strong></a></span>
+                {% endfor %}
             </div>
-            
+            <!--
             <div class="pages">
             	共12页，1/12
                 <a href="#">&lt;&lt;</a>
@@ -23,6 +25,7 @@
                 <a href="#">&gt;</a>
                 <a href="#">&gt;&gt;</a>
             </div>
+            -->
 {% endblock %}            
 
 
