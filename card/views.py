@@ -101,6 +101,7 @@ def cardbox(request):
         try:
             collect = get_mongodb_collect(USER_INFO)
             user_info = collect.find_one({"name":username})
+            cards = [] 
             if not bool(user_info):
                 return render_to_response('card/usercard.html',locals())
             cards = user_info["cards"]

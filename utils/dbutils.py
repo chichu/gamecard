@@ -15,18 +15,19 @@ def get_mongodb_collect(collection,database=MONGODB_NAME):
     
 def save_user_card_id(username,item,object_id):
     collect = get_mongodb_collect(USER_INFO)
-    timestamp = datetime.now()
-    if collect.ensure_index("name"): 
-        collect.create_index('name',unique=True)
-    user = collect.find_one({"name":username})
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
     try:
+        if collect.ensure_index("name"): 
+            collect.create_index('name',unique=True)
+        user = collect.find_one({"name":username})
         if bool(user):
-            user['cards'] += (item.id,object_id,timestamp)
+            user['cards'].append((item.name,item.id,object_id,timestamp))
             collect.save(user)
         else:
             new_user = {"name":username,'cards':[(item.name,item.id,object_id,timestamp)]}
             collect.insert(new_user)
     except Exception,e:
+        print e
         return e
     return None
     
