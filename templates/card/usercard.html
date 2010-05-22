@@ -1,14 +1,18 @@
 {% extends "card/i2.html" %}
 {% load card_tags %}
 {% block title %}存卡箱{% endblock %}
-{% block headnav %}{% headnav 4 %}{% endblock %}
+{% block headnav %}{% headnav 4 username %}{% endblock %}
 {% block content %}
             <div class="card-info">
+            {% if all_cards %}
                 {% for item_name,item_id,object_id,timestamp in all_cards %}
             	<span>{{timestamp}} </span>
                 <span class="info-content"> 领取<a href="/card/itemdetail/{{object_id}}/{{item_id}}/">{{item_name}}</a></span>
                 <span class="info-btn"><a href="/card/itemdetail/{{object_id}}/{{item_id}}/"><strong>物品详情</strong></a><a href="/card/cardbox/{{object_id}}/{{item_id}}/delete/"><strong>删除</strong></a></span>
                 {% endfor %}
+            {% else %}
+                NO CARDS!
+            {% endif %}
             </div>
             <!--
             <div class="pages">

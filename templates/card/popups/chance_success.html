@@ -6,7 +6,7 @@
 		<ul>
 			<li>恭喜您淘到：<strong class="ff0000">{{item.name}}</strong 
 			<li>
-			    {% for on in cards %}
+			    {% for one in cards %}
 			    卡号：<span class="ff0000">{{one.card_id}}</span>{% if one.password %}&nbsp;密码：<span class="ff0000">{{one.password}}</span>{% endif %}
 			    {% endfor%}
 			</li>

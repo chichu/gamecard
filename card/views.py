@@ -88,7 +88,7 @@ def item_detail(request,object_id,item_id):
         item = Item.objects.get(id=item_id)
         item_name = item.name
         item_info = item.info
-        one = collect.find_one({"_id":ObjectId(object_id})
+        one = collect.find_one({"_id":ObjectId(object_id)})
     except Exception,e:
         log_error("error in get an object id:%s %s %s" % (object_id,item_id,e))
         print e
@@ -101,11 +101,14 @@ def cardbox(request):
         try:
             collect = get_mongodb_collect(USER_INFO)
             user_info = collect.find_one({"name":username})
+            if not bool(user_info):
+                return render_to_response('card/usercard.html',locals())
             cards = user_info["cards"]
         except Exception,e:
-            log_error("error in show user card box:%s %s %s" % (username,cards,e))
+            log_error("error in show user card box: %s %s" % (username,e))
             print e
-        return render_to_response('card/cardbox.html',{"all_cards":cards})   
+            return None
+        return render_to_response('card/usercard.html',locals())   
     return None    
 
 def index(request):
@@ -157,7 +160,6 @@ def suggest(request):
     
 def activity_detail(request,activity_id):
     username = request.session.get('username','')
-    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())
     
