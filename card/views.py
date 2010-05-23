@@ -184,7 +184,7 @@ def activity_detail(request,activity_id):
     username = request.session.get('username','')
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())
-    
+ 
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
 @never_cache
