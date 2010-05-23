@@ -125,12 +125,12 @@ def delete_card(request,object_id,item_id):
                     del cards[i]
                     user_info['card'] = cards
                     break
-            user_info.save()
+            collect.save(user_info)
         except Exception,e:
             log_error("error in delete card box: %s %s" % (username,e))
             print e
             return None
-        return HttpResponseRedirct("/card/cardbox/")  
+        return HttpResponseRedirect("/card/cardbox/")  
     return None
     
 def index(request):
