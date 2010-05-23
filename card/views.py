@@ -112,6 +112,27 @@ def cardbox(request):
         return render_to_response('card/usercard.html',locals())   
     return None    
 
+def delete_card(request,object_id,item_id):
+    username = request.session.get('username','')
+    if bool(username):
+        try:
+            collect = get_mongodb_collect(USER_INFO)
+            user_info = collect.find_one({"name":username})
+            cards = user_info['cards']
+            for i in range(0,len(cards)):
+                (item_name,itemid,objectid,timestamp) = cards[i]
+                if int(itemid) == int(item_id) and str(objectid) == object_id:
+                    del cards[i]
+                    user_info['card'] = cards
+                    break
+            user_info.save()
+        except Exception,e:
+            log_error("error in delete card box: %s %s" % (username,e))
+            print e
+            return None
+        return HttpResponseRedirct("/card/cardbox/")  
+    return None
+    
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
