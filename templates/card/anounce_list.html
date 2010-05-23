@@ -1,0 +1,34 @@
+{% extends "card/base.html" %}
+{% load card_tags %}
+{% block title %}公告列表{% endblock %}
+
+<div class="contenner">
+
+{% block main %}
+<!--cardbox-->
+<div class="cardbox mt10">
+    <div class="innerbox p15">
+    <ul class="news-list">
+         <li>
+            <span>2010-4-16  15:28 </span>
+           <a href="#">《名将三国》限量至尊卡</a>已开始发放，激活获得稀有宠物
+        </li> 
+    </ul>
+    
+    <div class="pages">
+    	共12页，1/12
+        <a href="#">&lt;&lt;</a>
+        <a href="#">&lt;</a>
+        <a href="#" class="current">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        ...
+      
+        <a href="#">&gt;</a>
+        <a href="#">&gt;&gt;</a>
+    </div>
+    </div>
+</div>
+{% endblock %}
