@@ -22,13 +22,6 @@
     	 共 {{ pages }}页 第 {{ page }}/{{ pages }}页 
         <a href="?page=1">&lt;&lt;</a>
         <a href="?page={{previous}}">&lt;</a>
-        <a href="?page={{page}}" class="current">{{page}}</a>
-        
-        {% ifnotequal next page %}<a href="?page={{next}}">{{next}}</a>{% endifnotequal %}
-        {% ifnotequal next+1 pages %}<a href="?page={{next+1}}">{{next+1}}</a>{% endifnotequal %}
-        {% ifnotequal next+2 pages %}<a href="?page={{next+2}}">{{next+2}}</a>{% endifnotequal %}
-        {% ifnotequal next+3 pages %}<a href="?page={{next+3}}">{{next+3}}</a>{% endifnotequal %}
-        {% ifnotequal next+4 pages %}...{% endifnotequal %}
       
         <a href="?page={{next}}">&gt;</a>
         <a href="?page={{pages}}">&gt;&gt;</a>

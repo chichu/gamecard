@@ -5,19 +5,17 @@ from settings import MEDIA_ROOT
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
+from gamecard.card.models import Anounce,Notice
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^gamecard/', include('gamecard.foo.urls')),
+    (r'^card/anounces/$','django.views.generic.list_detail.object_list',{"queryset":Anounce.objects.all().order_by('-create_time'),"paginate_by":30}),
+    (r'^card/notices/$','django.views.generic.list_detail.object_list',{"queryset":Notice.objects.all().order_by('-create_time'),"paginate_by":30}),
 
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r"^card/",include('gamecard.card.urls')),
     (r'^tinymce/', include('tinymce.urls')),
-#    (r'^static/(?P<path>.*)$', 'django.views.static.serve',
-#        {'document_root': MEDIA_ROOT}),
 )
+
