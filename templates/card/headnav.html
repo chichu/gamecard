@@ -14,7 +14,7 @@
 <span></span>
 <li><a href="/card/suggest/" title="有话要说" {% ifequal nav_index 3 %}class="current"{% endifequal %}>有话要说</a></li>
 <span></span>
-{% if request.session.username %}
+{% if username %}
 <li><a href="/card/cardbox/" title="存卡箱" {% ifequal nav_index 4 %}class="current"{% endifequal %}>存卡箱</a></li>
 {% endif %}
 </ul></div></div>
