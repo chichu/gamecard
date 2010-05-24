@@ -13,7 +13,6 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
-@never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -55,7 +54,6 @@ def get_card(request,item_id):
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
 MAX_CHANCE_CARD_IDS = 5
-@never_cache  
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -80,7 +78,6 @@ def get_chance(request,item_id):
         return render_to_response('card/popups/chance_success.html',{'item':item,'cards':avails})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
 
-@never_cache
 def item_detail(request,object_id,item_id):
     from pymongo.objectid import ObjectId
     try:
@@ -184,7 +181,6 @@ def activity_detail(request,activity_id):
  
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
-@never_cache
 def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     import Image, ImageDraw, ImageFont, random, md5,cStringIO 
     try:

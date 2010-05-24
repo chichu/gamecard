@@ -8,8 +8,8 @@ admin.autodiscover()
 from gamecard.card.models import Anounce,Notice
 
 urlpatterns = patterns('',
-    (r'^card/anounces/$','django.views.generic.list_detail.object_list',{"queryset":Anounce.objects.all().order_by('-create_time'),"paginate_by":30}),
-    (r'^card/notices/$','django.views.generic.list_detail.object_list',{"queryset":Notice.objects.all().order_by('-create_time'),"paginate_by":30}),
+    (r'^card/anounces/$','django.views.generic.list_detail.object_list',{"queryset":Anounce.objects.all().order_by('-create_time'),"paginate_by":15}),
+    (r'^card/notices/$','django.views.generic.list_detail.object_list',{"queryset":Notice.objects.all().order_by('-create_time'),"paginate_by":15}),
 
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
