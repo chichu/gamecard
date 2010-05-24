@@ -7,7 +7,7 @@
 			<li>恭喜您淘到：<strong class="ff0000">{{item.name}}</strong 
 			<li>
 			    {% for one in cards %}
-			    卡号：<span class="ff0000">{{one.card_id}}</span>{% if one.password %}&nbsp;密码：<span class="ff0000">{{one.passwd}}</span>{% endif %}
+			    卡号：<span class="ff0000">{{one.card_id}}</span>{% if one.password %}&nbsp;密码：<span class="ff0000">{{one.passwd}}</span><br/>{% endif %}
 			    {% endfor%}
 			</li>
 			<li><p class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</p></li>

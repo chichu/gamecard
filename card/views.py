@@ -13,6 +13,7 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
+@never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -54,6 +55,7 @@ def get_card(request,item_id):
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
 MAX_CHANCE_CARD_IDS = 5
+@never_cache
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -69,13 +71,15 @@ def get_chance(request,item_id):
             avails = collect.find(conditions).sort("count").limit(MAX_CHANCE_CARD_IDS)
             if avails.count() < MAX_CHANCE_CARD_IDS:
                 return render_to_response('card/popups/no_chance_card.html')
+            cards = []
             for one in avails:
                 one['count'] += 1
+                cards.append(one)
                 collect.save(one)
         except Exception,e:
             log_error("error in get chance %s" % e)
             return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':"error!"})
-        return render_to_response('card/popups/chance_success.html',{'item':item,'cards':avails})
+        return render_to_response('card/popups/chance_success.html',{'item':item,'cards':cards})
     return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
 
 def item_detail(request,object_id,item_id):
@@ -130,6 +134,7 @@ def delete_card(request,object_id,item_id):
         return HttpResponseRedirect("/card/cardbox/")  
     return None
     
+@never_cache
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
