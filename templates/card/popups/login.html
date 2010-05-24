@@ -3,7 +3,7 @@
 {% block content %} 
 <form action="http://account.178.com/q_account.php" name="login" method="post" id="loginform">
 	<div class="win-login">
-            <p class="login-tip">
+            <p>
             <span>
             <select name="type">
              <option value="username">用户名</option>
@@ -14,7 +14,7 @@
            <input type="text" onclick="this.value = ''" value="" tabindex="1" maxlength="40" size="10" name="email" id="username">
            </p>
             <input type="hidden" value="login" name="_act">
-            <p class="login-tip">
+            <p>
             <span>密码</span><input type="password" onkeypress="if((event.keyCode ? event.keyCode : event.charCode) == 13) $('loginform').submit()" tabindex="2" size="0" name="password" id="password">
             </p>
         <p class="login-tip"><input type="checkbox" value="31536000" name="noexpires" id="noexpires"><label class="noexpires" for="noexpires">记住我</label></p>
