@@ -1,6 +1,6 @@
 <div class="search fixie6png">
     <form action="/card/search/" method="POST" id='search'>
             <input class="searchcontent" id='keyword_input' name="keywords" type="text" value="请输入您要搜索的内容…"   onblur="if(this.value==''){this.value=this.defaultValue;}"   onfocus="if(this.value==this.defaultValue){this.value='';}"/>
-            <button class="searchbtn" onclick="if($('#keyword_input').value == ''){alert('请输入内容！');}ese{$(#'search').submit();}"></button>
+            <button class="searchbtn" onclick="if($('#keyword_input').value == ''){alert('请输入内容！');}else{$('#search').submit();}"></button>
     </form>
 </div>
