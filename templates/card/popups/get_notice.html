@@ -12,7 +12,7 @@
 	    </p>
 	</div>
 	<div class="notes-code">
-		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' onkeypress="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val());"/>
+		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
 		
 		<script language='javascript'>
 			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());

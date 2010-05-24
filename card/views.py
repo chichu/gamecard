@@ -28,8 +28,7 @@ def get_card(request,item_id):
     if request.method == "POST":
         item = Item.objects.get(id=item_id)
         input_code = request.POST.get("checkcode","").strip()
-        #checkcode = request.session.get('checkcode','error')
-        checkcode = request.COOKIES.get('checkcode','error')
+        checkcode = request.session.get('checkcode','error')
         log_error("start")
         if input_code != checkcode:
             log_error("%s %s"%(input_code,checkcode))
@@ -188,7 +187,7 @@ def activity_detail(request,activity_id):
  
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
-#@never_cache
+@never_cache
 def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     import Image, ImageDraw, ImageFont, random, md5,cStringIO 
     try:
@@ -203,16 +202,12 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
-    	#request.session['checkcode'] = rand_str  
-        #log_error(request.session['checkcode'])
+    	request.session['checkcode'] = rand_str  
+        log_error(request.session['checkcode'])
         request.C
     	buf = cStringIO.StringIO()  
     	im.save(buf, 'gif')  
     except Exception,e:
     	log_error("%s:%s"%("Error in generate checkcode",e))
     	print e
-    #return HttpResponse(buf.getvalue(),'image/gif')
-    res = HttpResponse(buf.getvalue(),'image/gif')
-    res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
-    return res
-
+    return HttpResponse(buf.getvalue(),'image/gif')
