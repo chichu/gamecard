@@ -99,6 +99,8 @@ SESSION_COOKIE_AGE = 3600*24
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 #SESSION_COOKIE_SECURE = True
 
+TEMPLATE_CONTEXT_PROCESSORS += ("django.core.context_processors.request",)
+
 TINYMCE_DEFAULT_CONFIG = {
     'plugins': "table,paste,searchreplace,contextmenu",
     'theme': "advanced",
