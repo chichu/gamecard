@@ -11,7 +11,7 @@
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 			</div>
 			<div class="notes-code">
-        		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
+        		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' onkeypress="javascript:post_popup('/card/get_chance/{{item_id}}/',$('#checkcode_input').val());"/>
 
         		<script language='javascript'>
         			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
