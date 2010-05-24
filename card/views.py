@@ -13,7 +13,7 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
-#@never_cache
+@never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -33,7 +33,6 @@ def get_card(request,item_id):
         if input_code != checkcode:
             log_error("%s %s"%(input_code,checkcode))
             return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
-
         try:
             collect = get_mongodb_collect(get_collect_name(item_id))
             avail_one = collect.find_one({"status":"normal"})
@@ -57,7 +56,7 @@ def get_card(request,item_id):
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
 MAX_CHANCE_CARD_IDS = 5
-#@never_cache
+@never_cache
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -65,6 +64,7 @@ def get_chance(request,item_id):
             input_code = request.POST.get("checkcode","").strip()
             checkcode = request.session.get('checkcode','error')
             if input_code != checkcode:
+                log_error("%s %s"%(input_code,checkcode))
             	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
             if item.is_chance == False:
                 return render_to_response('card/popups/chance_not_available.html')
@@ -202,8 +202,6 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
-        if request.session.has_key('checkcode'):
-            del request.session['checkcode']
     	request.session['checkcode'] = rand_str  
         log_error(request.session['checkcode'])
     	buf = cStringIO.StringIO()  
