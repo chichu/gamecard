@@ -135,7 +135,9 @@ def delete_card(request,object_id,item_id):
             return None
         return HttpResponseRedirect("/card/cardbox/")  
     return None
-  
+ 
+
+@never_cache 
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
@@ -204,7 +206,6 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	del draw
     	request.session['checkcode'] = rand_str  
         log_error(request.session['checkcode'])
-        request.C
     	buf = cStringIO.StringIO()  
     	im.save(buf, 'gif')  
     except Exception,e:
