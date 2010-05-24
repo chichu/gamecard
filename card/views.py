@@ -13,7 +13,7 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
-@never_cache
+#@never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -29,8 +29,10 @@ def get_card(request,item_id):
         item = Item.objects.get(id=item_id)
         input_code = request.POST.get("checkcode","").strip()
         checkcode = request.session.get('checkcode','error')
+        log_error("start")
         if input_code != checkcode:
-        	return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+            log_error("%s %s"%(input_code,checkcode))
+            return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
 
         try:
             collect = get_mongodb_collect(get_collect_name(item_id))
@@ -55,7 +57,7 @@ def get_card(request,item_id):
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
 MAX_CHANCE_CARD_IDS = 5
-@never_cache
+#@never_cache
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -133,8 +135,7 @@ def delete_card(request,object_id,item_id):
             return None
         return HttpResponseRedirect("/card/cardbox/")  
     return None
-    
-@never_cache
+  
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
@@ -186,6 +187,7 @@ def activity_detail(request,activity_id):
  
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
+#@never_cache
 def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     import Image, ImageDraw, ImageFont, random, md5,cStringIO 
     try:
@@ -200,7 +202,10 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
+        if request.session.has_key('checkcode'):
+            del request.session['checkcode']
     	request.session['checkcode'] = rand_str  
+        log_error(request.session['checkcode'])
     	buf = cStringIO.StringIO()  
     	im.save(buf, 'gif')  
     except Exception,e:
