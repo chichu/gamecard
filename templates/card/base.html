@@ -31,7 +31,7 @@
 <div class="contenner">
 {% load card_tags %}
 {% block headnav %}
-    {% headnav 1 request.session.username %}
+    {% headnav 1 %}
 {% endblock %}
 <div class="clearfix"></div>
 <!--content -->
@@ -43,7 +43,7 @@
 {% block main %}{% endblock %}
 </div><!--end main-->
 
-{% sidebar username%}
+{% sidebar request.session.username %}
 
 {% block foot %}
 <div class="clearfix"></div></div>

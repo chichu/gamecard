@@ -140,7 +140,6 @@ def index(request):
 
 def search(request):
     from gamecard.utils.strutils import get_alpha_ordered_act
-    username = request.session.get('username','')
     if request.method == "POST":
         keyword = request.POST.get('keywords','')
         if not bool(keyword):
@@ -154,7 +153,6 @@ def search(request):
     return render_to_response('card/results.html',locals())
            
 def coperation(request):
-    username = request.session.get('username','')
     if request.method == "POST":
         f = CoperationForm(request.POST)
         if f.is_valid():
@@ -181,7 +179,6 @@ def suggest(request):
     return render_to_response('card/suggest.html',locals())
     
 def activity_detail(request,activity_id):
-    username = request.session.get('username','')
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())
  

@@ -9,10 +9,9 @@ MAX_NOTICE = 5
 MAX_ANOUNCE = 3
 
 @register.inclusion_tag('card/headnav.html')
-def headnav(nav_index,username):
+def headnav(nav_index):
     return {
         'nav_index' : nav_index,
-        'username' : username 
     }
     
 @register.inclusion_tag('card/side.html')
