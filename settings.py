@@ -64,7 +64,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'gamecard.urls'
@@ -98,6 +100,9 @@ SESSION_COOKIE_DOMAIN = '.178.com'
 SESSION_COOKIE_AGE = 3600*24
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 #SESSION_COOKIE_SECURE = True
+
+CACHE_MIDDLEWARE_SECONDS = 30
+CACHE_MIDDLEWARE_KEY_PREFIX = 'ka.178.com'
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     #"django.contrib.auth.context_processors.auth",

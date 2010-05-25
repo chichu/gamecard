@@ -42,12 +42,13 @@ function get_popup(url){
 function post_popup(url,code){
     if(code == ""){
         alert("请输入验证码！");
-        return false;
-    }
+    }else{
     $.post(url,{checkcode:code} ,function(data) {        
         $(".pop-up-win").remove();
         $(".pop-wrap").hide();
         $("#pop-up").append(data);
         show_popup();
     }); 
+
+    }
 }

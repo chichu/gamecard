@@ -17,5 +17,6 @@ urlpatterns = patterns('',
     (r'^admin/', include(admin.site.urls)),
     (r"^card/",include('gamecard.card.urls')),
     (r'^tinymce/', include('tinymce.urls')),
+    (r'^$', 'gamecard.card.views.index'),
 )
 

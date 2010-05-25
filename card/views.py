@@ -203,6 +203,7 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
+        request.session.flush()
     	request.session['checkcode'] = rand_str  
         #log_error(request.session['checkcode'])
     	buf = cStringIO.StringIO()  
