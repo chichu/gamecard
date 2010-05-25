@@ -18,7 +18,7 @@ def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
         
-    username = request.session.get('username','')
+    username = request.COOKIES.get("username","")
     if not bool(username):
         return render_to_response('card/popups/login.html')
         
@@ -97,8 +97,7 @@ def item_detail(request,object_id,item_id):
     return render_to_response('card/popups/item_details.html',{"one":one,"item_name":item_name,"item_info":item_info})
 
 def cardbox(request):
-    request.session['username'] = get_username_from_cookie(request)
-    username = request.session.get('username','')
+    username = request.COOKIES.get("username","")
     if bool(username):
         try:
             collect = get_mongodb_collect(USER_INFO)
@@ -115,7 +114,7 @@ def cardbox(request):
     return None    
 
 def delete_card(request,object_id,item_id):
-    username = request.session.get('username','')
+    username = request.COOKIES.get("username","")
     if bool(username):
         try:
             collect = get_mongodb_collect(USER_INFO)
@@ -138,9 +137,10 @@ def delete_card(request,object_id,item_id):
 
 @never_cache 
 def index(request):
-    request.session['username'] = get_username_from_cookie(request)
-    username = request.session.get('username','')
-    return render_to_response('card/index.html',locals())
+    username = get_username_from_cookie(request)
+    res = render_to_response('card/index.html',locals())
+    res = set_cookie(key='username', value=username, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
+    return res
 
 def search(request):
     from gamecard.utils.strutils import get_alpha_ordered_act
@@ -169,7 +169,7 @@ def coperation(request):
     return render_to_response('card/coperation.html',locals())
     
 def suggest(request):
-    username = request.session.get('username','')
+    username = request.COOKIES.get("username","")
     if request.method == "POST":
         f = SuggestForm(request.POST)
         if f.is_valid():
