@@ -29,6 +29,7 @@ def get_card(request,item_id):
         item = Item.objects.get(id=item_id)
         input_code = request.POST.get("checkcode","").strip()
         checkcode = request.session.get('checkcode','error')
+        log_error("%s %s"%(input_code,checkcode))
         if input_code != checkcode:
             #log_error("%s %s"%(input_code,checkcode))
             return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
@@ -62,6 +63,7 @@ def get_chance(request,item_id):
             item = Item.objects.get(id=item_id)
             input_code = request.POST.get("checkcode","").strip()
             checkcode = request.session.get('checkcode','error')
+            log_error("%s %s"%(input_code,checkcode))
             if input_code != checkcode:
                 #log_error("%s %s"%(input_code,checkcode))
             	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
@@ -203,12 +205,14 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
-    	try:
-            del request.session['checkcode']
-        except KeyError:
-            pass
+        username = ""
+        if request.session.has_key('username'):
+            username = request.session['username']
+        request.session.flush()
     	request.session['checkcode'] = rand_str  
-        #log_error(request.session['checkcode'])
+        request.session['username'] = username
+        log_error(request.session['checkcode'])
+        log_error(rand_str)
     	buf = cStringIO.StringIO()  
     	im.save(buf, 'gif')  
     except Exception,e:
