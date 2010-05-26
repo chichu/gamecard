@@ -18,6 +18,7 @@ def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
         
+    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if not bool(username):
         return render_to_response('card/popups/login.html')
@@ -29,9 +30,7 @@ def get_card(request,item_id):
         item = Item.objects.get(id=item_id)
         input_code = request.POST.get("checkcode","").strip()
         checkcode = request.session.get('checkcode','error')
-        log_error("%s %s"%(input_code,checkcode))
         if input_code != checkcode:
-            #log_error("%s %s"%(input_code,checkcode))
             return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
         try:
             collect = get_mongodb_collect(get_collect_name(item_id))
@@ -63,9 +62,7 @@ def get_chance(request,item_id):
             item = Item.objects.get(id=item_id)
             input_code = request.POST.get("checkcode","").strip()
             checkcode = request.session.get('checkcode','error')
-            log_error("%s %s"%(input_code,checkcode))
             if input_code != checkcode:
-                #log_error("%s %s"%(input_code,checkcode))
             	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
             if item.is_chance == False:
                 return render_to_response('card/popups/chance_not_available.html')
@@ -205,14 +202,8 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	draw.text((45,0), rand_str[2], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	draw.text((60,0), rand_str[3], font=ImageFont.truetype(FONT_PATH, random.randrange(15,25)))  
     	del draw
-        username = ""
-        if request.session.has_key('username'):
-            username = request.session['username']
-        request.session.flush()
     	request.session['checkcode'] = rand_str  
-        request.session['username'] = username
-        log_error(request.session['checkcode'])
-        log_error(rand_str)
+        request.session.modified = True
     	buf = cStringIO.StringIO()  
     	im.save(buf, 'gif')  
     except Exception,e:
