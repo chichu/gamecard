@@ -169,6 +169,7 @@ def coperation(request):
     return render_to_response('card/coperation.html',locals())
     
 def suggest(request):
+    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if request.method == "POST":
         f = SuggestForm(request.POST)
@@ -184,6 +185,8 @@ def suggest(request):
     
 def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
+    request.session['username'] = get_username_from_cookie(request)
+    username = request.session.get('username','')
     return render_to_response('card/i2.html',locals())
 
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
