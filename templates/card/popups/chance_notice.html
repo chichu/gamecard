@@ -14,10 +14,12 @@
         		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' />
 
         		<script language='javascript'>
+                        function get_checkcode(){
         			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
+                        }
         		</script>	
-        		<img id='checkcode' src="" alt="CheckCode"/>  
-        	    <a href="javascript:$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());"  class="blue">看不清，换一张</a>
+        		<img id='checkcode' src="/card/get_check_code_image/?nocache" alt="CheckCode"/>  
+        	    <a href="javascript:get_checkcode();" class="blue">看不清，换一张</a>
  			<span class="code-tip ff0000">{{error}}</span>
         	</div>
 				
