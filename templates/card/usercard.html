@@ -1,7 +1,7 @@
 {% extends "card/i2.html" %}
 {% load card_tags %}
 {% block title %}存卡箱{% endblock %}
-{% block headnav %}{% headnav 4 username %}{% endblock %}
+{% block headnav %}{% headnav 4 request.session.username %}{% endblock %}
 {% block content %}
             <div class="card-info">
             {% if cards %}
