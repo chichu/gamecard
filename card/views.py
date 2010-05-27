@@ -114,6 +114,7 @@ def cardbox(request):
     return None    
 
 def delete_card(request,object_id,item_id):
+    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if bool(username):
         try:
@@ -184,7 +185,7 @@ def suggest(request):
 def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
     return render_to_response('card/i2.html',locals())
- 
+
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")
 @never_cache
@@ -209,4 +210,7 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     except Exception,e:
     	log_error("%s:%s"%("Error in generate checkcode",e))
     	print e
-    return HttpResponse(buf.getvalue(),'image/gif')
+    response = HttpResponse(buf.getvalue(),'image/gif')
+    response['Cache-Control'] = 'no-cache, must-revalidate'
+    response['Pragma'] = "no-cache"
+    return response
