@@ -17,7 +17,7 @@ def headnav(nav_index,username):
     
 @register.inclusion_tag('card/side.html')
 def sidebar(username):
-    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE]
+    online_news = OnlineNews.objects.all().order_by('-online_time')[0:MAX_NOTICE*3]
     return {
         'username' : username,
         'online_news':online_news,

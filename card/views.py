@@ -95,6 +95,7 @@ def item_detail(request,object_id,item_id):
         print e
     return render_to_response('card/popups/item_details.html',{"one":one,"item_name":item_name,"item_info":item_info})
 
+@never_cache
 def cardbox(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
@@ -105,10 +106,9 @@ def cardbox(request):
             cards = [] 
             if not bool(user_info):
                 return render_to_response('card/usercard.html',locals())
-            cards = user_info["cards"]
+            cards = user_info["cards"].reverse()
         except Exception,e:
             log_error("error in show user card box: %s %s" % (username,e))
-            print e
             return None
         return render_to_response('card/usercard.html',locals())   
     return None    
@@ -145,12 +145,11 @@ def index(request):
 def search(request):
     from gamecard.utils.strutils import get_alpha_ordered_act
     if request.method == "POST":
-        keyword = request.POST.get('keywords','')
-        if not bool(keyword):
+        keywords = request.POST.get('keywords','')
+        if not bool(keywords):
             return render_to_response('card/results.html',locals())
-        keywords = keyword.split(" ")     
-        act_codes = Activity.objects.filter(card_type='act_code',name__in=keywords,status="active")
-        begin_cards = Activity.objects.filter(card_type='begin_card',name__in=keywords,status="active")
+        act_codes = Activity.objects.filter(card_type='act_code',game__name__contains=keywords,status="active")
+        begin_cards = Activity.objects.filter(card_type='begin_card',game__name__contains=keywords,status="active")
         a_alpha = get_clean_alpha_act(get_alpha_ordered_act(begin_cards,12))
         b_alpha = get_clean_alpha_act(get_alpha_ordered_act(act_codes,2))
         return render_to_response('card/results.html',locals()) 
