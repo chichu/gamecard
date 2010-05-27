@@ -9,11 +9,11 @@
 <link rel="stylesheet" href="http://www.178.com/s/i/pronav.css" type="text/css" />
 <link rel="stylesheet" href="http://www.178.com/s/i/base.css" type="text/css" /> 
 <link href="http://media.ka.178.com/static/css/pop-up-box.css" rel="stylesheet" type="text/css" />
+{% block extra_css%}{% endblock %}
 
 <script type="text/javascript" src="http://www.178.com/s/js/j.js"></script>
 <script type="text/javascript" src="http://media.ka.178.com/static/js/jShowWin.js"></script> 
-<script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
-<script type="text/javascript" src="http://media.ka.178.com/static/js/jSwitchTabs.js"></script>
+{% block extra_js%}{% endblock %}
 
 <title>{% block title %}新手卡首页{% endblock %}</title>
 <!--[if lte IE 6]>

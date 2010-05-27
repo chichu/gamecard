@@ -1,6 +1,11 @@
 {% extends "card/base.html" %}
 {% load card_tags %}
 
+{% block extra_js%}
+<script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
+<script type="text/javascript" src="http://media.ka.178.com/static/js/jSwitchTabs.js"></script>
+{% endblock %}
+
 {% block main %}
 <div class="searchbar"><div class="innerbox">
 {% include "card/searchbar.html" %}
