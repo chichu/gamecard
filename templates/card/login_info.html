@@ -1,0 +1,38 @@
+<!--side-->
+<div class="side">
+
+    <div class="sidecolumn">
+    <div class="sidetitle"><h2>登录</h2><span></span><div class="clearfix"></div></div>
+    <div class="login-info">
+        {% if username %}
+    			<p>{{username}}欢迎您</p><br />
+    			<ul>
+    			    <li><a href="/card/cardbox/">我的存卡箱</a></li>
+    				<li><a href="http://i.178.com/">我的个人页</a></li>
+    				<li><a href="http://bbs.178.com/">进入论坛</a></li>
+    				<li><a href="http://account.178.com/q_account.php?_act=logout">退出</a></li>
+    			</ul>
+    	{% else %}
+    	    <p>您尚未登陆</p><br />
+			<ul>
+				<li><a href="javascript:void(0);" onclick="javascript:get_popup('/card/login_bar/')">现在登陆</a></li>
+				<li><a href="http://account.178.com/?p=register">立即注册</a></li>
+			</ul>
+    	{% endif%}
+    </div><!--login-info-->
+    </div>
+
+
+    <div class="sidecolumn">
+        <div class="sidetitle"><h2>新游戏上线时间表</h2><span></span><div class="clearfix"></div></div>
+        <div class="cont">
+            {% for n in online_news %}
+                <div class="sidenews">
+                    <a href="{{n.link_url}}" class="fontgreen rightfix" target='_blank'>{{n.status}}</a>
+                    <span>[{{n.online_time.month}}.{{n.online_time.day}}]</span>{{n.content}}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--end side-->
