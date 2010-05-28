@@ -33,7 +33,7 @@
     
 {% load card_tags %}
 {% block headnav %}
-    {% headnav 1%}
+    {% headnav 1 request.session.username %}
 {% endblock %}
 <div class="clearfix"></div>
 <!--content -->
