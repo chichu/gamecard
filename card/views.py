@@ -13,6 +13,9 @@ from gamecard.settings import *
 from gamecard.log import *
 from forms import *
 
+def login_bar(request):
+    return render_to_response('card/popups/login.html')
+    
 @never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
@@ -135,7 +138,6 @@ def delete_card(request,object_id,item_id):
         return HttpResponseRedirect("/card/cardbox/")  
     return None
  
-
 @never_cache 
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
