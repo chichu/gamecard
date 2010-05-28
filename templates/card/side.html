@@ -4,8 +4,8 @@
     <div class="sidecolumn">
     <div class="sidetitle"><h2>登录</h2><span></span><div class="clearfix"></div></div>
     <div class="login-info">
-        {% if request.session.username %}
-    			<p>{{request.session.username}}欢迎您</p><br />
+        {% if username %}
+    			<p>{{username}}欢迎您</p><br />
     			<ul>
     			    <li><a href="/card/cardbox/">我的存卡箱</a></li>
     				<li><a href="http://i.178.com/">我的个人页</a></li>

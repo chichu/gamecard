@@ -158,6 +158,8 @@ def search(request):
     return render_to_response('card/results.html',locals())
            
 def coperation(request):
+    request.session['username'] = get_username_from_cookie(request)
+    username = request.session.get('username','')
     if request.method == "POST":
         f = CoperationForm(request.POST)
         if f.is_valid():

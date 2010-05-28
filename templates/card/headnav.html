@@ -14,7 +14,7 @@
 <span></span>
 <li><a href="/card/suggest/" title="有话要说" {% ifequal nav_index 3 %}class="current"{% endifequal %}>有话要说</a></li>
 <span></span>
-<li><a {% if request.session.username %}href="/card/cardbox/"{% else %} href="javascript:void(0);" onclick="javascript:get_popup('/card/login_bar/');"{% endif %}  title="存卡箱" {% ifequal nav_index 4 %}class="current"{% endifequal %}>存卡箱</a></li>
+<li><a {% if username %}href="/card/cardbox/"{% else %} href="javascript:void(0);" onclick="javascript:get_popup('/card/login_bar/');"{% endif %}  title="存卡箱" {% ifequal nav_index 4 %}class="current"{% endifequal %}>存卡箱</a></li>
 
 </ul></div></div>
 <!--end navigation-->
