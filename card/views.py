@@ -112,9 +112,9 @@ def cardbox(request):
             cards = user_info["cards"].reverse()
         except Exception,e:
             log_error("error in show user card box: %s %s" % (username,e))
-            return None
+            return HttpResponse("javascript:get_popup('/card/login_bar/')")
         return render_to_response('card/usercard.html',locals())   
-    return None    
+    return HttpResponse("javascript:get_popup('/card/login_bar/')")  
 
 def delete_card(request,object_id,item_id):
     request.session['username'] = get_username_from_cookie(request)

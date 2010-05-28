@@ -31,7 +31,7 @@
     <script type="text/javascript" src="http://www.178.com/s/scrollclass.js"></script>
     <script type="text/javascript" src="http://www.178.com/s/pronav.js"></script>
     
-{% load card_tags %}
+{% load card_tags cache %}
 {% block headnav %}
     {% headnav 1 request.session.username %}
 {% endblock %}
@@ -45,7 +45,10 @@
 {% block main %}{% endblock %}
 </div><!--end main-->
 
-{% sidebar request.session.username %}
+<div class="side">
+    {% logininfobar request.session.username %}  
+    {% cache 3600 sidebar %}    
+</div>
 
 {% block foot %}
 <div class="clearfix"></div></div>

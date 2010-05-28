@@ -1,5 +1,5 @@
 {% extends "card/base.html" %}
-{% load card_tags %}
+{% load card_tags cache %}
 
 {% block extra_js%}
 <script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
@@ -9,10 +9,10 @@
 {% block main %}
 <div class="searchbar"><div class="innerbox">
 {% include "card/searchbar.html" %}
-{% keywords %}
+{% cache 3600 keywords %}
 <div class="clearfix"></div></div></div>
 
-{% news %}
+{% cache 3600 news %}
    
-{% cardbox %}
+{% cache 600 cardbox %}
 {% endblock %}
