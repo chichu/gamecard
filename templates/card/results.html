@@ -5,7 +5,7 @@
 <!--searchbar-->
 <div class="searchbar"><div class="innerbox">
 {% include "card/searchbar.html" %}
-{% cache 3600 keywords %}
+{% cache 3600 the_keywords %} {% keywords %}{% endcache %} 
 <div class="clearfix"></div></div></div>
 <!--end searchbar-->
 
