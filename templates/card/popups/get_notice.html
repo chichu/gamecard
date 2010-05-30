@@ -1,7 +1,6 @@
 {% extends "card/popups/base.html" %}
 {% block title %} 领取须知 {% endblock %}
 {% block content %} 
-<meta http-equiv="pragma" content="no-cache" />
 <div class="win-notes">
     <div class="notes-txt">
         <span class="win-icon win-icon-a"></span>
@@ -13,15 +12,17 @@
 	    </p>
 	</div>
 	<div class="notes-code">
+               {% block checkcode %}
 		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
-		<script>
+		<script language='javascript'>
                 function get_checkcode(){
                      $('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
                 }
                 </script>
-                <img id='checkcode' src='/card/get_check_code_image/' alt='CheckCode'/>;
+                <img id='checkcode' src='/card/get_check_code_image/' alt='CheckCode'/>
 	    <a id="change" href="javascript:get_checkcode();"  class="blue">看不清，换一张</a>
 							<span class="code-tip ff0000">{{error}}</span>
+               {% endblock %}
 		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
 	</div>
 </div>			
