@@ -15,16 +15,16 @@
                {% block checkcode %}
 		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
 		<script language='javascript'>
-                funciton get_checkcode_url(){
-                    return '/card/get_check_code_image/?nocache='+Math.random(); 
-                }
                 function get_checkcode(){
-                     url = get_checkcode_url(); 
+                     url = '/card/get_check_code_image/?nocache='+Math.random(); 
                      $('#checkcode')[0].setAttribute('src',url);
                 }
+                $('#checkcode_input').click(fuction(){
+                    get_checkcode();
+                });
                 </script>
-                <img id='checkcode' src='javascript:get_checkcode_url();' alt='CheckCode'/>
-	    <a id="change" href="javascript:get_checkcode();"  class="blue">看不清，换一张</a>
+                <img id='checkcode' src='http://media.ka.178.com/static/images/checkcode.gif' alt='CheckCode'/>
+	    <a id="change" href='javascrpt:void(0);' onclick="javascript:get_checkcode();"  class="blue">看不清，换一张</a>
 							<span class="code-tip ff0000">{{error}}</span>
                {% endblock %}
 		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
