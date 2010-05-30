@@ -15,11 +15,15 @@
                {% block checkcode %}
 		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input'/>
 		<script language='javascript'>
+                funciton get_checkcode_url(){
+                    return '/card/get_check_code_image/?nocache='+Math.random(); 
+                }
                 function get_checkcode(){
-                     $('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
+                     url = get_checkcode_url(); 
+                     $('#checkcode')[0].setAttribute('src',url);
                 }
                 </script>
-                <img id='checkcode' src='/card/get_check_code_image/' alt='CheckCode'/>
+                <img id='checkcode' src='javascript:get_checkcode_url();' alt='CheckCode'/>
 	    <a id="change" href="javascript:get_checkcode();"  class="blue">看不清，换一张</a>
 							<span class="code-tip ff0000">{{error}}</span>
                {% endblock %}
