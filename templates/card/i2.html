@@ -10,8 +10,8 @@
             {{activity.info|safe}}
              
              <div class="cardbox-btn"> 
-                	<a href="javascript:get_popup('/card/get_notice/{{activity.item.id}}/');"><span>立即领取</span></a> 
-                	<a href="javascript:get_popup('/card/chance_notice/{{activity.item.id}}/');"><span>淘一下</span></a> 
+                	<a href="javascript:void(0);" onclick="javascript:get_popup('/card/get_card/{{activity.item.id}}/');"><span>立即领取</span></a> 
+                	<a href="javascript:void(0);" onclick="javascript:get_popup('/card/get_chance/{{activity.item.id}}/');"><span>淘一下</span></a> 
                 	<a href="/card/"><span>返回首页</span></a> 
             </div>
             

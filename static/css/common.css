@@ -119,8 +119,11 @@ table.cardtable tr td.itemtitle{text-align:center;font-size:12px;font-weight:bol
 .fonttan{ color:#BE5D16;}
 
 
-/**/
-
+.cardbox-btn{ margin-top:14px; text-align:center;}
+.cardbox-btn a{ display:inline-block; margin:0 5px; padding:1px; border:1px solid #b5b5b5;}
+.cardbox-btn a:link span,.cardbox-btn a:visited span{ display:inline-block; height:24px; line-height:24px;*line-height:26px; overflow:hidden; cursor:pointer;  font-size:14px;  font-weight:bold; padding:0 15px; background:url(http://media.ka.178.com/static/images/btn_bg.gif) repeat-x 0 -24px; color:#000}
+.cardbox-btn a:hover{ background:#ffffe9; text-decoration:none;}
+.cardbox-btn a:hover span{ background-position:0 0;}
 
 
 .login-info{ margin:10px 15px;}

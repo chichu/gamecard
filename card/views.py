@@ -16,7 +16,6 @@ from forms import *
 def login_bar(request):
     return render_to_response('card/popups/login.html')
     
-@never_cache
 def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
@@ -58,7 +57,6 @@ def get_card(request,item_id):
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
 MAX_CHANCE_CARD_IDS = 5
-@never_cache
 def get_chance(request,item_id):
     if request.method == "POST":
         try:
@@ -98,7 +96,6 @@ def item_detail(request,object_id,item_id):
         print e
     return render_to_response('card/popups/item_details.html',{"one":one,"item_name":item_name,"item_info":item_info})
 
-@never_cache
 def cardbox(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
@@ -109,12 +106,13 @@ def cardbox(request):
             cards = [] 
             if not bool(user_info):
                 return render_to_response('card/usercard.html',locals())
-            cards = user_info["cards"].reverse()
+            cards = user_info["cards"]
+            cards.reverse()
         except Exception,e:
             log_error("error in show user card box: %s %s" % (username,e))
-            return HttpResponse("javascript:get_popup('/card/login_bar/')")
+            return HttpResponseRedirect("/card/")
         return render_to_response('card/usercard.html',locals())   
-    return HttpResponse("javascript:get_popup('/card/login_bar/')")  
+    return HttpResponseRedirect("/card/")  
 
 def delete_card(request,object_id,item_id):
     request.session['username'] = get_username_from_cookie(request)
@@ -138,7 +136,6 @@ def delete_card(request,object_id,item_id):
         return HttpResponseRedirect("/card/cardbox/")  
     return None
  
-@never_cache 
 def index(request):
     request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
@@ -217,6 +214,7 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	log_error("%s:%s"%("Error in generate checkcode",e))
     	print e
     response = HttpResponse(buf.getvalue(),'image/gif')
-    response['Cache-Control'] = 'no-cache, must-revalidate'
+    response['Cache-Control'] = 'no-cache,must-revalidate,no-store'
     response['Pragma'] = "no-cache"
+    response['Expires'] = 0 
     return response

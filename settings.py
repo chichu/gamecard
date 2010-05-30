@@ -64,9 +64,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'gamecard.urls'
@@ -91,7 +88,6 @@ INSTALLED_APPS = (
 )
 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-VIEW_CACHE_EXPIRE = 3600
 
 RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
 RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"
