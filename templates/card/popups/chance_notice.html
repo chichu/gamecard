@@ -10,19 +10,7 @@
 
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 			</div>
-			<div class="notes-code">
-        		<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' />
-
-        		<script language='javascript'>
-                        function get_checkcode(){
-        			$('#checkcode')[0].setAttribute('src','/card/get_check_code_image/?nocache='+Math.random());
-                        }
-        		</script>	
-        		<img id='checkcode' src="/card/get_check_code_image/" alt="CheckCode"/>  
-        	    <a href="javascript:get_checkcode();" class="blue">看不清，换一张</a>
- 			<span class="code-tip ff0000">{{error}}</span>
-        	</div>
-				
+			<div class="notes-code">{% include "card/popups/checkcode.html" %}</div>		
 	</div>
 {% endblock %}
 {% block submit %} 

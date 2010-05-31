@@ -1,0 +1,12 @@
+<script language='javascript'>
+    function get_checkcode(){
+         url = '/card/get_check_code_image/?nocache='+Math.random(); 
+         $('#checkcode')[0].setAttribute('src',url);
+    }
+</script>
+<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' onfocus='javascript:get_checkcode();'/>
+<img id='checkcode' onclick='javascript:get_checkcode();' src='http://media.ka.178.com/static/images/checkcode.gif' alt='CheckCode'/>
+<a id="change" href='javascrpt:void(0);' onclick="javascript:get_checkcode();"  class="blue">点击获取验证码</a>
+<span class="code-tip ff0000">{{error}}</span>
+ 
+        
