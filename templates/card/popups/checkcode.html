@@ -4,9 +4,8 @@
          $('#checkcode')[0].setAttribute('src',url);
     }
 </script>
-<strong>验证码：</strong> <input name='checkcode' type='text' id='checkcode_input' onfocus='javascript:get_checkcode();'/>
+<strong>验证码：</strong> <input name='checkcode' class="searchcontent" value='点击获取验证码' type='text' id='checkcode_input' onblur="if(this.value==''){this.value=this.defaultValue;}"   onfocus="if(this.value==this.defaultValue){this.value='';get_checkcode();}"/>
 <img id='checkcode' onclick='javascript:get_checkcode();' src='http://media.ka.178.com/static/images/checkcode.gif' alt='CheckCode'/>
-<a id="change" href='javascript:void(0);' onclick="javascript:get_checkcode();"  class="blue">点击获取验证码</a>
 <span class="code-tip ff0000">{{error}}</span>
  
         
