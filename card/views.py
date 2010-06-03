@@ -52,7 +52,7 @@ def get_card(request,item_id):
             log_error("Failed in saving user card id%s %s %s"%(error,username,item))
         
         res = render_to_response('card/popups/get_success.html',{'item':item,"object_id":object_id})
-        #res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
+        res.set_cookie(key='has_get', value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         
@@ -88,13 +88,11 @@ def item_detail(request,object_id,item_id):
     try:
         collect = get_mongodb_collect(get_collect_name(item_id))
         item = Item.objects.get(id=item_id)
-        item_name = item.name
-        item_info = item.info
         one = collect.find_one({"_id":ObjectId(object_id)})
     except Exception,e:
         log_error("error in get an object id:%s %s %s" % (object_id,item_id,e))
         print e
-    return render_to_response('card/popups/item_details.html',{"one":one,"item_name":item_name,"item_info":item_info})
+    return render_to_response('card/popups/item_details.html',{"one":one,"item":item})
 
 def cardbox(request):
     request.session['username'] = get_username_from_cookie(request)
@@ -214,7 +212,4 @@ def get_check_code_image(request,image=CHECKCODE_IMAGE_PATH):
     	log_error("%s:%s"%("Error in generate checkcode",e))
     	print e
     response = HttpResponse(buf.getvalue(),'image/gif')
-    response['Cache-Control'] = 'no-cache,must-revalidate,no-store'
-    response['Pragma'] = "no-cache"
-    response['Expires'] = 0 
     return response

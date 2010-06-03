@@ -2,12 +2,12 @@
 {% block title %} 物品详情 {% endblock %}
 {% block content %} 
 	<div class="win-details">
-		<div class="details-pic"><img src='http://media.ka.178.com/static/{{item.pic}}' alt='item image'/></div>
+		<div class="details-pic"><img src='http://media.ka.178.com/static/{{item.pic}}' alt='{{item.name}}'/></div>
 		<ul>
-			<li>物品名称：<strong class="ff0000">{{item_name}}</strong ></li>
+			<li>物品名称：<strong class="ff0000">{{item.name}}</strong ></li>
 			<li>卡号：<span class="ff0000">{{one.card_id}}</span>{% if one.passwd %}&nbsp;密码：<span class="ff0000">{{one.passwd}}</span>{% endif %}</li>
 			<li><p>请您在领取该物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。</p></li>
-			<li>{{item_info|safe}}</li>
+			<li>{{item.info|safe}}</li>
 		</ul>
 	</div>
 {% endblock %}

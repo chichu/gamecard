@@ -1,5 +1,5 @@
 {% extends "card/popups/base.html" %}
-{% block title %} 请登陆 {% endblock %}
+{% block title %} 请登录 {% endblock %}
 {% block content %} 
 <form action="http://account.178.com/q_account.php" name="login" method="post" id="loginform">
 	<div class="win-login">
@@ -22,6 +22,6 @@
 </form>
 {% endblock %}
 {% block submit %} 
-<a href="javascript:" onclick="$('#loginform').submit();"><span >登陆</span></a>
+<a href="javascript:void(0);" onclick="$('#loginform').submit();"><span >登录</span></a>
 <a href="http://account.178.com/?p=register" ><span >还没帐号，立即注册</span></a>
 {% endblock %}
