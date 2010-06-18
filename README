@@ -79,3 +79,10 @@ wget http://www.sfr-fresh.com/unix/privat/mod_evasive_1.10.1.tar.gz
 wget http://modwsgi.googlecode.com/files/mod_wsgi-3.2.tar.gz
 ./configure --with-apxs=/usr/local/apache22/bin/apxs --with-python=/usr/bin/python
 
+
+/usr/local/mongodb/bin/mongod --dbpath='/zzdata/mongodb/' &
+/usr/bin/python manage.py runserver ka.178.com:8088
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+/usr/local/memcached/bin/memcached -d -m 256 -l 127.0.0.1 -p 11211 -u www
+/usr/local/apache22/bin/apachectl restart
+
