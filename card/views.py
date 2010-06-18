@@ -25,7 +25,7 @@ def get_card(request,item_id):
     if not bool(username):
         return render_to_response('card/popups/login.html')
     
-    has_get = "has_get_%s"% item_id
+    has_get = "has_get_%s"%(item_id)
     
     if request.COOKIES.has_key(has_get):
         return render_to_response('card/popups/failure2.html',{'item_id':item_id})
