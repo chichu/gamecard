@@ -1,3 +1,4 @@
+document.domain = 'ka.178.com';
 (function(win) {
 	var whiteSpaceRe = /^\s*|\s*$/g,
 		undefined;

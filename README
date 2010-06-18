@@ -86,3 +86,5 @@ wget http://modwsgi.googlecode.com/files/mod_wsgi-3.2.tar.gz
 /usr/local/memcached/bin/memcached -d -m 256 -l 127.0.0.1 -p 11211 -u www
 /usr/local/apache22/bin/apachectl restart
 
+echo 'flush_all' | nc localhost 11211
+

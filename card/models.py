@@ -113,7 +113,7 @@ class Pictures(models.Model):
 class GameCompany(models.Model):
     company_name = models.CharField("公司名称",max_length=100)
     game_name = models.CharField("游戏名称",max_length=100)
-    game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
+    game_type = models.CharField(max_length=10,verbose_name="游戏类型")
     content = models.TextField("合作内容",max_length=500)
     contact_person = models.CharField("联系人姓名",max_length=100)
     person_position = models.CharField("联系人职位",max_length=100)
