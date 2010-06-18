@@ -45,7 +45,7 @@ class Activity(models.Model):
     card_type = models.CharField("发号类型",max_length=10,choices=(('act_code','激活码'),('begin_card','新手卡')))
     status = models.CharField("活动状态",max_length=10,default='wait',
         choices=(('active','已发布'),('wait','待发布'),('halt','停止')))
-    descri = tinymce_models.HTMLField("新手卡介绍",null=True,blank=True)
+    descri = models.TextField("新手卡介绍",null=True,blank=True)#tinymce_models.HTMLField("新手卡介绍",null=True,blank=True)
     info = tinymce_models.HTMLField("详细内容",null=True,blank=True)
     reminder_award = tinymce_models.HTMLField("中奖提示内容",null=True,blank=True)
     reminder_noaward = tinymce_models.HTMLField("未中奖提示内容",null=True,blank=True)
@@ -113,7 +113,7 @@ class Pictures(models.Model):
 class GameCompany(models.Model):
     company_name = models.CharField("公司名称",max_length=100)
     game_name = models.CharField("游戏名称",max_length=100)
-    game_type = models.CharField(max_length=10,verbose_name="游戏类型")
+    game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
     content = models.TextField("合作内容",max_length=500)
     contact_person = models.CharField("联系人姓名",max_length=100)
     person_position = models.CharField("联系人职位",max_length=100)
@@ -143,7 +143,7 @@ class Suggest(models.Model):
 class OnlineNews(models.Model):
     content = models.CharField("游戏名称",max_length=10)
     link_url = models.URLField(verbose_name="链接地址")
-    status = models.CharField("状态",max_length=10,choices=(("暂无",'暂无'),('论坛活动','论坛活动'),('截图活动','截图活动'),('正在发放','正在发放')))
+    status = models.CharField("状态",max_length=10)
     online_time = models.DateTimeField("上线时间")
     class Meta:
         verbose_name = "新游戏上线公告"
