@@ -6,7 +6,7 @@ from tinymce import models as tinymce_models
 
 class Games(models.Model):
     name = models.CharField("名称",max_length=50,unique=True)
-    descri = tinymce_models.HTMLField("描述",null=True,blank=True)
+    descri = models.TextField("描述",null=True,blank=True)
     game_type = models.CharField(max_length=10,verbose_name="游戏类型",choices=(('webpage','网页游戏'),("mmo",'客户端游戏')))
     create_time = models.DateTimeField("创建时间")
     class Meta:
@@ -24,9 +24,9 @@ class Item(models.Model):
     is_chance = models.BooleanField("是否进入淘卡库",default=True)
     chance_time_delta = models.IntegerField("被领取后几小时进入淘卡库",default=2)
     max_apply_perday = models.IntegerField("每日最多领取次数",default=0)
-    max_apply_perday_reminder = tinymce_models.HTMLField("达到每日最多领取次数提示语",default="")
-    info = tinymce_models.HTMLField("物品信息",null=True,blank=True)
-    descri = tinymce_models.HTMLField("物品介绍",null=True,blank=True)
+    max_apply_perday_reminder = models.TextField("达到每日最多领取次数提示语",default="")
+    info = models.TextField("物品信息",null=True,blank=True)
+    descri = models.TextField("物品介绍",null=True,blank=True)
     class Meta:
         verbose_name = "物品信息"
         verbose_name_plural = "物品信息"
@@ -45,10 +45,10 @@ class Activity(models.Model):
     card_type = models.CharField("发号类型",max_length=10,choices=(('act_code','激活码'),('begin_card','新手卡')))
     status = models.CharField("活动状态",max_length=10,default='wait',
         choices=(('active','已发布'),('wait','待发布'),('halt','停止')))
-    descri = models.TextField("新手卡介绍",null=True,blank=True)#tinymce_models.HTMLField("新手卡介绍",null=True,blank=True)
+    descri = models.TextField("新手卡介绍",null=True,blank=True)#models.TextField("新手卡介绍",null=True,blank=True)
     info = models.TextField("详细内容",null=True,blank=True)
-    reminder_award = tinymce_models.HTMLField("中奖提示内容",null=True,blank=True)
-    reminder_noaward = tinymce_models.HTMLField("未中奖提示内容",null=True,blank=True)
+    reminder_award = models.TextField("中奖提示内容",null=True,blank=True)
+    reminder_noaward = models.TextField("未中奖提示内容",null=True,blank=True)
     start_time = models.DateTimeField("活动开始时间") 
     class Meta:
         verbose_name = "活动信息"
@@ -68,7 +68,7 @@ class Notice(models.Model):
     title = models.CharField("公告标题",max_length=20,unique=True)
     activity = models.ForeignKey(Activity,verbose_name='所属活动')
     create_time = models.DateTimeField("创建时间")
-    content = tinymce_models.HTMLField("公告内容")
+    content = models.TextField("公告内容")
     class Meta:
         verbose_name = "活动公告"
         verbose_name_plural = "活动公告"
