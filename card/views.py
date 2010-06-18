@@ -24,8 +24,10 @@ def get_card(request,item_id):
     username = request.session.get('username','')
     if not bool(username):
         return render_to_response('card/popups/login.html')
-        
-    if request.COOKIES.has_key("has_get_%s"% item_id ):
+    
+    has_get = "has_get_%s"% item_id
+    
+    if request.COOKIES.has_key(has_get):
         return render_to_response('card/popups/failure2.html',{'item_id':item_id})
  
     if request.method == "POST":
@@ -52,7 +54,7 @@ def get_card(request,item_id):
             log_error("Failed in saving user card id%s %s %s"%(error,username,item))
         
         res = render_to_response('card/popups/get_success.html',{'item':item,"object_id":object_id})
-        res.set_cookie(key='has_get_%s'%item_id, value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
+        res.set_cookie(key=has_get, value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
     return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
         

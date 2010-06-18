@@ -87,5 +87,3 @@ wget http://modwsgi.googlecode.com/files/mod_wsgi-3.2.tar.gz
 /usr/local/apache22/bin/apachectl restart
 
 echo 'flush_all' | nc localhost 11211
-
-tinymce_models.HTMLField

@@ -2,7 +2,7 @@
 from django.db import models
 from datetime import datetime
 import os
-from tinymce import models as tinymce_models
+#from tinymce import models as tinymce_models (tinymce_models.HTMLField)
 
 class Games(models.Model):
     name = models.CharField("名称",max_length=50,unique=True)
