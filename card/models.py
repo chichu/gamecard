@@ -46,7 +46,7 @@ class Activity(models.Model):
     status = models.CharField("活动状态",max_length=10,default='wait',
         choices=(('active','已发布'),('wait','待发布'),('halt','停止')))
     descri = models.TextField("新手卡介绍",null=True,blank=True)#tinymce_models.HTMLField("新手卡介绍",null=True,blank=True)
-    info = tinymce_models.HTMLField("详细内容",null=True,blank=True)
+    info = models.TextField("详细内容",null=True,blank=True)
     reminder_award = tinymce_models.HTMLField("中奖提示内容",null=True,blank=True)
     reminder_noaward = tinymce_models.HTMLField("未中奖提示内容",null=True,blank=True)
     start_time = models.DateTimeField("活动开始时间") 
