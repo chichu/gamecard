@@ -1,6 +1,12 @@
 #encoding:utf-8
 import urllib
 
+def md5_trans(seed):
+    import md5
+    m = md5.new(seed)
+    m.digest()
+    return m.hexdigest()
+    
 def get_username_from_cookie(request):
     '''
        _178:uid+"#"+email+"#"+username
@@ -13,10 +19,7 @@ def get_username_from_cookie(request):
     (uid,email,username) = tuple(urllib.unquote(request.COOKIES.get('_178c')).split('#'))
     (code,md5code,timestamp) = tuple(urllib.unquote(request.COOKIES.get('_i')).split('_'))
     seed = "%s<>%s<>%s<>%s%s" % (uid,email,username,timestamp,'4b21e6f4')
-    import md5
-    m = md5.new(seed)
-    m.digest()
-    if md5code == m.hexdigest():
+    if md5code == md5_trans(seed):
         return username 
     return '' 
     
