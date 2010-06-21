@@ -80,11 +80,17 @@ wget http://modwsgi.googlecode.com/files/mod_wsgi-3.2.tar.gz
 ./configure --with-apxs=/usr/local/apache22/bin/apxs --with-python=/usr/bin/python
 
 
-/usr/local/mongodb/bin/mongod --dbpath='/zzdata/mongodb/' &
+/usr/local/mongodb/bin/mongod --dbpath='/zzdata/mongodb/' --master &
+/usr/local/mongodb/bin/mongod --dbpath=/data/mongodb_bak/ --slave --source localhost --slavedelay 15 --port 27018
 /usr/bin/python manage.py runserver ka.178.com:8088
 /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 /usr/local/memcached/bin/memcached -d -m 256 -l 127.0.0.1 -p 11211 -u www
 /usr/local/apache22/bin/apachectl restart
+
+crontab:
+5 0 * * * /usr/sbin/ntpdate 164.67.62.194
+0 */3 * * * /usr/local/bin/mysqldump -uroot -p'gamecard@178' gamecard > /data/mysql_bak/gamecard.sql
+
 
 echo 'flush_all' | nc localhost 11211
 

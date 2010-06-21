@@ -160,8 +160,8 @@ table.cardtable tr td.itemtitle{text-align:center;font-size:12px;font-weight:bol
 .form-btn input{ height:24px; line-height:22px; border:1px solid #848484; margin:10px 0 0 220px; background:url("http://media.ka.178.com/static/images/btn_bg.gif") repeat-x scroll 0 -24px; padding:0 10px;}
 .form-btn input:hover{background-position:0 0; cursor:pointer}
 
-.news-list{ padding:10px 40px ; color:#333}
+.news-list ul{ padding:10px 40px ; color:#333}
 .news-list li{ line-height:24px; font-size:14px; white-space:nowrap; overflow:hidden}
-.news-list li span{ margin-right:10px;height:23px; line-height:23px;}
+.news-list li span{color:#c00; margin-right:10px;height:23px; line-height:23px;}
 .news-list li a{ height:23px; line-height:23px; font-size:12px; color:#333; display:inline-block;_text-decoration:none; }
 
