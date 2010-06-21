@@ -46,7 +46,7 @@
 
 <div class="side">
     {% logininfobar request.session.username %}  
-    {% cache 3600 online_news %} {% sidebar %} {% endcache %} 
+    {% cache 600 online_news %} {% sidebar %} {% endcache %} 
 </div>
 
 {% block foot %}

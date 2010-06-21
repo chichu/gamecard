@@ -20,7 +20,6 @@ def get_card(request,item_id):
     if not request.session.test_cookie_worked():
         print "cookie unenabled!" 
         
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if not bool(username):
         return render_to_response('card/popups/login.html')
@@ -97,7 +96,6 @@ def item_detail(request,object_id,item_id):
     return render_to_response('card/popups/item_details.html',{"one":one,"item":item})
 
 def cardbox(request):
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if bool(username):
         try:
@@ -115,7 +113,6 @@ def cardbox(request):
     return HttpResponseRedirect("/card/")  
 
 def delete_card(request,object_id,item_id):
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if bool(username):
         try:
@@ -137,7 +134,6 @@ def delete_card(request,object_id,item_id):
     return None
  
 def index(request):
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     return render_to_response('card/index.html',locals())
 
@@ -155,7 +151,6 @@ def search(request):
     return render_to_response('card/results.html',locals())
            
 def coperation(request):
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if request.method == "POST":
         f = CoperationForm(request.POST)
@@ -169,7 +164,6 @@ def coperation(request):
     return render_to_response('card/coperation.html',locals())
     
 def suggest(request):
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     if request.method == "POST":
         f = SuggestForm(request.POST)
@@ -185,7 +179,6 @@ def suggest(request):
     
 def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
-    request.session['username'] = get_username_from_cookie(request)
     username = request.session.get('username','')
     return render_to_response('card/i2.html',locals())
 
