@@ -10,6 +10,6 @@ $.fn.flashSlider.defaults = {
         auto: true, 
         pause: 5000,
         easing: "swing",
-        height:350,
-        width:240
+        height:240,
+        width:350
 };
