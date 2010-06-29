@@ -1,6 +1,13 @@
 {% extends "card/base.html" %}
 {% load card_tags cache %}
 
+{% block title %}178新手卡_最全最快的新手卡乐园{% endblock %}
+
+{% block extra_meta %}
+<meta name="keywords" content="新手卡、内测号、激活码免费领取_178新手卡_178游戏网" />
+<meta name="description" content="178新手卡平台永久免费提供各种网络游戏的新手卡、内测号、激活码" />
+{% endblock %}
+
 {% block extra_js%}
 <script type="text/javascript" src="http://media.ka.178.com/static/js/j.flashSlider.js"></script> 
 <script type="text/javascript" src="http://media.ka.178.com/static/js/jSwitchTabs.js"></script>
@@ -9,7 +16,7 @@
 {% block main %}
 <div class="searchbar"><div class="innerbox">
 {% include "card/searchbar.html" %}
-{% cache 3600 the_keywords %} {% keywords %}{% endcache %} 
+{% cache 600 the_keywords %} {% keywords %}{% endcache %} 
 <div class="clearfix"></div></div></div>
 
 {% cache 600 the_news %} {% news %}{% endcache %} 

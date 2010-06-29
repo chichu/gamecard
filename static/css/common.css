@@ -91,7 +91,7 @@ button.searchbtn:hover{ cursor:pointer;}
 
 
 /*cardbox*/
-.cardbox{ border:1px solid #d9d9d9;-moz-border-radius:3px; -webkit-border-radius:3px;}
+.cardbox{ border:1px solid #d9d9d9;-moz-border-radius:3px; -webkit-border-radius:3px;min-height:550px;height:auto !important; height:550px;}
 .cardbox .innerbox{ border:2px solid #fff; background:url(http://media.ka.178.com/static/images/cardboxbg.jpg) repeat-x;-moz-border-radius:3px; -webkit-border-radius:3px;}
 
 .cardbox .innerbox .cardboxtop{ border-bottom:1px solid #ddd; clear:both;}

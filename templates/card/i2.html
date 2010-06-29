@@ -1,6 +1,11 @@
 {% extends "card/base.html" %}
 {% load card_tags %}
-{% block title %}{{activity.item.name}}{% endblock %}
+{% block title %}178新手卡_{{activity.game.name}}{{activity.item.name}}免费领取{% endblock %}
+
+{% block extra_meta %}
+<meta name="keywords" content="78新手卡_{{activity.game.name}}新手卡_{{activity.item.name}}_{{activity.game.name}}新手卡领取_{{activity.game.name}}注册_{{activity.game.name}}新手卡激活_{{activity.game.name}}下载__178游戏网" />
+<meta name="description" content="178新手卡平台永久免费提供{{activity.game.name}}新手卡_{{activity.game.name}}内测号_{{activity.game.name}}激活码_{{activity.game.name}}{{activity.item.name}}，包括{{activity.game.name}}{{activity.item.name}}领取、{{activity.game.name}}{{activity.item.name}}激活" />
+{% endblock %}
 
 <div class="contenner">
 

@@ -18,6 +18,6 @@
 </div>			
 {% endblock %}
 {% block submit %} 
-<a href="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val());"><span>提交</span></a> 
+<a href='javascript:void(0);' onclick="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val());"><span>提交</span></a> 
 <a href="javascript:" class="WinClose"><span >关闭</span></a>
 {% endblock %}
