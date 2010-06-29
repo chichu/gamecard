@@ -10,7 +10,7 @@
 <div class="contenner">
 
 {% block main %}
-    <div class="cardbox mt10"><div class="innerbox p15"><div class="min_height">
+    <div class="cardbox mt10 min_height"><div class="innerbox p15">
         {% block content %}
             {{activity.info|safe}}
              
@@ -21,5 +21,5 @@
             </div>
             
         {% endblock %}
-    </div></div></div>
+    </div></div>
 {% endblock %}
