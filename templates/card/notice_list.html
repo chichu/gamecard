@@ -11,9 +11,11 @@
     <ul class="news-list">
         {% for notice in object_list %}
          <li>
+            <div class="card-info">
             <span>{{notice.create_time|date:"Y-m-d"}}<span>
             <span>{{notice.activity.name}}<span>
             <a target="_blank" href="/card/activitydetail/{{notice.activity.id}}.html" title="{{notice.title}}">{{notice.content|safe}}</a>
+            </div>
         </li> 
         {% endfor %}
     </ul>

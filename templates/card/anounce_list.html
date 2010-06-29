@@ -11,8 +11,10 @@
     <ul class="news-list">
         {% for anounce in object_list %}
          <li>
+            <div class="card-info">
             <span>{{anounce.create_time|date:"Y-m-d"}}</span>
             {{anounce.content|safe}}
+            </div>
         </li> 
         {% endfor %}
     </ul>
