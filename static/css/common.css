@@ -13,7 +13,7 @@ body{ font-family:Tahoma,Arial,宋体; font-size:12px;  color: #000 }
 .text-centerfix { text-align: center;}
 .strongfix{font-weight: bold;}
 
-.mt10{ margin-top:10px;min-height:550px;height:auto !important; height:550px;}
+.mt10{ margin-top:10px;}
 .mr10{ margin-right:10px;}
 .m10{ margin:10px;}
 .p15{ padding:15px;}
