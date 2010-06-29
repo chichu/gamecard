@@ -17,6 +17,7 @@ body{ font-family:Tahoma,Arial,宋体; font-size:12px;  color: #000 }
 .mr10{ margin-right:10px;}
 .m10{ margin:10px;}
 .p15{ padding:15px;}
+.min_height{min-height:550px;height:auto !important; height:550px;}
 
 .sepline{ border-top:1px solid #ddd;}
 
