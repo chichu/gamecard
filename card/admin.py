@@ -31,7 +31,7 @@ class GameCompanyAdmin(admin.ModelAdmin):
 admin.site.register(GameCompany,GameCompanyAdmin)
 
 class ActAdmin(admin.ModelAdmin):
-    list_display = ('name','item','game','card_count','card_left','card_out_yesterday','card_type','start_time','status')
+    list_display = ('name','item','game','card_count','card_left','card_out_yesterday','get_yesterday','chance_yesterday','card_type','start_time','status')
     search_fields = ('name',)
     list_filter = ('status','card_type')
     list_per_page = 20
