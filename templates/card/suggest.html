@@ -1,6 +1,7 @@
 {% extends "card/i2.html" %}
 {% load card_tags %}
 {% block title %}有话要说{% endblock %}
+{% block extra_meta %}{% endblock %}
 {% block headnav %}{% headnav 3 request.session.username %}{% endblock %}
 {% block content %}      
 <form action="" method="post" id='suggestform'>

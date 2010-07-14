@@ -10,10 +10,13 @@
 
 <span class="ff0000">目前系统无法保存您的淘号记录，请您自行记录并妥善保存。</span></p>
 			</div>
-			<div class="notes-code">{% include "card/popups/checkcode.html" %}</div>		
+			<div class="notes-code">
+			<p style="margin:-10px 0 5px 0; color:#057103; font-size:14px;">您现在正在淘的是<strong style="font-weight:bold; color:#936">{{item.name}}</strong></p>    
+			{% include "card/popups/checkcode.html" %}
+			</div>		
 	</div>
 {% endblock %}
 {% block submit %} 
-	<a href='javascript:void(0);' onclick="javascript:post_popup('/card/get_chance/{{item_id}}/',$('#checkcode_input').val());"><span>淘一下</span></a>
+	<a href='javascript:void(0);' onclick="javascript:post_popup('/card/get_chance/{{item.id}}/',$('#checkcode_input').val());"><span>淘一下</span></a>
 	<a href="javascript:" class="WinClose"><span>关闭</span></a>
 {% endblock %}

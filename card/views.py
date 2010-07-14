@@ -17,35 +17,33 @@ def login_bar(request):
     return render_to_response('card/popups/login.html')
     
 def get_card(request,item_id):
-    if not request.session.test_cookie_worked():
-        print "cookie unenabled!" 
-        
     username = request.session.get('username','')
+    item = Item.objects.get(id=item_id)  
     if not bool(username):
         return render_to_response('card/popups/login.html')
     
     has_get = md5_trans("has_%s_get"%(item_id))
     
     if request.COOKIES.has_key(has_get):
-        return render_to_response('card/popups/failure2.html',{'item_id':item_id})
+        return render_to_response('card/popups/failure2.html',{'item':item})
  
     if request.method == "POST":
-        item = Item.objects.get(id=item_id)
+        
         input_code = request.POST.get("checkcode","").strip()
         checkcode = request.session.get('checkcode','error')
         if input_code != checkcode:
-            return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+            return render_to_response('card/popups/get_notice.html',{'item':item,'error':u'验证码输入错误！'})
         try:
             collect = get_mongodb_collect(get_collect_name(item_id))
             avail_one = collect.find_one({"status":"normal"})
             if not bool(avail_one):
-                return render_to_response('card/popups/failure3.html',{'item_id':item_id})
+                return render_to_response('card/popups/failure3.html',{'item':item})
             
             avail_one = tag_used_card(username,item,avail_one)
             collect.save(avail_one)
         except Exception,e:
             log_error("Failed in getting one card and saving the info:%s %s %s"%(e,username,item))
-            return render_to_response('card/popups/get_notice.html',{'item_id':item_id,'error':'领卡错误！'})
+            return render_to_response('card/popups/get_notice.html',{'item':item,'error':'领卡错误！'})
         
         object_id = str(avail_one['_id'])
         error = save_user_card_id(username,item,object_id)
@@ -55,17 +53,19 @@ def get_card(request,item_id):
         res = render_to_response('card/popups/get_success.html',{'item':item,"object_id":object_id})
         res.set_cookie(key=has_get, value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
-    return render_to_response('card/popups/get_notice.html',{'item_id':item_id})   
+    set_count("get_card",item_id)
+    return render_to_response('card/popups/get_notice.html',{'item':item})   
         
 MAX_CHANCE_CARD_IDS = 5
 def get_chance(request,item_id):
+    item = Item.objects.get(id=item_id)
     if request.method == "POST":
         try:
-            item = Item.objects.get(id=item_id)
+            
             input_code = request.POST.get("checkcode","").strip()
             checkcode = request.session.get('checkcode','error')
             if input_code != checkcode:
-            	return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':u'验证码输入错误！'})
+            	return render_to_response('card/popups/chance_notice.html',{'item':item,'error':u'验证码输入错误！'})
             if item.is_chance == False:
                 return render_to_response('card/popups/chance_not_available.html')
             collect = get_mongodb_collect(get_collect_name(item_id))
@@ -80,9 +80,10 @@ def get_chance(request,item_id):
                 collect.save(one)
         except Exception,e:
             log_error("error in get chance %s" % e)
-            return render_to_response('card/popups/chance_notice.html',{'item_id':item_id,'error':"error!"})
+            return render_to_response('card/popups/chance_notice.html',{'item':item,'error':"error!"})
         return render_to_response('card/popups/chance_success.html',{'item':item,'cards':cards})
-    return render_to_response('card/popups/chance_notice.html',{'item_id':item_id})   
+    set_count("get_card",item_id)
+    return render_to_response('card/popups/chance_notice.html',{'item':item})   
 
 def item_detail(request,object_id,item_id):
     from pymongo.objectid import ObjectId
@@ -181,6 +182,9 @@ def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
     username = request.session.get('username','')
     return render_to_response('card/i2.html',locals())
+    
+def help(request):
+    return render_to_response('card/help.html',locals())
 
 CHECKCODE_IMAGE_PATH = os.path.join(MEDIA_ROOT,'images/checkcode.gif')
 FONT_PATH =  os.path.join(MEDIA_ROOT,"simhei.ttf")

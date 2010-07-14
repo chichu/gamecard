@@ -1,9 +1,10 @@
+{% load card_tags %}
 <div class="pop-up-win" >
     <div class="win-title">
 	<div class="win-title-l">
 		<div class="win-title-r">
 			<div class="win-title-m">
-				<a href="javascript:void(0);" class="fixie6png WinClose">关闭</a>
+				<div class="title-ad">{% ad_pic %}</div>
 				<h1>{% block title %}{% endblock %}</h1>
 			</div><!-- win-title-m-->
 		</div><!-- win-title-r-->

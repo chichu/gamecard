@@ -31,7 +31,7 @@ class GameCompanyAdmin(admin.ModelAdmin):
 admin.site.register(GameCompany,GameCompanyAdmin)
 
 class ActAdmin(admin.ModelAdmin):
-    list_display = ('name','item','game','card_count','card_left','card_type','start_time','status')
+    list_display = ('name','item','game','card_count','card_left','card_out_yesterday','card_type','start_time','status')
     search_fields = ('name',)
     list_filter = ('status','card_type')
     list_per_page = 20
@@ -62,7 +62,12 @@ class PictureAdmin(admin.ModelAdmin):
     list_display = ('title','link_url','create_time')
     search_fields = ('title',)
 admin.site.register(Pictures,PictureAdmin)
-   
+
+class AdvertiseAdmin(admin.ModelAdmin):
+    list_display = ('title','link_url','create_time')
+    search_fields = ('title',)
+admin.site.register(Advertise,AdvertiseAdmin)
+
 class FileLoaderAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change): 
         format = obj.item.format

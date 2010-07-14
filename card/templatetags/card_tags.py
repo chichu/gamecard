@@ -2,7 +2,6 @@
 from django import template
 from gamecard.card.models import *
 
-
 register = template.Library()
 
 MAX_NOTICE = 5
@@ -53,3 +52,21 @@ def news():
         'notices':notices,
         'pictures':pictures,
     }
+    
+@register.inclusion_tag('card/popups/ad_pic.html')
+def ad_pic():
+    re_dict = {
+        'pic_url':'',
+        'link_url':'',
+        'title':'',
+    }
+    ads = Advertise.objects.filter(is_active=True)   
+    if bool(ads):
+        count = len(ads)
+        from random import randint
+        index = randint(0,count-1)
+        ad = ads[index]
+        re_dict['pic_url'] = ad.img_url
+        re_dict['title'] = ad.title
+        re_dict['link_url'] = ad.link_url
+    return re_dict

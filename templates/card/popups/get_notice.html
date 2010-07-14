@@ -12,12 +12,13 @@
 	    </p>
 	</div>
 	<div class="notes-code">
+	    <p style="margin:-10px 0 5px 0; color:#057103; font-size:14px;">您现在正在领取的是<strong style="font-weight:bold; color:#936">{{item.name}}</strong></p>
         {% include "card/popups/checkcode.html" %}      
 		<p class="ff0000">友情提示：请您在成功领取物品后2小时内使用，否则该物品将进入淘号库，可能会被别人淘走使用。<p>
 	</div>
 </div>			
 {% endblock %}
 {% block submit %} 
-<a href='javascript:void(0);' onclick="javascript:post_popup('/card/get_card/{{item_id}}/',$('#checkcode_input').val());"><span>提交</span></a> 
+<a href='javascript:void(0);' onclick="javascript:post_popup('/card/get_card/{{item.id}}/',$('#checkcode_input').val());"><span>提交</span></a> 
 <a href="javascript:" class="WinClose"><span >关闭</span></a>
 {% endblock %}

@@ -10,11 +10,10 @@ ul{ list-style:none;}
 .win-title{ height:34px; overflow:hidden;}
 .win-title-l,.win-title-r,.win-title-m,.win-footer-l,.win-footer-r,.win-footer-m{ background:url(http://media.ka.178.com/static/images/rounded.png) no-repeat;}
 .win-title-r{ background-position:right -34px;}
-.win-title-m{height:34px; margin:0 15px; padding:0 7px; background-repeat:repeat-x; background-position:0 -68px;}
-.win-title-m a:link,.win-title-m a:visited{ float:right; display:block; width:27px; height:26px; margin-top:5px; line-height:200px; overflow:hidden; background:url(http://media.ka.178.com/static/images/close.png) no-repeat 0 -26px; cursor:pointer}
-.win-title-m a:hover{ background-position:0 0;}
+.win-title-m{height:34px; margin:0 8px; padding:0 0px; background-repeat:repeat-x; background-position:0 -68px;}
 .win-title-m h1{ font-size:16px; font-weight:bold; color:#036; line-height:36px;}
 .win-footer{ text-align:right;}
+.title-ad{ width:380px; height:25px; float:right; background:#eee; margin-top:5px;}
 /*内容*/
 .win-content{ *display:inline-block;background:#cfdff0; border:1px solid #7c94bf;}
 .win-border{ border:1px solid #e1ebf6; border-top:none; border-bottom:none;}

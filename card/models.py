@@ -1,6 +1,6 @@
 #encoding:utf-8
 from django.db import models
-from datetime import datetime
+from datetime import datetime,timedelta
 import os
 from tinymce import models as tinymce_models
 
@@ -58,9 +58,26 @@ class Activity(models.Model):
         from gamecard.utils.dbutils import get_mongodb_collect
         from gamecard.utils.strutils import get_collect_name
         collect = get_mongodb_collect(get_collect_name(self.item.id))
-        return collect.find({"status":'normal'}).count()
+        left_now = collect.find({"status":'normal'}).count()
+        return left_now
     card_left.short_description = "卡号剩余量"
-    #card_left.
+    def card_out_yesterday(self):
+        from gamecard.utils.dbutils import get_mongodb_collect
+        from gamecard.utils.strutils import get_collect_name
+        collect = get_mongodb_collect(get_collect_name(self.item.id))
+        start = datetime.now() - timedelta(days=1) 
+        end  = datetime.now()
+        card_out = collect.find({"status":'used',"get_time":{"$gt":start,"$lt":end}}).count()
+        return card_out
+    card_out_yesterday.short_description = "昨日发卡量"
+    def get_yesterday(self):
+        from gamecard.utils.dbutils import get_count
+        return get_count("get_card",self.item.id)
+    get_yesterday.short_description = "24小时领卡次数"
+    def chance_yesterday(self):
+        from gamecard.utils.dbutils import get_count
+        return get_count("chance_card",self.item.id)
+    chance_yesterday.short_description = "24小时淘卡次数"
     def __unicode__(self):
         return self.name  
 
@@ -125,6 +142,19 @@ class GameCompany(models.Model):
         ordering = ['-create_time']
     def __unicode__(self):
         return self.company_name
+
+class Advertise(models.Model):
+    title = models.CharField("标题",max_length=25)
+    img_url = models.ImageField(upload_to='icons/',verbose_name="图片")
+    link_url = models.URLField(verbose_name="链接地址")
+    is_active = models.BooleanField("是否激活",default=True)
+    create_time = models.DateTimeField("创建时间")
+    class Meta:
+        verbose_name = "弹窗广告发布"
+        verbose_name_plural = "弹窗广告发布"
+        ordering = ['-create_time']
+    def __unicode__(self):
+        return self.title
         
 class Suggest(models.Model):
     title = models.CharField("标题",max_length=100)
@@ -138,8 +168,7 @@ class Suggest(models.Model):
         ordering = ['-create_time']
     def __unicode__(self):
         return self.title
-    
-    
+
 class OnlineNews(models.Model):
     content = models.CharField("游戏名称",max_length=10)
     link_url = models.URLField(verbose_name="链接地址")
