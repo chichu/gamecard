@@ -166,3 +166,11 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 .news-list li span{ margin-right:10px;}
 .news-list li a{ font-weight:bold;}
 
+.help-content{ color:#333;}
+.help-content p{ text-indent:24px; line-height:1.5; margin:5px 0}
+.help-content p strong{ color:#F60}
+.help-content dl{ line-height:1.5; margin:10px 24px}
+.help-content dl dt{ line-height:2.0; font-weight:bold}
+.help-content h2{ font-weight:bold; margin-top:10px;}
+.help-content p a{ margin-right:10px}
+
