@@ -1,7 +1,7 @@
 # Django settings for gamecard project.
 import os,sys
 
-DEBUG = True 
+DEBUG = False 
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
