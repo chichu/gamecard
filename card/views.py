@@ -42,14 +42,16 @@ def get_card(request,item_id):
             avail_one = tag_used_card(username,item,avail_one)
             collect.save(avail_one)
         except Exception,e:
+            print e
             log_error("Failed in getting one card and saving the info:%s %s %s"%(e,username,item))
             return render_to_response('card/popups/get_notice.html',{'item':item,'error':'领卡错误！'})
         
         object_id = str(avail_one['_id'])
         error = save_user_card_id(username,item,object_id)
         if bool(error):
+            print error
             log_error("Failed in saving user card id%s %s %s"%(error,username,item))
-        
+        print "finish"
         res = render_to_response('card/popups/get_success.html',{'item':item,"object_id":object_id})
         res.set_cookie(key=has_get, value=True, max_age=SESSION_COOKIE_AGE, domain=SESSION_COOKIE_DOMAIN)
         return res
@@ -82,7 +84,7 @@ def get_chance(request,item_id):
             log_error("error in get chance %s" % e)
             return render_to_response('card/popups/chance_notice.html',{'item':item,'error':"error!"})
         return render_to_response('card/popups/chance_success.html',{'item':item,'cards':cards})
-    set_count("get_card",item_id)
+    set_count("chance_card",item_id)
     return render_to_response('card/popups/chance_notice.html',{'item':item})   
 
 def item_detail(request,object_id,item_id):

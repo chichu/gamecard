@@ -1,7 +1,7 @@
 # Django settings for gamecard project.
 import os,sys
 
-DEBUG = False
+DEBUG = True 
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -82,8 +82,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     #'templates',
-    '/zzdata/gamecard/templates/', 
+    '/zzdata/gamecard/templates/',
 )
+if DEBUG:
+    TEMPLATE_DIRS = ('/data/gamecard/templates/',)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -97,15 +99,12 @@ INSTALLED_APPS = (
 )
 
 CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-
-RECAPTCHA_PUBLIC_KEY = "6LfB5bkSAAAAAGZh_nzHuG30cMBJvTyL8TIL6eqK"
-RECAPTCHA_SECRET_KEY = "6LfB5bkSAAAAALbtab4iG4TvYxYBKAETWOx88NIL"
+if DEBUG:
+    CACHE_BACKEND = 'memcached://127.0.0.1:11212/'
 
 SESSION_COOKIE_DOMAIN = '.178.com'
 SESSION_COOKIE_AGE = 3600*24
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-
-#SESSION_SAVE_EVERY_REQUEST = True
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     #"django.contrib.auth.context_processors.auth",
