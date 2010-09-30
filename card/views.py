@@ -18,6 +18,7 @@ def login_bar(request):
     
 def get_card(request,item_id):
     username = request.session.get('username','')
+    uid = request.session.get('uid','')
     item = Item.objects.get(id=item_id)  
     if not bool(username):
         return render_to_response('card/popups/login.html')
@@ -39,7 +40,7 @@ def get_card(request,item_id):
             if not bool(avail_one):
                 return render_to_response('card/popups/failure3.html',{'item':item})
             
-            avail_one = tag_used_card(username,item,avail_one)
+            avail_one = tag_used_card(username,uid,item,avail_one)
             collect.save(avail_one)
         except Exception,e:
             print e
@@ -183,6 +184,7 @@ def suggest(request):
 def activity_detail(request,activity_id):
     activity = Activity.objects.get(id=activity_id)
     username = request.session.get('username','')
+    user_list = get_card_relative_userinfo(activity.item.id)
     return render_to_response('card/i2.html',locals())
     
 def help(request):

@@ -1,5 +1,5 @@
 #encoding:utf-8
-from pymongo import Connection,ASCENDING
+from pymongo import Connection,ASCENDING,DESCENDING
 from datetime import datetime,timedelta
 from gamecard.settings import DEBUG
 
@@ -38,10 +38,22 @@ def save_user_card_id(username,item,object_id):
         print e
         return e
     return None
+
+def get_card_relative_userinfo(item_id):
+    from gamecard.utils.strutils import get_user_pic,get_collect_name
+    collect = get_mongodb_collect(get_collect_name(item_id))
+    records = collect.find({"status":'used','uid':{"$ne":None}}).distinct("uid").sort("get_time",DESCENDING).limit(16)
+    user_info = []
+    for r in records:
+        print r.get_time,r.uid,r.username
+        user_info.append((r.username,r.uid,get_user_pic(r.uid)))
+    return user_info
+
     
-def tag_used_card(username,item,avail_one):
+def tag_used_card(username,uid,item,avail_one):
     now = datetime.now()
     avail_one["username"] = username
+    avail_one["uid"] = uid
     avail_one["status"] = "used"
     avail_one["get_time"] = now
     if item.is_chance:

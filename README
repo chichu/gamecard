@@ -60,7 +60,8 @@ grant all privileges on *.* to localhost identified by '***';
 ldconfig
 python manage.py syncdb
 
-mysql settings:
+mysqldb:
+yum install python-devel mysql-devel zlib-devel openssl-devel
 http://hi.baidu.com/lvmajia/blog/item/961bb10212313e054afb51f0.html
 
 apache settings:
