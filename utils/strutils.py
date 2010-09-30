@@ -15,13 +15,14 @@ def get_userinfo_from_cookie(request):
        用_178c里得到的uid，username，email去和_i中的md5段验证
     '''
     if (not request.COOKIES.has_key('_178c')) or (not request.COOKIES.has_key("_i")):
-        return None 
+        return {"username":'',"uid":''}
     (uid,email,username) = tuple(urllib.unquote(request.COOKIES.get('_178c')).split('#'))
+    print uid,email,username
     (code,md5code,timestamp) = tuple(urllib.unquote(request.COOKIES.get('_i')).split('_'))
     seed = "%s<>%s<>%s<>%s%s" % (uid,email,username,timestamp,'4b21e6f4')
     if md5code == md5_trans(seed):
-        return (username,uid) 
-    return None
+        return {"username":username,"uid":uid}
+    return {"username":'',"uid":''}
     
 def check_cardfile_format(line,format):
     return (len(line.split(",")) == len(format.split("&")))

@@ -7,8 +7,8 @@ class AuthMiddleware(object):
         try:
             #if not request.session.has_key('username'):
             user_info = get_userinfo_from_cookie(request)
-            if user_info:
-                (request.session['username'],request.session['uid']) = user_info
+            request.session['username'] = user_info['username']
+            request.session['uid'] = user_info['uid']
         except Exception,e:
             log_error("error in Authmiddleware:%s request sesion:%s"%(e,request.session['username']))
             return None

@@ -42,11 +42,12 @@ def save_user_card_id(username,item,object_id):
 def get_card_relative_userinfo(item_id):
     from gamecard.utils.strutils import get_user_pic,get_collect_name
     collect = get_mongodb_collect(get_collect_name(item_id))
-    records = collect.find({"status":'used','uid':{"$ne":None}}).distinct("uid").sort("get_time",DESCENDING).limit(16)
+    records = collect.find({"status":'used','uid':{"$ne":None}},limit=16).sort("get_time",DESCENDING)
     user_info = []
     for r in records:
-        print r.get_time,r.uid,r.username
-        user_info.append((r.username,r.uid,get_user_pic(r.uid)))
+        info = (r['username'],r['uid'],get_user_pic(r['uid']))
+        if info not in user_info:
+            user_info.append(info)
     return user_info
 
     
