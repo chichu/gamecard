@@ -8,8 +8,11 @@
                 {% for item_name,item_id,object_id,timestamp in cards %}
                 <div class="card-info">
             	<span>{{timestamp}} </span>
-                <span class="info-content"> 领取<a href="javascript:get_popup('/card/itemdetail/{{object_id}}/{{item_id}}/')">{{item_name}}</a></span>
-                <span class="info-btn"><a href="javascript:get_popup('/card/itemdetail/{{object_id}}/{{item_id}}/');"><strong>物品详情</strong></a><a href="/card/cardbox/{{object_id}}/{{item_id}}/delete/"><strong>删除</strong></a></span>
+                <span class="info-content"> 领取
+                <a href="javascript:void(0);" onclick="javascript:get_popup('/card/itemdetail/{{object_id}}/{{item_id}}/');">{{item_name}}</a></span>
+                <span class="info-btn">
+                <a href="javascript:void(0);" onclick="javascript:get_popup('/card/itemdetail/{{object_id}}/{{item_id}}/');"><strong>物品详情</strong></a>    
+            <a href="javascript:void(0);" onclick="javascript:window.location='/card/cardbox/{{object_id}}/{{item_id}}/delete/';"><strong>删除</strong></a></span>
                 </div>
                 {% endfor %}
             {% else %}
