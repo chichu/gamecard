@@ -17,7 +17,6 @@ def get_userinfo_from_cookie(request):
     if (not request.COOKIES.has_key('_178c')) or (not request.COOKIES.has_key("_i")):
         return {"username":'',"uid":''}
     (uid,email,username) = tuple(urllib.unquote(request.COOKIES.get('_178c')).split('#'))
-    print uid,email,username
     (code,md5code,timestamp) = tuple(urllib.unquote(request.COOKIES.get('_i')).split('_'))
     seed = "%s<>%s<>%s<>%s%s" % (uid,email,username,timestamp,'4b21e6f4')
     if md5code == md5_trans(seed):
