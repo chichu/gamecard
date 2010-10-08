@@ -174,3 +174,11 @@ table.cardtable tr td.itemtitle{ text-align:center; font-weight:bold; color:#2C6
 .help-content h2{ font-weight:bold; margin-top:10px;}
 .help-content p a{ margin-right:10px}
 
+.avatar50 {width:50px;padding:4px;background:#F6F6F6;border:1px solid #DFE3E6;}
+.avatar50 img{ display:block}
+.uname,.uname a{display:inline-block;height:18px; line-height:18px;overflow:hidden;text-align:center;white-space:nowrap;width:58px;}
+.ulist{ overflow:hidden;zoom:1}
+.ulist li{display:inline;float:left;margin:10px 24px 0 0;width:60px;}
+.utools{ height:16px; overflow:hidden;zoom:1; width:46px;  margin:5px auto}
+.add-friend,.msg{ display:block; width:16px; height:16px; background:url(utools-icon.gif) no-repeat 0 0; text-indent:-9999px;}
+.msg{ background-position: right 0; float:right}

@@ -19,31 +19,31 @@
                 	<a href="javascript:void(0);" onclick="javascript:get_popup('/card/get_chance/{{activity.item.id}}/');"><span>淘一下</span></a> 
                 	<a href="/card/"><span>返回首页</span></a> 
             </div>
-            {% if user_list %}
-            <div class="cardbox mt10"><div class="innerbox p15">
-
-                    <p>以下是领取过{{activity.item.name}}的玩家，您可以点击Ta的头像结交好友共享游戏乐趣，也可以通过站内短信方式询问Ta是否愿意将游戏账号共享给你共同体验</p>
-        			<ul class="ulist">
-        				<li>
-        				    {% for username,uid,pic_mid in user_list %}
-        					<div class="avatar50">
-        						<a title="{{username}}" href="http://i.178.com/?uid={{uid}}">
-        						<img width="50px" height="50px" _src="0" src="http://pic1.178.com/avatars/{{pic_mid}}/50_{{uid}}.jpg"></a>
-        					</div>
-        					<div class="uname ">
-        						<a title="{{username}}" href="http://i.178.com/?uid={{uid}}">{{username}}</a>
-        					</div>
-        					<!--
-        					<div class="utools">
-        					    <a href="http://i.178.com/?uid={{uid}}" class="msg" title="发短信">发短信</a>
-        					    <a href="http://i.178.com/?uid={{uid}}" class="add-friend" title="加为好友"></a>
-        					</div>
-        				        -->
-        					{% endfor %}
-        				</li>
-        		</ul>
-            </div></div>
-            {% endif %}
         {% endblock %}
     </div></div>
+    {% if user_list %}
+    <div class="cardbox mt10"><div class="innerbox p15">
+
+            <p>以下是领取过{{activity.item.name}}的玩家，您可以点击Ta的头像结交好友共享游戏乐趣，也可以通过站内短信方式询问Ta是否愿意将游戏账号共享给你共同体验</p>
+			<ul class="ulist">
+				<li>
+				    {% for username,uid,pic_mid in user_list %}
+					<div class="avatar50">
+						<a title="{{username}}" href="http://i.178.com/?uid={{uid}}">
+						<img width="50px" height="50px" _src="0" src="http://pic1.178.com/avatars/{{pic_mid}}/50_{{uid}}.jpg"></a>
+					</div>
+					<div class="uname ">
+						<a title="{{username}}" href="http://i.178.com/?uid={{uid}}">{{username}}</a>
+					</div>
+					<!--
+					<div class="utools">
+					    <a href="http://i.178.com/?uid={{uid}}" class="msg" title="发短信">发短信</a>
+					    <a href="http://i.178.com/?uid={{uid}}" class="add-friend" title="加为好友"></a>
+					</div>
+				        -->
+					{% endfor %}
+				</li>
+		</ul>
+    </div></div>
+    {% endif %}
 {% endblock %}
